@@ -1,1 +1,1 @@
-# Proyecto MAPBM IACS
+# Proyecto MAPBM IMIM-IACS
