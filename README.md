@@ -1,9 +1,9 @@
-![Logo of the project](https://cienciadedatosysalud.org/wp-content/uploads/logo-Data-Science-VPM.png)
+![Logo of the project](https://mapbm.org/img/logoMAPBM2.png)
 
 <small><i>This project follows the structure built using the [Common Data Model Builder](https://github.com/cienciadedatosysalud/cdmb), a tool that allows you to create common data models to facilitate interoperability and reproducibility of the analyses.</i></small>
 
 
-# Your project title
+# Proyecto MAPBM IMIM-IACS
 
 ---
 
@@ -49,27 +49,6 @@ from an individual researcher working with a folder of data, to large data-inten
 ## Requirements/Dependencies 
 __*Note that dependencies may vary depending on user modifications!*__
 
-## R dependencies
-Version of Rbase used: **4.1**
-
-Version of [Quarto](https://quarto.org/) used: **1.1.149**
-
-| library    | version | link                                                                                    |
-|------------|---------|-----------------------------------------------------------------------------------------|
-| DuckDB     | 0.8.1   | https://duckdb.org/                                                                     |
-| jsonlite   | 1.8.7   | https://cran.r-project.org/web/packages/jsonlite/index.html                             |
-| kableExtra | 1.3.4   | https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html |
-| Hmisc      | 4.7.1   | https://cran.r-project.org/package=Hmisc                                                |
-
-## Python dependencies
-Version of Python used: **3.8**
-
-| library         | version | link                                                    |
-|-----------------|---------|---------------------------------------------------------|
-| pandas          | 1.3.4   | https://pandas.pydata.org/                              |
-| DuckDB          | 0.8.1   | https://duckdb.org/                                     |
-| ydata_profiling | 4.1.2   | https://ydata-profiling.ydata.ai/docs/master/index.html |
-
 
 # Authoring
 
@@ -79,8 +58,8 @@ Version of Python used: **3.8**
 # Previous version(s):
 
 # How to contribute
-- Repository: https://github.com/your_user/your_repository/
-- Issue tracker: https://github.com/your_user/your_repository/issues
+- Repository: [https://github.com/your_user/your_repository/](https://github.com/cienciadedatosysalud/MAPBM)
+- Issue tracker: [https://github.com/your_user/your_repository/issues](https://github.com/cienciadedatosysalud/MAPBM/issues)
 
 # References
 - Data Science for Health Services and Policy Research group: https://cienciadedatosysalud.org/en/
