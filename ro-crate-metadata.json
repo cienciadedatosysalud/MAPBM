@@ -1,0 +1,835 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "creator": "Common Data Model Builder",
+            "datePublished": "2025-10-06T12:10:56+00:00",
+            "description": "",
+            "hasPart": [
+                {
+                    "@id": "README.md"
+                },
+                {
+                    "@id": "LICENSE.md"
+                },
+                {
+                    "@id": "man_container_deployment.md"
+                },
+                {
+                    "@id": ".gitignore"
+                },
+                {
+                    "@id": "inputs/data.duckdb"
+                },
+                {
+                    "@id": "src/dqa-scripts/dqa.py"
+                },
+                {
+                    "@id": "src/validation-scripts/validator.py"
+                },
+                {
+                    "@id": "src/validation-scripts/validator_report.qmd"
+                },
+                {
+                    "@id": "src/validation-scripts/_quarto.yml"
+                },
+                {
+                    "@id": "src/analysis-scripts/r_report_template.qmd"
+                },
+                {
+                    "@id": "src/analysis-scripts/_quarto.yml"
+                },
+                {
+                    "@id": "docs/CDM/cdmb_config.json"
+                },
+                {
+                    "@id": "docs/CDM/common_datamodel.xlsx"
+                },
+                {
+                    "@id": "docs/CDM/cohort_definition_inclusion.csv"
+                },
+                {
+                    "@id": "docs/CDM/ER.gv.png"
+                },
+                {
+                    "@id": "docs/CDM/ER.gv"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_episode.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/cnh_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/inclusion.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/akic_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/deliriumc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/dvtc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/pulmembc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/transfaec_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/ssinfc_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/utic_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/bloodinfc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/arrythc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/cardiacc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/pneumc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/cpec_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/amic_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/myocinfc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/strokec_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/ardsc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/gastrointc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/ileusc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/postophemc_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/ami_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/chf_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/pvd_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/cvd_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/dementia_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/copd_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/ctp_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/peptic_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/mildliver_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/severeliver_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/uncdiab_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/orgdiab_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/hemiplegia_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/ckd_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/tumor_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/mtx_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/leuk_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/lymph_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/aids_bl.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/catalogs/planification_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/episode/validation-rules/rules_set_episode.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_lab.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/lab/validation-rules/rules_set_lab.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_hospital.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hospital/catalogs/cnh_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hospital/catalogs/ccaa_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hospital/validation-rules/rules_set_hospital.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_hosp_pharmacy.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/cnh_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/hdrug_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hosp_pharmacy/validation-rules/rules_set_hosp_pharmacy.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_transfusion.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/transfusion/catalogs/cnh_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/transfusion/catalogs/transfusion_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/transfusion/validation-rules/rules_set_transfusion.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_amb_pharmacy.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/amb_pharmacy/catalogs/drug_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/amb_pharmacy/validation-rules/rules_set_amb_pharmacy.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_viscoelastic_test.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/viscoelastic_test/catalogs/cnh_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/viscoelastic_test/validation-rules/rules_set_viscoelastic_test.json"
+                }
+            ],
+            "keywords": "",
+            "license": "CC BY 4.0 https://creativecommons.org/licenses/by/4.0/",
+            "name": "MAPBM"
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            }
+        },
+        {
+            "@id": "README.md",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/markdown",
+            "name": "README"
+        },
+        {
+            "@id": "LICENSE.md",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/markdown",
+            "name": "License"
+        },
+        {
+            "@id": "man_container_deployment.md",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/markdown",
+            "name": "Manual on how to deploy the project in a docker container"
+        },
+        {
+            "@id": ".gitignore",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/plain",
+            "name": ".gitignore file"
+        },
+        {
+            "@id": "inputs/data.duckdb",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/octet-stream",
+            "name": "SQL OLAP auxiliary database"
+        },
+        {
+            "@id": "src/dqa-scripts/dqa.py",
+            "@type": [
+                "File",
+                "SoftwareSourceCode"
+            ],
+            "author": [],
+            "encodingFormat": "text/plain",
+            "name": "Data Quality Assessment script"
+        },
+        {
+            "@id": "src/validation-scripts/validator.py",
+            "@type": [
+                "File",
+                "SoftwareSourceCode"
+            ],
+            "author": [],
+            "encodingFormat": "text/plain",
+            "name": "Rules validator file"
+        },
+        {
+            "@id": "src/validation-scripts/validator_report.qmd",
+            "@type": [
+                "File",
+                "SoftwareSourceCode"
+            ],
+            "author": [],
+            "encodingFormat": "text/plain",
+            "name": "Rules validator report"
+        },
+        {
+            "@id": "src/validation-scripts/_quarto.yml",
+            "@type": [
+                "File",
+                "SoftwareSourceCode"
+            ],
+            "author": [],
+            "encodingFormat": "text/yaml",
+            "name": "Rules validator report metadata"
+        },
+        {
+            "@id": "src/analysis-scripts/r_report_template.qmd",
+            "@type": [
+                "File",
+                "SoftwareSourceCode"
+            ],
+            "author": [],
+            "encodingFormat": "text/plain",
+            "name": "Quarto analysis script template"
+        },
+        {
+            "@id": "src/analysis-scripts/_quarto.yml",
+            "@type": [
+                "File",
+                "SoftwareSourceCode"
+            ],
+            "author": [],
+            "encodingFormat": "text/yaml",
+            "name": "Analysis script report metadata"
+        },
+        {
+            "@id": "docs/CDM/cdmb_config.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "CDM builder and project configuration file"
+        },
+        {
+            "@id": "docs/CDM/common_datamodel.xlsx",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "name": "Common Data Model spreadsheet"
+        },
+        {
+            "@id": "docs/CDM/cohort_definition_inclusion.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Crosswalks for the cohort definition inclusion"
+        },
+        {
+            "@id": "docs/CDM/ER.gv.png",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "image/png",
+            "name": "Entity Relationship Diagram PNG"
+        },
+        {
+            "@id": "docs/CDM/ER.gv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/plain",
+            "name": "Entity Relationship Diagram GV"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_episode.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: episode"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/cnh_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-cnh_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/inclusion.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-inttype_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/akic_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-akic_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/deliriumc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-deliriumc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/dvtc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-dvtc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/pulmembc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-pulmembc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/transfaec_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-transfaec_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/ssinfc_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-ssinfc_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/utic_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-utic_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/bloodinfc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-bloodinf_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/arrythc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-arrc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/cardiacc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-cardiacc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/pneumc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-pneumc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/cpec_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-cpec_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/amic_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-amic_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/myocinfc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-myocinfc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/strokec_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-strokec_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/ardsc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-ardsc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/gastrointc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-gatrointc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/ileusc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-ileusc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/postophemc_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-postophemc_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/ami_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-ami_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/chf_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-chf_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/pvd_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-pvd_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/cvd_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-cvd_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/dementia_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-dementia_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/copd_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-copd_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/ctp_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-ctp_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/peptic_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-peptic_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/mildliver_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-mildliver_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/severeliver_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-severeliver_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/uncdiab_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-uncdiab_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/orgdiab_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-orgdiab_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/hemiplegia_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-hemip_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/ckd_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-ckd_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/tumor_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-tumor_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/mtx_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-mtx_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/leuk_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-leuk_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/lymph_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-lymph_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/aids_bl.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-aids_bl"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/catalogs/planification_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for episode-planification_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/episode/validation-rules/rules_set_episode.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: episode"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_lab.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: lab"
+        },
+        {
+            "@id": "docs/CDM/entities/lab/validation-rules/rules_set_lab.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: lab"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_hospital.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: hospital"
+        },
+        {
+            "@id": "docs/CDM/entities/hospital/catalogs/cnh_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for hospital-cnh_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/hospital/catalogs/ccaa_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for hospital-aacc_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/hospital/validation-rules/rules_set_hospital.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: hospital"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_hosp_pharmacy.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: hosp_pharmacy"
+        },
+        {
+            "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/cnh_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for hosp_pharmacy-cnh_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/hdrug_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for hosp_pharmacy-hdrug_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/hosp_pharmacy/validation-rules/rules_set_hosp_pharmacy.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: hosp_pharmacy"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_transfusion.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: transfusion"
+        },
+        {
+            "@id": "docs/CDM/entities/transfusion/catalogs/cnh_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for transfusion-cnh_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/transfusion/catalogs/transfusion_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for transfusion-transftype_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/transfusion/validation-rules/rules_set_transfusion.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: transfusion"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_amb_pharmacy.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: amb_pharmacy"
+        },
+        {
+            "@id": "docs/CDM/entities/amb_pharmacy/catalogs/drug_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for amb_pharmacy-drug_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/amb_pharmacy/validation-rules/rules_set_amb_pharmacy.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: amb_pharmacy"
+        },
+        {
+            "@id": "docs/CDM/synthetic-data/synthetic_viscoelastic_test.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: viscoelastic_test"
+        },
+        {
+            "@id": "docs/CDM/entities/viscoelastic_test/catalogs/cnh_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for viscoelastic_test-cnh_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/viscoelastic_test/validation-rules/rules_set_viscoelastic_test.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: viscoelastic_test"
+        }
+    ]
+}

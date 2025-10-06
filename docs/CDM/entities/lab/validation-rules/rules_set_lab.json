@@ -1,0 +1,20 @@
+{
+    "description": "The expressions of the different rules follow the syntax of the SQL OLAP database \n        management system called DuckDB. For more information, visit https://duckdb.org/docs/sql/introduction. \n        Keep in mind that you only have to declare as a rule the statement that would follow a WHERE clause. \n        e.g.,  Select * from people WHERE {expression}\n        expression = age >= 18\n        ",
+    "rules": [
+        {
+            "expression": "det_cd IN ('hb', 'ret_he', 'ferr', 'gfr', 'crp', 'fol', 'tsi', 'fib', 'plat', 'viiif', 'p_time')",
+            "name": "det_cd",
+            "description": "Rule for column det_cd"
+        },
+        {
+            "expression": "detdate_dt >= '2022-01-01 00:00:01' AND detdate_dt <= '2024-12-31 23:59:59'",
+            "name": "detdate_dt",
+            "description": "Rule for column 'detdate_dt'"
+        },
+        {
+            "expression": "resdate_dt >= detdate_dt",
+            "name": "resdate_dt",
+            "description": "Rule for column resdate_dt"
+        }
+    ]
+}

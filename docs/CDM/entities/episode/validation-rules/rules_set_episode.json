@@ -1,0 +1,30 @@
+{
+    "description": "The expressions of the different rules follow the syntax of the SQL OLAP database \n        management system called DuckDB. For more information, visit https://duckdb.org/docs/sql/introduction. \n        Keep in mind that you only have to declare as a rule the statement that would follow a WHERE clause. \n        e.g.,  Select * from people WHERE {expression}\n        expression = age >= 18\n        ",
+    "rules": [
+        {
+            "expression": "admissiondate_dt >= '2022-01-01' AND admissiondate_dt <= '2024-12-31'",
+            "name": "admissiondate_dt",
+            "description": "Rule for column admissiondate_dt"
+        },
+        {
+            "expression": "dischargedate_dt > admissiondate_dt",
+            "name": "dischargedate_dt",
+            "description": "Rule for column dischargedate_dt"
+        },
+        {
+            "expression": "(intdate_dt > admissiondate_dt) AND (intdate_dt < dischargedate_dt)",
+            "name": "intdate_dt",
+            "description": "Rule for column 'intdate_dt'"
+        },
+        {
+            "expression": "age_nm BETWEEN 0 AND 115",
+            "name": "age_nm",
+            "description": "Rule for column age_nm"
+        },
+        {
+            "expression": "sex_cd IN ('0', '1', '2', '9')",
+            "name": "sex_cd",
+            "description": "Rule for column sex_cd"
+        }
+    ]
+}
