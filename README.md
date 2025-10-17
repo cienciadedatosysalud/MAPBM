@@ -1,4 +1,4 @@
-![Logo of the project](https://mapbm.org/img/logoMAPBM2.png)
+![Logo of the project](https://mapbm.org/img/logoMAPBM1.png)
 
 <small><i>This project follows the structure built using the [Common Data Model Builder](https://github.com/cienciadedatosysalud/cdmb), a tool that allows you to create common data models to facilitate interoperability and reproducibility of the analyses.</i></small>
 
