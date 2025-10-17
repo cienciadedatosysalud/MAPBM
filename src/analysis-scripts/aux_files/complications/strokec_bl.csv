@@ -1,0 +1,112 @@
+﻿encoding;code;code_clean;description;strokec_bl
+ICD-10;I63.011;I63011;Cerebral infarction due to thrombosis of right vertebral artery;1
+ICD-10;I63.012;I63012;Cerebral infarction due to thrombosis of left vertebral artery;1
+ICD-10;I63.031;I63031;Cerebral infarction due to thrombosis of right carotid artery;1
+ICD-10;I63.032;I63032;Cerebral infarction due to thrombosis of left carotid artery;1
+ICD-10;I63.111;I63111;Cerebral infarction due to embolism of right vertebral artery;1
+ICD-10;I63.112;I63112;Cerebral infarction due to embolism of left vertebral artery;1
+ICD-10;I63.131;I63131;Cerebral infarction due to embolism of right carotid artery;1
+ICD-10;I63.132;I63132;Cerebral infarction due to embolism of left carotid artery;1
+ICD-10;I63.211;I63211;Cerebral infarction due to unspecified occlusion or stenosis of right vertebral artery;1
+ICD-10;I63.212;I63212;Cerebral infarction due to unspecified occlusion or stenosis of left vertebral artery;1
+ICD-10;I63.231;I63231;Cerebral infarction due to unspecified occlusion or stenosis of right carotid artery;1
+ICD-10;I63.232;I63232;Cerebral infarction due to unspecified occlusion or stenosis of left carotid artery;1
+ICD-10;G45.0;G450;Vertebro-basilar artery syndrome;1
+ICD-10;G45.1;G451;Carotid artery syndrome (hemispheric);1
+ICD-10;G45.2;G452;Multiple and bilateral precerebral artery syndromes;1
+ICD-10;G45.3;G453;Amaurosis fugax;1
+ICD-10;G45.4;G454;Transient global amnesia;1
+ICD-10;G45.8;G458;Other transient cerebral ischemic attacks and related syndromes;1
+ICD-10;G45.9;G459;Transient cerebral ischemic attack, unspecified;1
+ICD-10;I67.81;I6781;Acute cerebrovascular insufficiency;1
+ICD-10;I67.83;I6783;Posterior reversible encephalopathy syndrome;1
+ICD-10;I67.841;I67841;Reversible cerebrovascular vasoconstriction syndrome;1
+ICD-10;I67.848;I67848;Other cerebrovascular vasospasm and vasoconstriction;1
+ICD-10;I97.811;I97811;Intraoperative cerebrovascular infarction during other surgery;1
+ICD-10;I97.821;I97821;Postprocedural cerebrovascular infarction following other surgery;1
+ICD-10;G45;G45;Transient cerebral ischemic attacks and related syndromes;1
+ICD-10;I63;I63;Cerebral infarction;1
+ICD-10;I630;I630;Cerebral infarction due to thrombosis of precerb arteries;1
+ICD-10;I63.00;I6300;Cerebral infarction due to thombos unsp precerebral artery;1
+ICD-10;I63.01;I6301;Cerebral infarction due to thrombosis of vertebral artery;1
+ICD-10;I63.019;I63019;Cerebral infarction due to thombos unsp vertebral artery;1
+ICD-10;I63.02;I6302;Cerebral infarction due to thrombosis of basilar artery;1
+ICD-10;I63.03;I6303;Cerebral infarction due to thrombosis of carotid artery;1
+ICD-10;I63.039;I63039;Cerebral infarction due to thrombosis of unsp carotid artery;1
+ICD-10;I63.09;I6309;Cerebral infarction due to thrombosis of precerebral artery;1
+ICD-10;I63.1;I631;Cerebral infarction due to embolism of precerebral arteries;1
+ICD-10;I63.10;I6310;Cerebral infarction due to embolism of unsp precerb artery;1
+ICD-10;I63.11;I6311;Cerebral infarction due to embolism of vertebral artery;1
+ICD-10;I63.119;I63119;Cerebral infarction due to embolism of unsp vertebral artery;1
+ICD-10;I63.12;I6312;Cerebral infarction due to embolism of basilar artery;1
+ICD-10;I63.13;I6313;Cerebral infarction due to embolism of carotid artery;1
+ICD-10;I63.139;I63139;Cerebral infarction due to embolism of unsp carotid artery;1
+ICD-10;I63.19;I6319;Cerebral infarction due to embolism of precerebral artery;1
+ICD-10;I63.2;I632;Cerebral infrc due to unsp occls or stenosis of precerb art;1
+ICD-10;I63.20;I6320;Cereb infrc due to unsp occls or stenos of unsp precerb art;1
+ICD-10;I63.21;I6321;Cerebral infrc due to unsp occls or stenosis of verteb art;1
+ICD-10;I63.219;I63219;Cereb infrc due to unsp occls or stenosis of unsp verteb art;1
+ICD-10;I63.22;I6322;Cerebral infrc due to unsp occls or stenosis of basilar art;1
+ICD-10;I63.23;I6323;Cerebral infrc due to unsp occls or stenosis of carotid art;1
+ICD-10;I63.239;I63239;Cereb infrc due to unsp occls or stenos of unsp carotid art;1
+ICD-10;I63.29;I6329;Cerebral infrc due to unsp occls or stenosis of precerb art;1
+ICD-10;I63.3;I633;Cerebral infarction due to thrombosis of cerebral arteries;1
+ICD-10;I63.30;I6330;Cerebral infarction due to thombos unsp cerebral artery;1
+ICD-10;I63.31;I6331;Cerebral infrc due to thrombosis of middle cerebral artery;1
+ICD-10;I63.311;I63311;Cereb infrc due to thombos of right middle cerebral artery;1
+ICD-10;I63.312;I63312;Cerebral infrc due to thombos of left middle cerebral artery;1
+ICD-10;I63.319;I63319;Cerebral infrc due to thombos unsp middle cerebral artery;1
+ICD-10;I63.32;I6332;Cerebral infrc due to thrombosis of anterior cerebral artery;1
+ICD-10;I63.321;I63321;Cerebral infrc due to thombos of right ant cerebral artery;1
+ICD-10;I63.322;I63322;Cerebral infrc due to thombos of left ant cerebral artery;1
+ICD-10;I63.329;I63329;Cerebral infrc due to thombos unsp anterior cerebral artery;1
+ICD-10;I63.33;I6333;Cerebral infrc due to thombos of posterior cerebral artery;1
+ICD-10;I63.331;I63331;Cerebral infrc due to thombos of right post cerebral artery;1
+ICD-10;I63.332;I63332;Cerebral infrc due to thombos of left post cerebral artery;1
+ICD-10;I63.339;I63339;Cerebral infrc due to thombos unsp posterior cerebral artery;1
+ICD-10;I63.34;I6334;Cerebral infarction due to thrombosis of cerebellar artery;1
+ICD-10;I63.341;I63341;Cerebral infrc due to thrombosis of right cereblr artery;1
+ICD-10;I63.342;I63342;Cerebral infarction due to thrombosis of left cereblr artery;1
+ICD-10;I63.349;I63349;Cerebral infarction due to thombos unsp cerebellar artery;1
+ICD-10;I63.39;I6339;Cerebral infarction due to thrombosis of oth cerebral artery;1
+ICD-10;I63.4;I634;Cerebral infarction due to embolism of cerebral arteries;1
+ICD-10;I63.40;I6340;Cerebral infarction due to embolism of unsp cerebral artery;1
+ICD-10;I63.41;I6341;Cerebral infrc due to embolism of middle cerebral artery;1
+ICD-10;I63.411;I63411;Cereb infrc due to embolism of right middle cerebral artery;1
+ICD-10;I63.412;I63412;Cereb infrc due to embolism of left middle cerebral artery;1
+ICD-10;I63.419;I63419;Cereb infrc due to embolism of unsp middle cerebral artery;1
+ICD-10;I63.42;I6342;Cerebral infrc due to embolism of anterior cerebral artery;1
+ICD-10;I63.421;I63421;Cerebral infrc due to embolism of right ant cerebral artery;1
+ICD-10;I63.422;I63422;Cerebral infrc due to embolism of left ant cerebral artery;1
+ICD-10;I63.429;I63429;Cerebral infrc due to embolism of unsp ant cerebral artery;1
+ICD-10;I63.43;I6343;Cerebral infrc due to embolism of posterior cerebral artery;1
+ICD-10;I63.431;I63431;Cerebral infrc due to embolism of right post cerebral artery;1
+ICD-10;I63.432;I63432;Cerebral infrc due to embolism of left post cerebral artery;1
+ICD-10;I63.439;I63439;Cerebral infrc due to embolism of unsp post cerebral artery;1
+ICD-10;I63.44;I6344;Cerebral infarction due to embolism of cerebellar artery;1
+ICD-10;I63.441;I63441;Cerebral infarction due to embolism of right cereblr artery;1
+ICD-10;I63.442;I63442;Cerebral infarction due to embolism of left cereblr artery;1
+ICD-10;I63.449;I63449;Cerebral infarction due to embolism of unsp cereblr artery;1
+ICD-10;I63.49;I6349;Cerebral infarction due to embolism of other cerebral artery;1
+ICD-10;I63.5;I635;Cerebral infrc due to unsp occls or stenosis of cerebral art;1
+ICD-10;I63.50;I6350;Cereb infrc due to unsp occls or stenos of unsp cereb artery;1
+ICD-10;I63.51;I6351;Cereb infrc due to unsp occls or stenos of middle cereb art;1
+ICD-10;I63.511;I63511;Cereb infrc d/t unsp occls or stenos of right mid cereb art;1
+ICD-10;I63.512;I63512;Cereb infrc d/t unsp occls or stenos of left mid cereb art;1
+ICD-10;I63.519;I63519;Cereb infrc d/t unsp occls or stenos of unsp mid cereb art;1
+ICD-10;I63.52;I6352;Cereb infrc due to unsp occls or stenos of ant cereb artery;1
+ICD-10;I63.521;I63521;Cereb infrc d/t unsp occls or stenos of right ant cereb art;1
+ICD-10;I63.522;I63522;Cereb infrc d/t unsp occls or stenos of left ant cereb art;1
+ICD-10;I63.529;I63529;Cereb infrc d/t unsp occls or stenos of unsp ant cereb art;1
+ICD-10;I63.53;I6353;Cereb infrc due to unsp occls or stenos of post cereb artery;1
+ICD-10;I63.531;I63531;Cereb infrc d/t unsp occls or stenos of right post cereb art;1
+ICD-10;I63.532;I63532;Cereb infrc d/t unsp occls or stenos of left post cereb art;1
+ICD-10;I63.539;I63539;Cereb infrc d/t unsp occls or stenos of unsp post cereb art;1
+ICD-10;I63.54;I6354;Cereb infrc due to unsp occls or stenosis of cereblr artery;1
+ICD-10;I63.541;I63541;Cereb infrc due to unsp occls or stenos of right cereblr art;1
+ICD-10;I63.542;I63542;Cereb infrc due to unsp occls or stenos of left cereblr art;1
+ICD-10;I63.549;I63549;Cereb infrc due to unsp occls or stenos of unsp cereblr art;1
+ICD-10;I63.59;I6359;Cereb infrc due to unsp occls or stenosis of cerebral artery;1
+ICD-10;I63.6;I636;Cerebral infrc due to cerebral venous thombos, nonpyogenic;1
+ICD-10;I63.8;I638;Other cerebral infarction;1
+ICD-10;I63.9;I639;Cerebral infarction, unspecified;1
