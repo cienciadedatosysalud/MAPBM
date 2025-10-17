@@ -1,0 +1,8 @@
+﻿encoding;code;code_clean;description;uncinfc_bl
+ICD-10;R50;R50;Fever of other and unknown origin;1
+ICD-10;R50.2;R502;Drug induced fever;1
+ICD-10;R50.8;R508;Other specified fever;1
+ICD-10;R50.81;R5081;Fever presenting with conditions classified elsewhere;1
+ICD-10;R50.82;R5082;Postprocedural fever;1
+ICD-10;R50.83;R5083;Postvaccination fever;1
+ICD-10;R50.9;R509;Fever, unspecified;1
