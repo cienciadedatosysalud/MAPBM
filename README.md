@@ -57,6 +57,21 @@ __*Note that dependencies may vary depending on user modifications!*__
 
 # Previous version(s):
 
+
+## HOW TO RUN IN DOCKER
+Use the following code snippet to create the container.
+```bash
+docker pull ghcr.io/cienciadedatosysalud/mapbm:latest
+
+```
+
+```bash
+docker run -d -p 127.0.0.1:3000:3000 --name mapbm-aspire ghcr.io/cienciadedatosysalud/mapbm:latest
+
+```
+Open your web browser at http://localhost:3000.
+
+
 # How to contribute
 - Repository: [https://github.com/your_user/your_repository/](https://github.com/cienciadedatosysalud/MAPBM)
 - Issue tracker: [https://github.com/your_user/your_repository/issues](https://github.com/cienciadedatosysalud/MAPBM/issues)
