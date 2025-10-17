@@ -71,6 +71,9 @@ docker run -d -p 127.0.0.1:3000:3000 --name mapbm-aspire ghcr.io/cienciadedatosy
 ```
 Open your web browser at http://localhost:3000.
 
+> [!IMPORTANT]  
+> Caution: This version of the Docker is merely deployed for testing purposes and includes only the scritps for CDM conformance checking, data quality assessment and data entry validation
+
 
 # How to contribute
 - Repository: [https://github.com/your_user/your_repository/](https://github.com/cienciadedatosysalud/MAPBM)
