@@ -1,20 +1,56 @@
-encoding,code,code_clean,description,source,observations
-atc,B01AC06,B01AC06,Acetylsalicylic acid,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AC04,B01AC04,Clopidogrel,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AC22,B01AC22,Prasugrel,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AC24,B01AC24,Ticagrelor,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AC05,B01AC05,Ticlopidine,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AA07,B01AA07,Acenocumarol,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AF02,B01AF02,Apixaban,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AE07,B01AE07,Dabigatran,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AF04,B01AF04,Edoxaban,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AF01,B01AF01,Rivaroxaban,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AA03,B01AA03,Warfarin,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AB11,B01AB11,Bemiparin,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AB04,B01AB04,Dalteparin,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AB05,B01AB05,Enoxaparin,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AX05,B01AX05,Fondaparinux,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B01AB10,B01AB10,Tinzaparin,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B03BB01,B03BB%,Folic acid,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B03BA01,B03BA%,Cyanocobalamin ,WHO Collaborating Centre for Drug Statistics Methodology,
-atc,B03AA,B03A%,"Iron, oral preparations",WHO Collaborating Centre for Drug Statistics Methodology,
+﻿encoding;code_clean;description;source;observations
+atc;B01AC06;Acetylsalicylic acid;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AC04;Clopidogrel;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AC22;Prasugrel;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AC24;Ticagrelor;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AC05;Ticlopidine;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AA07;Acenocumarol;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AF02;Apixaban;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AE07;Dabigatran;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AF04;Edoxaban;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AF01;Rivaroxaban;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AA03;Warfarin;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AB11;Bemiparin;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AB04;Dalteparin;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AB05;Enoxaparin;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AX05;Fondaparinux;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B01AB10;Tinzaparin;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA01 ;ferrous glycine sulfate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA02 ;ferrous fumarate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA03 ;ferrous gluconate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA04 ;ferrous carbonate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA05 ;ferrous chloride ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA06 ;ferrous succinate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA07 ;ferrous sulfate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA08 ;ferrous tartrate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA09 ;ferrous aspartate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA10 ;ferrous ascorbate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA11 ;ferrous iodine ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AA12 ;ferrous sodium citrate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB01 ;ferric sodium citrate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB02 ;saccharated iron oxide ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB03 ;sodium feredetate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB04 ;ferric hydroxide ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB05 ;ferric oxide polymaltose complexes ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB07 ;chondroitin sulfate-iron complex ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB08 ;ferric acetyl transferrin ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB09 ;ferric proteinsuccinylate ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AB10 ;ferric maltol ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AD01 ;ferrous amino acid complex and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AD02 ;ferrous fumarate and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AD03 ;ferrous sulfate and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AD04 ;ferric oxide polymaltose complexes and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AD05 ;ferrous gluconate and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AE01 ;iron, vitamin B12 and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AE02 ;iron, multivitamins and folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AE03 ;iron and multivitamins ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03AE04 ;iron, multivitamins and minerals ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA01 ;cyanocobalamin ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA02 ;cyanocobalamin tannin complex ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA03 ;hydroxocobalamin ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA04 ;cobamamide ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA05 ;mecobalamin ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA51 ;cyanocobalamin, combinations ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BA53 ;hydroxocobalamin, combinations ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BB01 ;folic acid ;WHO Collaborating Centre for Drug Statistics Methodology;
+atc;B03BB51 ;folic acid, combinations ;WHO Collaborating Centre for Drug Statistics Methodology;

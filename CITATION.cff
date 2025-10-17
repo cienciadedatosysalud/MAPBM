@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below:"
 title: "MAPBM"
-version: "0.0.1"
-date-released: "2025-10-06" 
+version: "0.0.2"
+date-released: "2025-10-17" 
 
-url: ""
+url: "https://www.mapbm.org/home/en"
 repository-code: "https://github.com/user/repository"
 license: "CC BY 4.0 https://creativecommons.org/licenses/by/4.0/"
     
