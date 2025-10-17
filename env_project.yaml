@@ -2,7 +2,7 @@ name: aspire
 channels:
  - conda-forge
 dependencies:
-#- r-base=4.2.3
+ - r-ggplot2=3.5.0
 #- numpy==1.23.5
 #- pip=23.0.1 
 #- pip:
