@@ -1,0 +1,13 @@
+code,description
+hb,Hemoglobin (g/dL)
+ret_he,Reticulocyte hemoglobin (pg)
+ferr,ferritin (ng/mL)
+gfr,Glomerular Filtration Rate
+crp,C reactive protein (mg/L)
+b12,Cobalamin (mcg)
+fol,Folic acid (mcg)
+tsi,Transferrin Saturation Index
+fib,Fibrinogen (g/L)
+plat,Platelets (x10^9/L)
+viiif,VIII factor (IU/dL)
+p_time,Prothrombin time (INR)

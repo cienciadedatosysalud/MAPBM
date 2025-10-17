@@ -1,6 +1,12 @@
 {
     "title": "MAPBM",
-    "description": "",
+    "description": "Federated architecture deployment of the MAPBM project (MAPBM 2.0). \nMaturity Assessment Model in PBM. Empowering hospitals to reduce unnecessary transfusions and improve patient outcomes. \nMAPBM is a collaborative network of hospitals dedicated to advancing the implementation of evidence-based Patient Blood Management (PBM) strategies into practice to drive better patient outcomes.\nThree main working areas:\n- Measuring & Benchmarking - evaluating PBM practices across hospitals using routinely collected hospital data.\n- Community of Practice - PBM leads sharing experiences, knowledge, and solutions to promote continuous improvement.\n- Generating Real-World Evidence (RWE) - producing scientific evidence on PBM to inform practice and policy.",
     "creators": [],
-    "keywords": []
+    "keywords": [
+        "patient blood management",
+        "patient safety",
+        "transfusion",
+        "maturity assessment",
+        "benchmarking"
+    ]
 }

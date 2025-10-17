@@ -1,4 +1,4 @@
-encoding,code,code_clean,description
-RAE-CMBD,1,1,Urgent care provided
-RAE-CMBD,2,2,Scheduled care provided
-RAE-CMBD,9,9,Unknown planification of care
+code,description
+1,Urgent care provided
+2,Scheduled care provided
+9,Unknown planification of care

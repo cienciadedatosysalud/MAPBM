@@ -5,8 +5,8 @@
             "@id": "./",
             "@type": "Dataset",
             "creator": "Common Data Model Builder",
-            "datePublished": "2025-10-06T12:10:56+00:00",
-            "description": "",
+            "datePublished": "2025-10-17T10:12:19+00:00",
+            "description": "Federated architecture deployment of the MAPBM project (MAPBM 2.0). \nMaturity Assessment Model in PBM. Empowering hospitals to reduce unnecessary transfusions and improve patient outcomes. \nMAPBM is a collaborative network of hospitals dedicated to advancing the implementation of evidence-based Patient Blood Management (PBM) strategies into practice to drive better patient outcomes.\nThree main working areas:\n- Measuring & Benchmarking - evaluating PBM practices across hospitals using routinely collected hospital data.\n- Community of Practice - PBM leads sharing experiences, knowledge, and solutions to promote continuous improvement.\n- Generating Real-World Evidence (RWE) - producing scientific evidence on PBM to inform practice and policy.",
             "hasPart": [
                 {
                     "@id": "README.md"
@@ -51,6 +51,9 @@
                     "@id": "docs/CDM/cohort_definition_inclusion.csv"
                 },
                 {
+                    "@id": "docs/CDM/cohort_definition_exclusion.csv"
+                },
+                {
                     "@id": "docs/CDM/ER.gv.png"
                 },
                 {
@@ -63,121 +66,13 @@
                     "@id": "docs/CDM/entities/episode/catalogs/cnh_cd.csv"
                 },
                 {
-                    "@id": "docs/CDM/entities/episode/catalogs/inclusion.csv"
+                    "@id": "docs/CDM/entities/episode/catalogs/sex_catalog.csv"
                 },
                 {
-                    "@id": "docs/CDM/entities/episode/catalogs/akic_bl.csv"
+                    "@id": "docs/CDM/entities/episode/catalogs/poad_catalog.csv"
                 },
                 {
-                    "@id": "docs/CDM/entities/episode/catalogs/deliriumc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/dvtc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/pulmembc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/transfaec_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/ssinfc_cd.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/utic_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/bloodinfc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/arrythc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/cardiacc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/pneumc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/cpec_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/amic_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/myocinfc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/strokec_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/ardsc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/gastrointc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/ileusc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/postophemc_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/ami_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/chf_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/pvd_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/cvd_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/dementia_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/copd_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/ctp_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/peptic_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/mildliver_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/severeliver_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/uncdiab_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/orgdiab_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/hemiplegia_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/ckd_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/tumor_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/mtx_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/leuk_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/lymph_bl.csv"
-                },
-                {
-                    "@id": "docs/CDM/entities/episode/catalogs/aids_bl.csv"
+                    "@id": "docs/CDM/entities/episode/catalogs/anesth_cd_catalog.csv"
                 },
                 {
                     "@id": "docs/CDM/entities/episode/catalogs/planification_cd.csv"
@@ -187,6 +82,9 @@
                 },
                 {
                     "@id": "docs/CDM/synthetic-data/synthetic_lab.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/lab/catalogs/determination_cd_catalog.csv"
                 },
                 {
                     "@id": "docs/CDM/entities/lab/validation-rules/rules_set_lab.json"
@@ -207,19 +105,22 @@
                     "@id": "docs/CDM/synthetic-data/synthetic_hosp_pharmacy.csv"
                 },
                 {
-                    "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/cnh_cd.csv"
-                },
-                {
                     "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/hdrug_cd.csv"
                 },
                 {
                     "@id": "docs/CDM/entities/hosp_pharmacy/validation-rules/rules_set_hosp_pharmacy.json"
                 },
                 {
-                    "@id": "docs/CDM/synthetic-data/synthetic_transfusion.csv"
+                    "@id": "docs/CDM/synthetic-data/synthetic_hosp_amb_pharmacy.csv"
                 },
                 {
-                    "@id": "docs/CDM/entities/transfusion/catalogs/cnh_cd.csv"
+                    "@id": "docs/CDM/entities/hosp_amb_pharmacy/catalogs/h_amb_drug_cd.csv"
+                },
+                {
+                    "@id": "docs/CDM/entities/hosp_amb_pharmacy/validation-rules/rules_set_hosp_amb_pharmacy.json"
+                },
+                {
+                    "@id": "docs/CDM/synthetic-data/synthetic_transfusion.csv"
                 },
                 {
                     "@id": "docs/CDM/entities/transfusion/catalogs/transfusion_cd.csv"
@@ -240,13 +141,10 @@
                     "@id": "docs/CDM/synthetic-data/synthetic_viscoelastic_test.csv"
                 },
                 {
-                    "@id": "docs/CDM/entities/viscoelastic_test/catalogs/cnh_cd.csv"
-                },
-                {
                     "@id": "docs/CDM/entities/viscoelastic_test/validation-rules/rules_set_viscoelastic_test.json"
                 }
             ],
-            "keywords": "",
+            "keywords": "patient blood management, patient safety, transfusion, maturity assessment, benchmarking",
             "license": "CC BY 4.0 https://creativecommons.org/licenses/by/4.0/",
             "name": "MAPBM"
         },
@@ -377,6 +275,13 @@
             "name": "Crosswalks for the cohort definition inclusion"
         },
         {
+            "@id": "docs/CDM/cohort_definition_exclusion.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Crosswalks for the cohort definition exclusion"
+        },
+        {
             "@id": "docs/CDM/ER.gv.png",
             "@type": "File",
             "author": [],
@@ -405,277 +310,25 @@
             "name": "Catalog file for episode-cnh_cd"
         },
         {
-            "@id": "docs/CDM/entities/episode/catalogs/inclusion.csv",
+            "@id": "docs/CDM/entities/episode/catalogs/sex_catalog.csv",
             "@type": "File",
             "author": [],
             "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-inttype_cd"
+            "name": "Catalog file for episode-sex_cd"
         },
         {
-            "@id": "docs/CDM/entities/episode/catalogs/akic_bl.csv",
+            "@id": "docs/CDM/entities/episode/catalogs/poad_catalog.csv",
             "@type": "File",
             "author": [],
             "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-akic_bl"
+            "name": "Catalog file for episode-readmission_poad1"
         },
         {
-            "@id": "docs/CDM/entities/episode/catalogs/deliriumc_bl.csv",
+            "@id": "docs/CDM/entities/episode/catalogs/anesth_cd_catalog.csv",
             "@type": "File",
             "author": [],
             "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-deliriumc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/dvtc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-dvtc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/pulmembc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-pulmembc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/transfaec_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-transfaec_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/ssinfc_cd.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-ssinfc_cd"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/utic_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-utic_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/bloodinfc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-bloodinf_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/arrythc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-arrc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/cardiacc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-cardiacc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/pneumc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-pneumc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/cpec_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-cpec_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/amic_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-amic_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/myocinfc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-myocinfc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/strokec_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-strokec_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/ardsc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-ardsc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/gastrointc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-gatrointc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/ileusc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-ileusc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/postophemc_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-postophemc_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/ami_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-ami_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/chf_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-chf_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/pvd_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-pvd_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/cvd_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-cvd_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/dementia_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-dementia_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/copd_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-copd_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/ctp_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-ctp_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/peptic_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-peptic_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/mildliver_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-mildliver_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/severeliver_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-severeliver_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/uncdiab_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-uncdiab_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/orgdiab_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-orgdiab_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/hemiplegia_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-hemip_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/ckd_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-ckd_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/tumor_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-tumor_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/mtx_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-mtx_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/leuk_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-leuk_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/lymph_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-lymph_bl"
-        },
-        {
-            "@id": "docs/CDM/entities/episode/catalogs/aids_bl.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for episode-aids_bl"
+            "name": "Catalog file for episode-anesth_cd"
         },
         {
             "@id": "docs/CDM/entities/episode/catalogs/planification_cd.csv",
@@ -699,6 +352,13 @@
             "name": "Synthetic data for entity: lab"
         },
         {
+            "@id": "docs/CDM/entities/lab/catalogs/determination_cd_catalog.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for lab-determination_cd"
+        },
+        {
             "@id": "docs/CDM/entities/lab/validation-rules/rules_set_lab.json",
             "@type": "File",
             "author": [],
@@ -717,7 +377,7 @@
             "@type": "File",
             "author": [],
             "encodingFormat": "text/csv",
-            "name": "Catalog file for hospital-cnh_cd"
+            "name": "Catalog file for hospital-cnh_nm"
         },
         {
             "@id": "docs/CDM/entities/hospital/catalogs/ccaa_cd.csv",
@@ -741,18 +401,11 @@
             "name": "Synthetic data for entity: hosp_pharmacy"
         },
         {
-            "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/cnh_cd.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for hosp_pharmacy-cnh_cd"
-        },
-        {
             "@id": "docs/CDM/entities/hosp_pharmacy/catalogs/hdrug_cd.csv",
             "@type": "File",
             "author": [],
             "encodingFormat": "text/csv",
-            "name": "Catalog file for hosp_pharmacy-hdrug_cd"
+            "name": "Catalog file for hosp_pharmacy-h_drug_cd"
         },
         {
             "@id": "docs/CDM/entities/hosp_pharmacy/validation-rules/rules_set_hosp_pharmacy.json",
@@ -762,18 +415,32 @@
             "name": "Rule set for entity: hosp_pharmacy"
         },
         {
+            "@id": "docs/CDM/synthetic-data/synthetic_hosp_amb_pharmacy.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Synthetic data for entity: hosp_amb_pharmacy"
+        },
+        {
+            "@id": "docs/CDM/entities/hosp_amb_pharmacy/catalogs/h_amb_drug_cd.csv",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "text/csv",
+            "name": "Catalog file for hosp_amb_pharmacy-h_amb_drug_cd"
+        },
+        {
+            "@id": "docs/CDM/entities/hosp_amb_pharmacy/validation-rules/rules_set_hosp_amb_pharmacy.json",
+            "@type": "File",
+            "author": [],
+            "encodingFormat": "application/json",
+            "name": "Rule set for entity: hosp_amb_pharmacy"
+        },
+        {
             "@id": "docs/CDM/synthetic-data/synthetic_transfusion.csv",
             "@type": "File",
             "author": [],
             "encodingFormat": "text/csv",
             "name": "Synthetic data for entity: transfusion"
-        },
-        {
-            "@id": "docs/CDM/entities/transfusion/catalogs/cnh_cd.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for transfusion-cnh_cd"
         },
         {
             "@id": "docs/CDM/entities/transfusion/catalogs/transfusion_cd.csv",
@@ -816,13 +483,6 @@
             "author": [],
             "encodingFormat": "text/csv",
             "name": "Synthetic data for entity: viscoelastic_test"
-        },
-        {
-            "@id": "docs/CDM/entities/viscoelastic_test/catalogs/cnh_cd.csv",
-            "@type": "File",
-            "author": [],
-            "encodingFormat": "text/csv",
-            "name": "Catalog file for viscoelastic_test-cnh_cd"
         },
         {
             "@id": "docs/CDM/entities/viscoelastic_test/validation-rules/rules_set_viscoelastic_test.json",
