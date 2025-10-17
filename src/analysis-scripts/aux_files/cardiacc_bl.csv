@@ -1,0 +1,13 @@
+﻿encoding;code;code_clean;description;cardiacc_bl
+ICD-10;I46.0;I460;Cardiac arrest with successful resuscitation;1
+ICD-10;I46.1;I461;Sudden cardiac death, so described;1
+ICD-10;I46.2;I462;Cardiac arrest due to underlying cardiac condition;1
+ICD-10;I46.8;I468;Cardiac arrest due to other underlying condition;1
+ICD-10;I46.9;I469;Cardiac arrest, cause unspecified;1
+ICD-10;I97.120;I97120;Postprocedural cardiac arrest following cardiac surgery;1
+ICD-10;I97.121;I97121;Postprocedural cardiac arrest following other surgery;1
+ICD-10;I97.710;I97710;Intraoperative cardiac arrest during cardiac surgery;1
+ICD-10;I97.711;I97711;Intraoperative cardiac arrest during other surgery;1
+ICD-10;I97.12;I9712;Postprocedural cardiac arrest;1
+ICD-10;I46;I46;Cardiac arrest;1
+ICD-10;I97.71;I9771;Intraoperative cardiac arrest;1
