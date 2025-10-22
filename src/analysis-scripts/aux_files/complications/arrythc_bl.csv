@@ -9,6 +9,9 @@ ICD-10;I44.6;I446;Other and unspecified fascicular block;1
 ICD-10;I47.0;I470;Re-entry ventricular arrhythmia;1
 ICD-10;I47.1;I471;Supraventricular tachycardia;1
 ICD-10;I47.2;I472;Ventricular tachycardia;1
+ICD-10;I47.20;I4720;Ventricular tachycardia, unspecified;1
+ICD-10;I47.21;I4721;Torsades de pointes;1
+ICD-10;I47.29;I4729;Other ventricular tachycardia;1
 ICD-10;I47.9;I479;Paroxysmal tachycardia, unspecified;1
 ICD-10;I48.3;I483;Typical atrial flutter;1
 ICD-10;I48.4;I484;Atypical atrial flutter;1

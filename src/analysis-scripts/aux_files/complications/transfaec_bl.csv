@@ -32,3 +32,5 @@ ICD-10;T80.90XA;T8090XA;Unspecified complication following infusion and therapeu
 ICD-10;T80.910A;T80910A;Acute hemolytic transfusion reaction, unspecified incompatibility, initial encounter;1
 ICD-10;T80.911A;T80911A;Delayed hemolytic transfusion reaction, unspecified incompatibility, initial encounter;1
 ICD-10;T80.919A;T80919A;Hemolytic transfusion reaction, unspecified incompatibility, unspecified as acute or delayed, initial encounter;1
+ICD-10;T80.818A;T80818A;Extravasation of other vesicant agent, initial encounter;1
+ICD-10;T80.92XA;T8092XA;Unspecified complication following transfusion, initial encounter;1

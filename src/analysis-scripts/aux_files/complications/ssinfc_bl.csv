@@ -8,9 +8,9 @@ ICD-10;T81.42XA;T8142XA;Infection after a procedure, deep incisional, initial co
 ICD-10;T81.42XD;T8142XD;Infection after a procedure, deep incisional, subsequent contact;2
 ICD-10;T81.42XS;T8142XS;Infection after a procedure, deep incisional, sequelae;2
 ICD-10;T81.43;T8143;Infection after a procedure, organ or space;3
-ICD-10;T81.43XA ;T8143XA ;Infection after a procedure, organ or space, initial contact;3
+ICD-10;T81.43XA;T8143XA;Infection after a procedure, organ or space, initial contact;3
 ICD-10;T81.43XD;T8143XD;Infection after a procedure, organ or space, subsequent contact;3
-ICD-10;T81.43XS ;T8143XS ;Infection after a procedure, organ or space, sequelae;3
+ICD-10;T81.43XS;T8143XS;Infection after a procedure, organ or space, sequelae;3
 ICD-10;T81.49;T8149;Infection after a procedure, other surgical area;4
 ICD-10;T81.49XA;T8149XA;Infection after a procedure, other surgical area, initial contact;4
 ICD-10;T81.49XD;T8149XD;Infection after a procedure, other surgical area, subsequent contact;4
@@ -27,3 +27,4 @@ ICD-10;T84.620A;T84620A;Infection and inflammatory reaction due to internal fixa
 ICD-10;T84.621A;T84621A;Infection and inflammatory reaction due to internal fixation device of left femur, initial encounter;1
 ICD-10;T84.69XA;T8469XA;Infection and inflammatory reaction due to internal fixation device of other site, initial encounter;1
 ICD-10;T84.7XXA;T847XXA;Infection and inflammatory reaction due to other internal orthopedic prosthetic devices, implants and grafts, initial encounter;1
+ICD-10;T81.40XA;T8140XA;Infection after a procedure, unspecified, initial encounter;1

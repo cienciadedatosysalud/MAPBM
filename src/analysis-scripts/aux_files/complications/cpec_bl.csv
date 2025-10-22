@@ -21,3 +21,11 @@ ICD-10;I50;I50;Heart failure;1
 ICD-10;I50.2;I502;Systolic (congestive) heart failure;1
 ICD-10;I50.4;I504;Combined systolic and diastolic (congestive) hrt fail;1
 ICD-10;I97.13;I9713;Postprocedural heart failure;1
+ICD-10;I50.81;I5081;Right heart failure;1
+ICD-10;I50.810;I50810;Right heart failure, unspecified;1
+ICD-10;I50.811;I50811;Acute right heart failure;1
+ICD-10;I50.813;I50813;Acute on chronic right heart failure;1
+ICD-10;I50.82;I5082;Biventricular heart failure;1
+ICD-10;I50.83;I5083;High output heart failure;1
+ICD-10;I50.84;I5084;End stage heart failure;1
+ICD-10;I50.89;I5089;Other heart failure;1

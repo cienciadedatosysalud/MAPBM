@@ -5,6 +5,7 @@ ICD-10;I26.09;I2609;Other pulmonary embolism with acute cor pulmonale;1
 ICD-10;I26.90;I2690;Septic pulmonary embolism without acute cor pulmonale;1
 ICD-10;I26.92;I2692;Saddle embolus of pulmonary artery without acute cor pulmonale;1
 ICD-10;I26.93;I2693;Other pulmonary embolism without acute cor pulmonale;1
+ICD-10;I26.93;I2693;Subsegmentary multiple pulmonary embolism without acute cor pulmonale;1
 ICD-10;I26.99;I2699;Pulmonary embolism, unspecified without acute cor pulmonale;1
 ICD-10;T84.81XA;T8481XA;Embolism due to prosthetic joint, initial encounter;1
 ICD-10;I26;I26;Pulmonary embolism ;1

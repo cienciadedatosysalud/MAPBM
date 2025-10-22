@@ -1,6 +1,7 @@
 ﻿encoding;code;code_clean;description;myocinfc_bl
 ICD-10;I20.0;I200;Unstable angina;1
 ICD-10;I20.1;I201;Angina pectoris with documented spasm;1
+ICD-10;I20.2;I202;Refractary angina pectoris;1
 ICD-10;I20.8;I208;Other forms of angina pectoris;1
 ICD-10;I20.9;I209;Angina pectoris, unspecified;1
 ICD-10;I24.0;I240;Acute coronary thrombosis not resulting in myocardial infarction;1

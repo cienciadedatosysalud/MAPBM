@@ -9,8 +9,9 @@ ICD-10;J95.831;J95831;Postprocedural pneumothorax;1
 ICD-10;M96.810;M96810;Postprocedural hemorrhage following musculoskeletal surgery;1
 ICD-10;M96.830;M96830;Postprocedural seroma of musculoskeletal system following a procedure;1
 ICD-10;M96.840;M96840;Postprocedural hematoma of musculoskeletal system following a procedure;1
-ICD-10;N99.62;N9962;Postprocedural hemorrhage of a genitourinary system organ or structure following a genitourinary system procedure;1
-ICD-10;N99.821;N99821;Postprocedural hematoma of a genitourinary system organ or structure following a genitourinary system procedure;1
+ICD-10;N99.62;N9962;Intraprocedural hemorrhage and hematoma of a genitourinary system organ or structure following a genitourinary system procedure;1
+ICD-10;N99.821;N99821;Postprocedural hemorrhage of a genitourinary system organ or structure following a genitourinary system procedure;1
 ICD-10;N99.843;N99843;Postprocedural hemorrhage and hematoma of a genitourinary system organ or structure following a genitourinary system procedure;1
 ICD-10;R58;R58;Hemorrhage, not elsewhere classified;1
 ICD-10;T84.83XA;T8483XA;Embolism due to prosthetic joint, initial encounter;1
+ICD-10;N99.841;N99841;Postprocedural hematoma of a genitourinary system organ or structure following a genitourinary system procedure;1

@@ -12,6 +12,8 @@ ICD-10;I21.29;I2129;STEMI involving other sites;1
 ICD-10;I21.3;I213;ST elevation (STEMI) myocardial infarction, unspecified site;1
 ICD-10;I21.4;I214;Non-ST elevation (NSTEMI) myocardial infarction;1
 ICD-10;I21.9;I219;Acute myocardial infarction, unspecified;1
+ICD-10;I21.A1;I21A1;Type 2 myocardial infarction;1
+ICD-10;I21.A9;I21A9;Myocardial infarction, other types;1
 ICD-10;I22.0;I220;Subsequent STEMI of anterior wall;1
 ICD-10;I22.01;I2201;Subsequent STEMI involving left main coronary artery;1
 ICD-10;I22.02;I2202;Subsequent STEMI involving left anterior descending coronary artery;1

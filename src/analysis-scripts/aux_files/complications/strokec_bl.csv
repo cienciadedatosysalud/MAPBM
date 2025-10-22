@@ -48,6 +48,9 @@ ICD-10;I63.21;I6321;Cerebral infrc due to unsp occls or stenosis of verteb art;1
 ICD-10;I63.219;I63219;Cereb infrc due to unsp occls or stenosis of unsp verteb art;1
 ICD-10;I63.22;I6322;Cerebral infrc due to unsp occls or stenosis of basilar art;1
 ICD-10;I63.23;I6323;Cerebral infrc due to unsp occls or stenosis of carotid art;1
+ICD-10;I63.231;I63231;Cerebral infrc due to unsp occls or stenosis of left carotid art;1
+ICD-10;I63.232;I63232;Cerebral infrc due to unsp occls or stenosis of right carotid art;1
+ICD-10;I63.233;I63233;Cerebral infrc due to unsp occls or stenosis of both carotid art;1
 ICD-10;I63.239;I63239;Cereb infrc due to unsp occls or stenos of unsp carotid art;1
 ICD-10;I63.29;I6329;Cerebral infrc due to unsp occls or stenosis of precerb art;1
 ICD-10;I63.3;I633;Cerebral infarction due to thrombosis of cerebral arteries;1
@@ -82,6 +85,7 @@ ICD-10;I63.429;I63429;Cerebral infrc due to embolism of unsp ant cerebral artery
 ICD-10;I63.43;I6343;Cerebral infrc due to embolism of posterior cerebral artery;1
 ICD-10;I63.431;I63431;Cerebral infrc due to embolism of right post cerebral artery;1
 ICD-10;I63.432;I63432;Cerebral infrc due to embolism of left post cerebral artery;1
+ICD-10;I63.432;I63432;Cerebral infrc due to embolism of both post cerebral arteries;1
 ICD-10;I63.439;I63439;Cerebral infrc due to embolism of unsp post cerebral artery;1
 ICD-10;I63.44;I6344;Cerebral infarction due to embolism of cerebellar artery;1
 ICD-10;I63.441;I63441;Cerebral infarction due to embolism of right cereblr artery;1
@@ -105,8 +109,11 @@ ICD-10;I63.539;I63539;Cereb infrc d/t unsp occls or stenos of unsp post cereb ar
 ICD-10;I63.54;I6354;Cereb infrc due to unsp occls or stenosis of cereblr artery;1
 ICD-10;I63.541;I63541;Cereb infrc due to unsp occls or stenos of right cereblr art;1
 ICD-10;I63.542;I63542;Cereb infrc due to unsp occls or stenos of left cereblr art;1
+ICD-10;I63.542;I63542;Cereb infrc due to unsp occls or stenos of both cereblr art;1
 ICD-10;I63.549;I63549;Cereb infrc due to unsp occls or stenos of unsp cereblr art;1
 ICD-10;I63.59;I6359;Cereb infrc due to unsp occls or stenosis of cerebral artery;1
 ICD-10;I63.6;I636;Cerebral infrc due to cerebral venous thombos, nonpyogenic;1
 ICD-10;I63.8;I638;Other cerebral infarction;1
 ICD-10;I63.9;I639;Cerebral infarction, unspecified;1
+ICD-10;I63.89;I6389;Other cerebral infarction;1
+ICD-10;I63.81;I6381;Other cerebral infarction due to occlusion or stenosis of small artery;1
