@@ -1,0 +1,12 @@
+﻿encoding;code;description;asa_cd;observations
+ASA;I;A normal, healthy patient with no organic, physiological, or psychiatric disturbance;1;
+ASA;IE;"A normal, healthy patient with no organic, physiological, or psychiatric disturbance; emergency";1;
+ASA;II;A patient with mild systemic disease. The disease causes no functional limitations;2;
+ASA;IIE;"A patient with mild systemic disease. The disease causes no functional limitations; emergency";2;
+ASA;III;A patient with severe systemic disease that causes some functional limitation;3;
+ASA;IIIE;"A patient with severe systemic disease that causes some functional limitation; emergency";3;
+ASA;IV;A patient with severe systemic disease that is a constant threat to life;4;
+ASA;IVE;"A patient with severe systemic disease that is a constant threat to life; emergency";4;
+ASA;V;A moribund patient who is not expected to survive without the operation;5;
+ASA;VE;"A moribund patient who is not expected to survive without the operation; emergency";5;
+ASA;VI;A declared brain-dead patient whose organs are being removed for donor purposes;6;

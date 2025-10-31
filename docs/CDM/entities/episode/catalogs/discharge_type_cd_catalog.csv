@@ -1,0 +1,8 @@
+﻿encoding;code;description;discharge_type_cd;observations
+RAE-CMBD;1;Home: When the patient returns to their usual residence or goes back to the facility that was their habitual residence before admission/contact.;1;
+RAE-CMBD;2;Transfer to another hospital.;2;
+RAE-CMBD;3;Voluntary discharge: When discharge occurs at the patient’s own request or when the patient leaves the facility where they were admitted without medical indication or without the hospital’s knowledge.;3;
+RAE-CMBD;4;Exitus;4;
+RAE-CMBD;5;Transfer to a social-healthcare center or long-term home: When the patient is transferred to a facility that replaces their own home and is considered a social-healthcare center within the scope of care.;5;
+RAE-CMBD;8;Others;8;
+RAE-CMBD;9;Unknown;9;

@@ -2,8 +2,11 @@ name: aspire
 channels:
  - conda-forge
 dependencies:
- - r-ggplot2=3.5.0
-#- numpy==1.23.5
-#- pip=23.0.1 
-#- pip:
-  #- tensorflow
+- r-gt=0.10.0
+- r-cowplot=1.1.2
+- r-ggalluvial=0.12.5
+- r-ggrepel=0.9.3
+- r-ggplot2=3.5.0
+- r-plotly=4.10.4
+- r-stringr=1.5.1
+- r-htmlwidgets=1.6.4
