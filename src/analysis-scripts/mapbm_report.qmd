@@ -185,7 +185,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_programada_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_programada_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -194,9 +194,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -290,7 +300,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -394,9 +404,9 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
                                           '% de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro',
                                         '% de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro (Hb<13)',
                                         '% de pacientes anémicos con determinación de concentración Hb reticulocitaria',
-                                        '% de pacientes anémicos con determinación de concentración Hb reticulocitaria idem Hb<13',
+                                        '% de pacientes anémicos con determinación de concentración Hb reticulocitaria (Hb<13)',
                                         '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente',
-                                        '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente Hb<13',
+                                        '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente (Hb<13)',
                                         '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente \n(anémicos y no anémicos)','% de pacientes con Hb de control',
                                         '% de pacientes tratados preoperatoriamente con un incremento de Hb de +1 pto',
                                         'Incremento de Hb post tratamiento preoperatorio',
@@ -404,8 +414,8 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
                                         '% de pacientes no transfundidos con plasma en preoperatorio',
                                         '% de pacientes no transfundidos con plaquetas en preoperatorio',
                                         '% de pacientes intervenidos sin anemia',
-                                        '% de pacientes intervenidos sin anemia Hb>=13',
-                                        'Valor  de Hb previo a la intervención',
+                                        '% de pacientes intervenidos sin anemia (Hb>=13)',
+                                        'Valor de Hb previo a la intervención',
                                         '% de pacientes tratados postoperatoriamente con hierro IV',
                                         '% de pacientes con anestesia regional',
                                         '% de pacientes tratados con antifibrinolíticos',
@@ -420,8 +430,8 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
 plot_serie_temp <- function(i){
   ind_serie_temp_ <- ind_serie_temp_process %>% filter(ind %in% i)
   data_filter <- dbGetQuery(con_result, paste0("select * from ",i," where cohort = '",cohort_,"'"))
+  if(nrow(data_filter)>0){
   if(i %in% c('indicator_15','indicator_19','indicator_23','indicator_31')){
-    if(nrow(data_filter)>0){
     data_filter$mes_año_format <- format(data_filter$month_year, "%Y-%m")
     data_long <- data_filter %>%
             select(month_year, mes_año_format, cohort, promedio, mediana) %>%
@@ -449,10 +459,6 @@ plot_serie_temp <- function(i){
                                     '<sup>','</sup>')),
          legend = list(orientation = "h", y= -0.5)) 
     }else{
- plot <- paste0('Tabla ',ind_serie_temp_$descrip,' vacía')
-}}
-  else{
-  if(nrow(data_filter)>0){
     data_filter$mes_año_format <- format(data_filter$month_year, "%Y-%m")
     plot <- ggplot(data_filter,aes(x = month_year, y=result,group = cohort,
                                    text = paste("Año-mes:", mes_año_format, "\nValor:", result))) +
@@ -473,10 +479,10 @@ plot_serie_temp <- function(i){
                                     '<br>',
                                     '<sup>','</sup>')),
          legend = list(orientation = "h", y= -0.5)) 
-  }else{
+  }}else{
   plot <- paste0('Tabla ',ind_serie_temp_$descrip,' vacía')
     
-}} 
+} 
   return(plot)
 }
 
@@ -555,9 +561,13 @@ result_plot_serie_temp$indicator_32
 
 log_info(paste0("Indicators composite"))
 
-con <- dbConnect(duckdb::duckdb(), dbdir = database_path, read_only=FALSE)
+con <-
+  dbConnect(duckdb::duckdb(), dbdir = database_path, read_only = FALSE)
 
-data <- dbGetQuery(con, paste0("select *
+data <- dbGetQuery(
+  con,
+  paste0(
+    "select *
 from (
         select cohort,
             category_cohort,
@@ -575,35 +585,54 @@ from (
             patient_id,
             episode_id,
             month_year
-    ) where cohort = '",cohort_,"'"))
-if(nrow(data>0)){
-data$mes_año_format <- format(data$month_year, "%Y-%m")
-data$año <- as.numeric(format(data$month_year, "%Y"))
-plot <- ggplot(data=data, aes(x=month_year, y=perc_composite, group = month_year,
-                              text = paste0(
-      "Año-mes: ", mes_año_format,
-      "\nMediana: ", median(perc_composite),
-      "\nQ3: ", quantile(perc_composite, 0.75),
-      "\nQ1: ", quantile(perc_composite, 0.25)
-    ))) +
-      geom_boxplot(color = 'black', alpha = 0.4) +
-      labs(title = "Distribución porcentaje composite (opportunity based)",
-           x = 'Fecha',
-           y = '') + ylim(c(0,100)) +
-  scale_x_date(
-    date_breaks = "4 months",
-    date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
-) + theme_minimal_hgrid()
-
-      plot <- ggplotly(plot,tooltip = 'text') %>% 
-  layout(title = list(text = paste0("Distribución porcentaje composite (opportunity based) por episodio",
-                                    '<br>',
-                                    '<sup>','</sup>')),
-         legend = list(orientation = "h", y= -0.5)) 
-        
-plot
-}else{
+    ) where cohort = '",
+cohort_,
+"'"
+  )
+)
+if (nrow(data > 0)) {
+  data$mes_año_format <- format(data$month_year, "%Y-%m")
+  data$año <- as.numeric(format(data$month_year, "%Y"))
+  plot <-
+    ggplot(data = data,
+           aes(
+             x = month_year,
+             y = perc_composite,
+             group = month_year,
+             text = paste0(
+               "Año-mes: ",
+               mes_año_format,
+               "\nMediana: ",
+               median(perc_composite),
+               "\nQ3: ",
+               quantile(perc_composite, 0.75),
+               "\nQ1: ",
+               quantile(perc_composite, 0.25)
+             )
+           )) +
+    geom_boxplot(color = 'black', alpha = 0.4) +
+    labs(title = "Distribución porcentaje composite (opportunity based)",
+         x = 'Fecha',
+         y = '') + ylim(c(0, 100)) +
+    scale_x_date(
+      date_breaks = "4 months",
+      date_labels = "%Y-%m",
+      limits = as.Date(c("2021-12-01", "2025-01-01"))
+    ) + theme_minimal_hgrid()
+  
+  plot <- ggplotly(plot, tooltip = 'text') %>%
+    layout(title = list(
+      text = paste0(
+        "Distribución porcentaje composite (opportunity based) por episodio",
+        '<br>',
+        '<sup>',
+        '</sup>'
+      )
+    ),
+    legend = list(orientation = "h", y = -0.5))
+  
+  plot
+} else{
   print('Tabla Distribución composite (opportunity based) vacía')
 }
 
@@ -613,7 +642,10 @@ plot
 
 ```{r}
 
-data <- dbGetQuery(con, paste0("select *
+data <- dbGetQuery(
+  con,
+  paste0(
+    "select *
 from (
         select cohort,
             category_cohort,
@@ -631,40 +663,60 @@ from (
             patient_id,
             episode_id,
             month_year
-    ) where cohort = '",cohort_,"'"))
-if(nrow(data>0)){
-data$mes_año_format <- format(data$month_year, "%Y-%m")
-
-data <- data %>% mutate(episodes_100 = ifelse(perc_composite==100,1,0))
-data <- data %>% group_by(mes_año_format,month_year,cohort) %>% 
-  summarise(result=sum(episodes_100),
-            n_episodes = length(unique(episode_id))) %>% 
-  ungroup()
-data$result <- round(100*(data$result/data$n_episodes),2)
-plot <- ggplot(data,aes(x = month_year, y=result,group = cohort,
-                                   text = paste("Año-mes:", mes_año_format, "\nPorcentaje:", result))) +
-      geom_point(size=0.5) +
-  geom_line() +
-    labs(title = '% episodios con composite (all-or-none)',
-       y = '',
-       x = 'Fecha',
-       color=NULL) + scale_x_date(
-    date_breaks = "4 months",
-    date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
-) +
-  theme_minimal_hgrid() +
-      theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
-        plot <- ggplotly(plot,tooltip = 'text') %>% 
-  layout(title = list(text = paste0('% episodios con composite (all-or-none)',
-                                    '<br>',
-                                    '<sup>','</sup>')),
-         legend = list(orientation = "h", y= -0.5)) 
-
-        
-        
-plot
-}else{
+    ) where cohort = '",
+cohort_,
+"'"
+  )
+)
+if (nrow(data > 0)) {
+  data$mes_año_format <- format(data$month_year, "%Y-%m")
+  
+  data <-
+    data %>% mutate(episodes_100 = ifelse(perc_composite == 100, 1, 0))
+  data <- data %>% group_by(mes_año_format, month_year, cohort) %>%
+    summarise(result = sum(episodes_100),
+              n_episodes = length(unique(episode_id))) %>%
+    ungroup()
+  data$result <- round(100 * (data$result / data$n_episodes), 2)
+  plot <- ggplot(data, aes(
+    x = month_year,
+    y = result,
+    group = cohort,
+    text = paste("Año-mes:", mes_año_format, "\nPorcentaje:", result)
+  )) +
+    geom_point(size = 0.5) +
+    geom_line() +
+    labs(
+      title = '% episodios con composite (all-or-none)',
+      y = '',
+      x = 'Fecha',
+      color = NULL
+    ) + scale_x_date(
+      date_breaks = "4 months",
+      date_labels = "%Y-%m",
+      limits = as.Date(c("2021-12-01", "2025-01-01"))
+    ) +
+    theme_minimal_hgrid() +
+    theme(
+      title = element_text(size = 12),
+      legend.position = 'bottom',
+      legend.text = element_text(size = 10)
+    )
+  plot <- ggplotly(plot, tooltip = 'text') %>%
+    layout(title = list(
+      text = paste0(
+        '% episodios con composite (all-or-none)',
+        '<br>',
+        '<sup>',
+        '</sup>'
+      )
+    ),
+    legend = list(orientation = "h", y = -0.5))
+  
+  
+  
+  plot
+} else{
   print('Tabla composite (all-or-none) vacía')
 }
 
@@ -687,88 +739,142 @@ plot
 log_info(paste0("Indicators outcome"))
 
 # indi: 35-39
-con_result <- dbConnect(duckdb::duckdb(), dbdir = database_result_path, read_only=FALSE)
+con_result <-
+  dbConnect(duckdb::duckdb(), dbdir = database_result_path, read_only = FALSE)
 
-ind_serie_temp_outcome <- data.frame(ind=c('indicator_35','indicator_36', 'indicator_36','indicator_36','indicator_36'),
-                             descrip = c('Tasa de transfusión (hematíes)','Índice de transfusión (hematíes)',
-                                         'Índice total de transfusión (hematíes)',
-                                         'Índice total de transfusión (plaquetas)',
-                                         'Índice total de transfusión (plasma)'),
-                             code=c('HEM','HEM','HEM','PLAQ','PLAS'),
-                             var=c('result','indice_transf','result','result','result'),
-                             ind_plot=c('indicator_35','indicator_36_1', 'indicator_36_2','indicator_36_3','indicator_36_4')
-                             )
+ind_serie_temp_outcome <-
+  data.frame(
+    ind = c(
+      'indicator_35',
+      'indicator_36',
+      'indicator_36',
+      'indicator_36',
+      'indicator_36'
+    ),
+    descrip = c(
+      'Tasa de transfusión (hematíes)',
+      'Índice de transfusión (hematíes)',
+      'Índice total de transfusión (hematíes)',
+      'Índice total de transfusión (plaquetas)',
+      'Índice total de transfusión (plasma)'
+    ),
+    code = c('HEM', 'HEM', 'HEM', 'PLAQ', 'PLAS'),
+    var = c('result', 'indice_transf', 'result', 'result', 'result'),
+    ind_plot = c(
+      'indicator_35',
+      'indicator_36_1',
+      'indicator_36_2',
+      'indicator_36_3',
+      'indicator_36_4'
+    )
+  )
 
 
-p <-list()
-plot_serie_temp_outcome <- function(i){
-  ind_serie_temp_ <- ind_serie_temp_outcome[i,]
-  data_filter <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
-  if(ind_serie_temp_$ind %in% c('indicator_35')){
-    if(nrow(data_filter)>0){
-      data_filter$mes_año_format <- format(data_filter$month_year, "%Y-%m")
-      data_filter <- data_filter %>% filter(transftype_st %in% ind_serie_temp_$code)
-    plot <- ggplot(data_filter,aes(x = month_year, y=result,group = cohort,
-                                   text = paste("Año-mes:", mes_año_format, "\nValor:", result))) +
-      geom_point(size=0.5) +
-  geom_line() +
-    labs(title = ind_serie_temp_$descrip,
-       y = '',
-       x = 'Fecha',
-       color=NULL) + scale_x_date(
-    date_breaks = "4 months",
-    date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
-) +
-  theme_minimal_hgrid() +
-      theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
-        plot <- ggplotly(plot,tooltip = 'text') %>% 
-  layout(title = list(text = paste0(ind_serie_temp_$descrip,
-                                    '<br>',
-                                    '<sup>','</sup>')),
-         legend = list(orientation = "h", y= -0.5))  
+p <- list()
+plot_serie_temp_outcome <- function(i) {
+  ind_serie_temp_ <- ind_serie_temp_outcome[i, ]
+  data_filter <-
+    dbGetQuery(
+      con_result,
+      paste0(
+        "select * from ",
+        ind_serie_temp_$ind,
+        " where cohort = '",
+        cohort_,
+        "'"
+      )
+    )
+  data_filter <-
+    data_filter %>% filter(transftype_st %in% ind_serie_temp_$code)
+  if (nrow(data_filter) > 0) {
+    if (ind_serie_temp_$ind %in% c('indicator_35')) {
+      data_filter$mes_año_format <-
+        format(data_filter$month_year, "%Y-%m")
+      plot <-
+        ggplot(data_filter,
+               aes(
+                 x = month_year,
+                 y = result,
+                 group = cohort,
+                 text = paste("Año-mes:", mes_año_format, "\nValor:", result)
+               )) +
+        geom_point(size = 0.5) +
+        geom_line() +
+        labs(
+          title = ind_serie_temp_$descrip,
+          y = '',
+          x = 'Fecha',
+          color = NULL
+        ) + scale_x_date(
+          date_breaks = "4 months",
+          date_labels = "%Y-%m",
+          limits = as.Date(c("2021-12-01", "2025-01-01"))
+        ) +
+        theme_minimal_hgrid() +
+        theme(
+          title = element_text(size = 12),
+          legend.position = 'bottom',
+          legend.text = element_text(size = 10)
+        )
+      plot <- ggplotly(plot, tooltip = 'text') %>%
+        layout(title = list(
+          text = paste0(ind_serie_temp_$descrip,
+                        '<br>',
+                        '<sup>', '</sup>')
+        ),
+        legend = list(orientation = "h", y = -0.5))
     }else{
-      plot <- paste0('Tabla ',ind_serie_temp_$ind,' vacía')
-}}
-  else{
-    if(nrow(data_filter)>0){
-    data_filter$mes_año_format <- format(data_filter$month_year, "%Y-%m")
-    data_filter <- data_filter %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
-      dplyr::select(month_year,cohort,mes_año_format,var=ind_serie_temp_$var)
-    plot <- ggplot(data_filter,aes(x = month_year, y=var,group = cohort,
-                                   text = paste("Año-mes:", mes_año_format, "\nValor:", var))) +
-      geom_point(size=0.5) +
-  geom_line() +
-    labs(title = ind_serie_temp_$descrip,
-       y = '',
-       x = 'Fecha',
-       color=NULL) + scale_x_date(
-    date_breaks = "4 months",
-    date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
-) +
-  theme_minimal_hgrid() +
-      theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
-        plot <- ggplotly(plot,tooltip = 'text') %>% 
-  layout(title = list(text = paste0(ind_serie_temp_$descrip,
-                                    '<br>',
-                                    '<sup>','</sup>')),
-         legend = list(orientation = "h", y= -0.5)) 
-
-
-    }else{
-  plot <- paste0('Tabla ',ind_serie_temp_$descrip,' vacía')
-}}
+      data_filter$mes_año_format <-
+        format(data_filter$month_year, "%Y-%m")
+      data_filter <- data_filter %>%
+        dplyr::select(month_year, cohort, mes_año_format, var = ind_serie_temp_$var)
+      
+      plot <-
+        ggplot(data_filter,
+               aes(
+                 x = month_year,
+                 y = var,
+                 group = cohort,
+                 text = paste("Año-mes:", mes_año_format, "\nValor:", var)
+               )) +
+        geom_point(size = 0.5) +
+        geom_line() +
+        labs(
+          title = ind_serie_temp_$descrip,
+          y = '',
+          x = 'Fecha',
+          color = NULL
+        ) + scale_x_date(
+          date_breaks = "4 months",
+          date_labels = "%Y-%m",
+          limits = as.Date(c("2021-12-01", "2025-01-01"))
+        ) +
+        theme_minimal_hgrid() +
+        theme(
+          title = element_text(size = 12),
+          legend.position = 'bottom',
+          legend.text = element_text(size = 10)
+        )
+      plot <- ggplotly(plot, tooltip = 'text') %>%
+        layout(title = list(
+          text = paste0(ind_serie_temp_$descrip,
+                        '<br>',
+                        '<sup>', '</sup>')
+        ),
+        legend = list(orientation = "h", y = -0.5))
+      
+      
+    }}else{
+      plot <- paste0('Tabla ', ind_serie_temp_$descrip, ' vacía')
+    }
   return(plot)
-  }
+}
 
-result_plot_serie_temp_outcome1 <- setNames(
-    lapply(1:nrow(ind_serie_temp_outcome), plot_serie_temp_outcome),
-    ind_serie_temp_outcome$ind_plot
-)
+result_plot_serie_temp_outcome1 <- setNames(lapply(1:nrow(ind_serie_temp_outcome), plot_serie_temp_outcome),
+                                            ind_serie_temp_outcome$ind_plot)
 
 
-dbDisconnect(con_result, shutdown=TRUE)
+dbDisconnect(con_result, shutdown = TRUE)
 
 ```
 
@@ -1235,7 +1341,9 @@ data$indicator <- 'indicator_01'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_01 where cohort = '",cohort_,"'"))
-
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
 
 data$descrip <- 'Prevalencia anemia preoperatoria (Hb<13) en %'
@@ -1358,12 +1466,13 @@ data_all <- rbind(data_all,data)
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 } 
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -1373,7 +1482,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }   
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>% 
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -1420,6 +1529,9 @@ data_all <- rbind(data_all,data)
 
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_43 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data <- data %>% group_by(month_year) %>% summarise(result=sum(result,na.rm = TRUE))
@@ -1429,6 +1541,9 @@ data$indicator <- 'indicator_43'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_44 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data$descrip <- 'Nº muertos intra-hospitalarios'
@@ -1438,6 +1553,9 @@ data_all <- rbind(data_all,data)
 
 
 data <- dbGetQuery(con_result, paste0("select *,n_episode_complicaciones as result from indicator_45 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data <- data %>% group_by(month_year) %>% summarise(result=sum(result,na.rm = TRUE))
@@ -1448,6 +1566,9 @@ data$indicator <- 'indicator_45'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_46 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 data <- data %>% pivot_longer(!c(cohort,category_cohort,month_year),names_to = 'complc',values_to = 'result')
 
@@ -1641,7 +1762,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_programada_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_programada_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -1650,9 +1771,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -1724,7 +1855,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -2342,7 +2473,9 @@ data$indicator <- 'indicator_01'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_01 where cohort = '",cohort_,"'"))
-
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
 
 data$descrip <- 'Prevalencia anemia preoperatoria (Hb<13) en %'
@@ -2463,12 +2596,13 @@ data_all <- rbind(data_all,data)
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -2478,7 +2612,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>% 
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -2525,6 +2659,9 @@ data_all <- rbind(data_all,data)
 
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_43 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data <- data %>% group_by(month_year) %>% summarise(result=sum(result,na.rm = TRUE))
@@ -2534,6 +2671,9 @@ data$indicator <- 'indicator_43'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_44 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data$descrip <- 'Nº muertos intra-hospitalarios'
@@ -2543,6 +2683,9 @@ data_all <- rbind(data_all,data)
 
 
 data <- dbGetQuery(con_result, paste0("select *,n_episode_complicaciones as result from indicator_45 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data <- data %>% group_by(month_year) %>% summarise(result=sum(result,na.rm = TRUE))
@@ -2553,6 +2696,9 @@ data$indicator <- 'indicator_45'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_46 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 data <- data %>% pivot_longer(!c(cohort,category_cohort,month_year),names_to = 'complc',values_to = 'result')
 
@@ -2744,7 +2890,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_programada_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_programada_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -2753,9 +2899,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -2828,7 +2984,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -3318,7 +3474,9 @@ data$indicator <- 'indicator_01'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_01 where cohort = '",cohort_,"'"))
-
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
 
 data$descrip <- 'Prevalencia anemia preoperatoria (Hb<13) en %'
@@ -3362,12 +3520,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -3377,7 +3536,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>% 
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -3425,7 +3584,9 @@ data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_43 where cohort = '",cohort_,"'"))
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
-
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data <- data %>% group_by(month_year) %>% summarise(result=sum(result,na.rm = TRUE))
 data$descrip <- 'Nº reingresos 30 días'
 data <- data %>% dplyr::select(descrip,result,month_year)
@@ -3433,6 +3594,9 @@ data$indicator <- 'indicator_43'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_44 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data$descrip <- 'Nº muertos intra-hospitalarios'
@@ -3442,6 +3606,9 @@ data_all <- rbind(data_all,data)
 
 
 data <- dbGetQuery(con_result, paste0("select *,n_episode_complicaciones as result from indicator_45 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
 data <- data %>% group_by(month_year) %>% summarise(result=sum(result,na.rm = TRUE))
@@ -3452,6 +3619,9 @@ data$indicator <- 'indicator_45'
 data_all <- rbind(data_all,data)
 
 data <- dbGetQuery(con_result, paste0("select * from indicator_46 where cohort = '",cohort_,"'"))
+if(nrow(data)==0){
+ data[1,] <- NA 
+}
 
 data$month_year <- as.numeric(format(data$month_year, "%Y"))
 
@@ -3646,7 +3816,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_programada_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_programada_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -3655,9 +3825,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -3730,7 +3910,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -4270,12 +4450,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -4285,7 +4466,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>%
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -4558,7 +4739,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_programada_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_programada_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -4567,9 +4748,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -4641,7 +4832,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -5177,12 +5368,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -5192,7 +5384,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>%
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -5464,7 +5656,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_oncologica_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_oncologica_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -5473,9 +5665,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -5572,7 +5774,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -5676,9 +5878,9 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
                                           '% de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro',
                                         '% de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro (Hb<13)',
                                         '% de pacientes anémicos con determinación de concentración Hb reticulocitaria',
-                                        '% de pacientes anémicos con determinación de concentración Hb reticulocitaria idem Hb<13',
+                                        '% de pacientes anémicos con determinación de concentración Hb reticulocitaria (Hb<13)',
                                         '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente',
-                                        '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente Hb<13',
+                                        '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente (Hb<13)',
                                         '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente \n(anémicos y no anémicos)','% de pacientes con Hb de control',
                                         '% de pacientes tratados preoperatoriamente con un incremento de Hb de +1 pto',
                                         'Incremento de Hb post tratamiento preoperatorio',
@@ -5686,8 +5888,8 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
                                         '% de pacientes no transfundidos con plasma en preoperatorio',
                                         '% de pacientes no transfundidos con plaquetas en preoperatorio',
                                         '% de pacientes intervenidos sin anemia',
-                                        '% de pacientes intervenidos sin anemia Hb>=13',
-                                        'Valor  de Hb previo a la intervención',
+                                        '% de pacientes intervenidos sin anemia (Hb>=13)',
+                                        'Valor de Hb previo a la intervención',
                                         '% de pacientes tratados postoperatoriamente con hierro IV',
                                         '% de pacientes con anestesia regional',
                                         '% de pacientes tratados con antifibrinolíticos',
@@ -6153,12 +6355,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
           if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -6168,7 +6371,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>%
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -6441,7 +6644,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_oncologica_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_oncologica_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -6450,9 +6653,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -6526,7 +6739,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -7068,12 +7281,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
           if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -7083,7 +7297,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>%
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -7356,7 +7570,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_oncologica_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_oncologica_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -7365,9 +7579,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -7440,7 +7664,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -7976,12 +8200,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -7991,7 +8216,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>%
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -8264,7 +8489,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.cirugia_urgente_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.cirugia_urgente_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -8273,9 +8498,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
 
 
 nudge_fun <- function(df){
@@ -8372,7 +8607,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -8477,9 +8712,9 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
                                           '% de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro',
                                         '% de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro (Hb<13)',
                                         '% de pacientes anémicos con determinación de concentración Hb reticulocitaria',
-                                        '% de pacientes anémicos con determinación de concentración Hb reticulocitaria idem Hb<13',
+                                        '% de pacientes anémicos con determinación de concentración Hb reticulocitaria (Hb<13)',
                                         '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente',
-                                        '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente Hb<13',
+                                        '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente (Hb<13)',
                                         '% de pacientes anémicos tratados preoperatoriamente con tiempo suficiente \n(anémicos y no anémicos)','% de pacientes con Hb de control',
                                         '% de pacientes tratados preoperatoriamente con un incremento de Hb de +1 pto',
                                         'Incremento de Hb post tratamiento preoperatorio',
@@ -8489,8 +8724,8 @@ ind_serie_temp_process <- data.frame(ind=c('indicator_05','indicator_06',
                                         'Días de estancia preoperatoria',
                                         '% de pacientes intervenidos en <48 h desde la admisión',
                                         '% de pacientes intervenidos sin anemia',
-                                        '% de pacientes intervenidos sin anemia Hb>=13',
-                                        'Valor  de Hb previo a la intervención',
+                                        '% de pacientes intervenidos sin anemia (Hb>=13)',
+                                        'Valor de Hb previo a la intervención',
                                         '% de pacientes tratados postoperatoriamente con hierro IV',
                                         '% de pacientes con anestesia regional',
                                         '% de pacientes tratados con antifibrinolíticos',
@@ -8959,12 +9194,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -8974,7 +9210,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>%
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
@@ -9247,7 +9483,7 @@ CASE
 		ELSE NULL
 	END as grupo_edad_cd 
 FROM
-    main.proceso_medico_cohort) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+    main.proceso_medico_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
 
 data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
   filter(cohort %in% cohort_)
@@ -9256,10 +9492,19 @@ data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
 data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
 data_$sex_cd <- factor(data_$sex_cd)
 data_ <- data_[order(data_$grupo_edad_cd),]
-
-
 data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
-
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira
+data_$año_cd <- max(data_piramide$año_cd)
 
 nudge_fun <- function(df){
   ifelse(df$sex_cd == "Hombres", (sd(df$percent)/3)*-1.5, sd(df$percent)/3+1.5)
@@ -9355,7 +9600,7 @@ fig <- plot_ly(
 ```{r}
 #| fig-align: center
 
-fig <- fig %>% layout(title='% de episodios que presentantan cada comorbilidad')
+fig <- fig %>% layout(title=paste0('% de episodios que presentantan cada comorbilidad (',max(data_comorbidities$año_cd),')'))
 fig
 ```
 
@@ -9895,12 +10140,13 @@ for(i in ind_serie_temp_process$ind){
 for(i in 1:nrow(ind_serie_temp_outcome)){
   ind_serie_temp_ <- ind_serie_temp_outcome[i,]
   data <- dbGetQuery(con_result, paste0("select * from ",ind_serie_temp_$ind," where cohort = '",cohort_,"'"))
+  data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
   if(ind_serie_temp_$ind %in% c('indicator_35')){
     if(nrow(data)==0){
  data[1,] <- NA 
 }
       data$month_year <- as.numeric(format(data$month_year, "%Y"))
-      data <- data %>% filter(transftype_st %in% ind_serie_temp_$code)
+      
       data$descrip <- ind_serie_temp_$descrip
       data <- data %>% dplyr::select(descrip,result,month_year)
       data$indicator <- ind_serie_temp_$ind
@@ -9910,7 +10156,7 @@ for(i in 1:nrow(ind_serie_temp_outcome)){
 }
     data$month_year <- as.numeric(format(data$month_year, "%Y"))
     data$descrip <- ind_serie_temp_$descrip
-    data <- data %>% filter(transftype_st %in% ind_serie_temp_$code) %>% 
+    data <- data %>% 
       dplyr::select(month_year,descrip,result=ind_serie_temp_$var)
     data$indicator <- ind_serie_temp_$ind
 }
