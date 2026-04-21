@@ -1654,7 +1654,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -2783,7 +2785,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -3714,7 +3718,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -4637,7 +4643,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -5555,7 +5563,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -6542,7 +6552,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -7468,7 +7480,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -8387,7 +8401,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -9381,7 +9397,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -10327,7 +10345,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 

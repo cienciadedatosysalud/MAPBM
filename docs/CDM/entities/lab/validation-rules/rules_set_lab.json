@@ -7,11 +7,6 @@
             "description": "Rule for column determination_cd"
         },
         {
-            "expression": "determination_dt >= '2022-01-01 00:00:00' AND determination_dt <= '2024-12-31 23:59:59'",
-            "name": "determination_dt",
-            "description": "Rule for column 'determination_dt'"
-        },
-        {
             "expression": "result_determination_dt >= determination_dt",
             "name": "result_determination_dt",
             "description": "Rule for column result_determination_dt"

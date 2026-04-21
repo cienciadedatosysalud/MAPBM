@@ -1412,11 +1412,6 @@
             ],
             "rules": [
                 {
-                    "expression": "admission_dt >= '2022-01-01' AND admission_dt <= '2024-12-31'",
-                    "name": "admission_dt",
-                    "description": "Rule for column admission_dt"
-                },
-                {
                     "expression": "discharge_dt > admission_dt",
                     "name": "discharge_dt",
                     "description": "Rule for column discharge_dt"
@@ -1532,11 +1527,6 @@
                     "expression": "determination_cd IN ('hb', 'ret_he', 'ferr', 'gfr', 'crp', 'fol', 'tsi', 'fib', 'plat', 'viiif', 'p_time')",
                     "name": "determination_cd",
                     "description": "Rule for column determination_cd"
-                },
-                {
-                    "expression": "determination_dt >= '2022-01-01 00:00:00' AND determination_dt <= '2024-12-31 23:59:59'",
-                    "name": "determination_dt",
-                    "description": "Rule for column 'determination_dt'"
                 },
                 {
                     "expression": "result_determination_dt >= determination_dt",
@@ -1706,11 +1696,6 @@
                 }
             ],
             "rules": [
-                {
-                    "expression": "h_dispensation_dt >= '2022-01-01' AND h_dispensation_dt <= '2024-12-31'",
-                    "name": "h_dispensation_dt",
-                    "description": "Rule for column 'h_dispensation_dt'"
-                }
             ]
         },
         {
@@ -1771,11 +1756,6 @@
                 }
             ],
             "rules": [
-                {
-                    "expression": "h_amb_dispensation_dt >= '2022-01-01' AND h_amb_dispensation_dt <= '2024-12-31'",
-                    "name": "h_amb_dispensation_dt",
-                    "description": "Rule for column 'h_amb_dispensation_dt'"
-                }
             ]
         },
         {
@@ -2106,11 +2086,6 @@
                 }
             ],
             "rules": [
-                {
-                    "expression": "vet_dt > '2022-01-01'",
-                    "name": "vet_dt",
-                    "description": "Rule for column vet_dt"
-                },
                 {
                     "expression": "technique_cd = 'teg' OR technique_cd = 'tem' OR technique_cd = 'srm'",
                     "name": "technique_cd",

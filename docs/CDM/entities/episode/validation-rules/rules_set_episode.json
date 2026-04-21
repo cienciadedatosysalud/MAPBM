@@ -2,11 +2,6 @@
     "description": "The expressions of the different rules follow the syntax of the SQL OLAP database \n        management system called DuckDB. For more information, visit https://duckdb.org/docs/sql/introduction. \n        Keep in mind that you only have to declare as a rule the statement that would follow a WHERE clause. \n        e.g.,  Select * from people WHERE {expression}\n        expression = age >= 18\n        ",
     "rules": [
         {
-            "expression": "admission_dt >= '2022-01-01' AND admission_dt <= '2024-12-31'",
-            "name": "admission_dt",
-            "description": "Rule for column admission_dt"
-        },
-        {
             "expression": "discharge_dt > admission_dt",
             "name": "discharge_dt",
             "description": "Rule for column discharge_dt"
