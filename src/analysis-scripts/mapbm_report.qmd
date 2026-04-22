@@ -327,7 +327,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -360,7 +360,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -449,7 +449,7 @@ plot_serie_temp <- function(i){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -470,7 +470,7 @@ plot_serie_temp <- function(i){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -617,7 +617,7 @@ if (nrow(data > 0)) {
     scale_x_date(
       date_breaks = "4 months",
       date_labels = "%Y-%m",
-      limits = as.Date(c("2021-12-01", "2025-01-01"))
+      #limits = as.Date(c("2021-12-01", "2025-01-01"))
     ) + theme_minimal_hgrid()
   
   plot <- ggplotly(plot, tooltip = 'text') %>%
@@ -694,7 +694,7 @@ if (nrow(data > 0)) {
     ) + scale_x_date(
       date_breaks = "4 months",
       date_labels = "%Y-%m",
-      limits = as.Date(c("2021-12-01", "2025-01-01"))
+      #limits = as.Date(c("2021-12-01", "2025-01-01"))
     ) +
     theme_minimal_hgrid() +
     theme(
@@ -808,7 +808,7 @@ plot_serie_temp_outcome <- function(i) {
         ) + scale_x_date(
           date_breaks = "4 months",
           date_labels = "%Y-%m",
-          limits = as.Date(c("2021-12-01", "2025-01-01"))
+          #limits = as.Date(c("2021-12-01", "2025-01-01"))
         ) +
         theme_minimal_hgrid() +
         theme(
@@ -847,7 +847,7 @@ plot_serie_temp_outcome <- function(i) {
         ) + scale_x_date(
           date_breaks = "4 months",
           date_labels = "%Y-%m",
-          limits = as.Date(c("2021-12-01", "2025-01-01"))
+          #limits = as.Date(c("2021-12-01", "2025-01-01"))
         ) +
         theme_minimal_hgrid() +
         theme(
@@ -913,7 +913,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -952,7 +952,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -992,7 +992,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -1023,7 +1023,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -1055,7 +1055,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -1087,7 +1087,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -1122,7 +1122,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -1654,7 +1654,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -1882,7 +1884,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -1915,7 +1917,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2061,7 +2063,7 @@ plot <- ggplot(data=data, aes(x=month_year, y=perc_composite, group = month_year
   scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) + theme_minimal_hgrid()
 
       plot <- ggplotly(plot,tooltip = 'text') %>% 
@@ -2119,7 +2121,7 @@ plot <- ggplot(data,aes(x = month_year, y=result,group = cohort,
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2205,7 +2207,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2244,7 +2246,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2284,7 +2286,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2315,7 +2317,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2347,7 +2349,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2379,7 +2381,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2414,7 +2416,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -2783,7 +2785,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -3011,7 +3015,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3044,7 +3048,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3210,7 +3214,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3249,7 +3253,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3289,7 +3293,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3320,7 +3324,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3352,7 +3356,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3384,7 +3388,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3419,7 +3423,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3714,7 +3718,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -3938,7 +3944,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -3971,7 +3977,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4141,7 +4147,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4180,7 +4186,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4220,7 +4226,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4251,7 +4257,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4283,7 +4289,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4315,7 +4321,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4350,7 +4356,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4637,7 +4643,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -4859,7 +4867,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -4892,7 +4900,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5060,7 +5068,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5099,7 +5107,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5139,7 +5147,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5170,7 +5178,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5202,7 +5210,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5234,7 +5242,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5269,7 +5277,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5555,7 +5563,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -5801,7 +5811,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -5834,7 +5844,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6046,7 +6056,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6085,7 +6095,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6125,7 +6135,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6156,7 +6166,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6188,7 +6198,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6220,7 +6230,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6255,7 +6265,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6542,7 +6552,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -6767,7 +6779,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6800,7 +6812,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -6971,7 +6983,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7010,7 +7022,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7050,7 +7062,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7081,7 +7093,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7113,7 +7125,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7145,7 +7157,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7180,7 +7192,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7468,7 +7480,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -7691,7 +7705,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7724,7 +7738,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7889,7 +7903,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7930,7 +7944,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -7970,7 +7984,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8001,7 +8015,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8033,7 +8047,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8065,7 +8079,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8100,7 +8114,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8387,7 +8401,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -8635,7 +8651,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8668,7 +8684,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8884,7 +8900,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8923,7 +8939,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8963,7 +8979,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -8994,7 +9010,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9026,7 +9042,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9058,7 +9074,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9093,7 +9109,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9381,7 +9397,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
@@ -9628,7 +9646,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9661,7 +9679,7 @@ data$result <- round(100*(data$n_episodios_l13/data$n_episodios),2)
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() + ylim(c(0,100)) +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9824,7 +9842,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9863,7 +9881,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9903,7 +9921,7 @@ data$mes_año_format <- format(data$month_year, "%Y-%m")
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9934,7 +9952,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9966,7 +9984,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -9998,7 +10016,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -10033,7 +10051,7 @@ if(nrow(data>0)){
        color=NULL) + scale_x_date(
     date_breaks = "4 months",
     date_labels = "%Y-%m",
-    limits = as.Date(c("2021-12-01", "2025-01-01"))
+    #limits = as.Date(c("2021-12-01", "2025-01-01"))
 ) +
   theme_minimal_hgrid() +
       theme(title = element_text(size = 12),legend.position = 'bottom', legend.text = element_text(size=10))
@@ -10327,7 +10345,9 @@ from
 duckdb_unregister(con_result,"datos_promedio")
 data_all$result[data_all$result %in% "NA"] <- NA
 data_all$hospital <- unique(hospital$cnh_cd)
+data_all <- data_all |> dplyr::rename(year=month_year)
 write.table(data_all,paste0('../../outputs/tabla_indicadores_agregado_anual_',cohort_,'.csv'),sep='|',row.names=FALSE)
+data_all <- data_all |> dplyr::rename(month_year=year)
 ###########################################################################
 
 data_all <- data_all %>% group_by(descrip) %>% 
