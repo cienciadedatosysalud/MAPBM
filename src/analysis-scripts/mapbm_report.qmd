@@ -383,6 +383,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -395,6 +397,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Artroplastias primarias de rodilla",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 ```{r}
@@ -2317,6 +2339,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -2329,6 +2353,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Artroplastias primarias de cadera",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -3676,6 +3720,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -3688,6 +3734,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Cirugía de válvula cardiaca",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -4832,6 +4898,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -4844,6 +4912,28 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Histerectomia abdominal no oncológica",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
+
+
 ```
 
 
@@ -5983,6 +6073,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -5995,6 +6087,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Cistectomía radical",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -7176,6 +7288,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -7188,6 +7302,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Cirugía colorectal laparoscópica",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -8393,6 +8527,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -8405,6 +8541,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Cirugía colorectal abierta",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -9548,6 +9704,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -9560,6 +9718,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Histerectomia abdominal oncológica",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -10746,6 +10924,8 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -10758,6 +10938,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Cirugía de fractura de fémur proximal",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
@@ -12015,6 +12215,9 @@ p <- data_ %>%
 
 data_count_episode_anual_ <- data_count_episode_anual |> 
   filter(cohort %in% cohort_)
+
+
+if(nrow(data_count_episode_anual_>0)){
 data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
   dplyr::arrange(año_cd) |> 
   gt() %>% 
@@ -12027,6 +12230,26 @@ data_count_episode_anual_ %>% dplyr::select(!cohort) |>
     n_patient_id = 'Nº pacientes distintos'
   ) |> 
     cols_align(align="center")
+}else{
+  data_count_episode_anual_ <- data.frame(
+    n_episode_id=0,
+    n_patient_id=0,
+    año_cd=NA,
+    cohort=cohort_)
+  data_count_episode_anual_ %>% dplyr::select(!cohort) |> 
+  dplyr::arrange(año_cd) |> 
+  gt() %>% 
+   tab_header(
+    title = "Hemorragia gastrointestinal",
+  ) |> 
+    cols_label(
+    año_cd = 'Año',
+    n_episode_id = 'Nº episodios distintos',
+    n_patient_id = 'Nº pacientes distintos'
+  ) |> 
+    cols_align(align="center")
+}
+
 ```
 
 
