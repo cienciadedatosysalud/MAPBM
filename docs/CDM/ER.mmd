@@ -1,0 +1,138 @@
+erDiagram
+  episode {
+    String patient_id
+    String cnh_cd
+    String episode_id
+    Double age_nm
+    String sex_cd
+    Datetime admission_dt
+    Datetime discharge_dt
+    String discharge_type_cd
+    Datetime start_intervention_dt
+    Datetime end_intervention_dt
+    String d1
+    String d2
+    String d3
+    String d4
+    String d5
+    String d6
+    String d7
+    String d8
+    String d9
+    String d10
+    String d11
+    String d12
+    String d13
+    String d14
+    String d15
+    String d16
+    String d17
+    String d18
+    String d19
+    String d20
+    String poad1
+    String poad2
+    String poad3
+    String poad4
+    String poad5
+    String poad6
+    String poad7
+    String poad8
+    String poad9
+    String poad10
+    String poad11
+    String poad12
+    String poad13
+    String poad14
+    String poad15
+    String poad16
+    String poad17
+    String poad18
+    String poad19
+    String poad20
+    String proc1
+    String proc2
+    String proc3
+    String proc4
+    String proc5
+    String proc6
+    String proc7
+    String proc8
+    String proc9
+    String proc10
+    String proc11
+    String proc12
+    String proc13
+    String proc14
+    String proc15
+    String proc16
+    String proc17
+    String proc18
+    String proc19
+    String proc20
+    Datetime readmission_dt
+    String readmission_d1
+    String readmission_poad1
+    Boolean bleeding_bl
+    Double estimbleeding_nm
+    String anesth_cd
+    String asa_cd
+    Boolean brs_bl
+    String planification_cd
+    Boolean eras_recovery_bl
+  }
+  lab {
+    String patient_id
+    String determination_cd
+    Datetime determination_dt
+    Double result_determination_cd
+    Datetime result_determination_dt
+  }
+  hospital {
+    String cnh_cd
+    String cnh_nm
+    String aacc_cd
+    Integer size_nm
+    Boolean teaching_bl
+  }
+  hosp_pharmacy {
+    String patient_id
+    String h_drug_cd
+    Datetime h_dispensation_dt
+  }
+  hosp_amb_pharmacy {
+    String patient_id
+    String h_amb_drug_cd
+    Datetime h_amb_dispensation_dt
+  }
+  transfusion {
+    String patient_id
+    Integer unit_id
+    Boolean transf_administered_bl
+    Datetime transf_dt
+    String transftype_cd
+  }
+  amb_pharmacy {
+    String patient_id
+    String drug_cd
+    Date start_prescription_dt
+    Date end_prescription_dt
+    Date last_dispensation_dt
+  }
+  viscoelastic_test {
+    String patient_id
+    Integer vet_id
+    Datetime vet_dt
+    String technique_cd
+    String tegdet_cd
+    String temdet_cd
+    String srmdet_cd
+    Double result_nm
+  }
+  episode ||--o{ lab : "patient_id_FK_patient_id"
+  episode ||--o{ hospital : "cnh_cd_FK_cnh_cd"
+  episode ||--o{ hosp_pharmacy : "patient_id_FK_patient_id"
+  episode ||--o{ hosp_amb_pharmacy : "patient_id_FK_patient_id"
+  episode ||--o{ transfusion : "patient_id_FK_patient_id"
+  episode ||--o{ amb_pharmacy : "patient_id_FK_patient_id"
+  episode ||--o{ viscoelastic_test : "patient_id_FK_patient_id"

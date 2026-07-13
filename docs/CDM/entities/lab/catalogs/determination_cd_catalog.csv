@@ -1,13 +1,14 @@
-code,description
-hb,Hemoglobin (g/dL)
-ret_he,Reticulocyte hemoglobin (pg)
-ferr,ferritin (ng/mL)
-gfr,Glomerular Filtration Rate
-crp,C reactive protein (mg/L)
-b12,Cobalamin (mcg)
-fol,Folic acid (mcg)
-tsi,Transferrin Saturation Index
-fib,Fibrinogen (g/L)
-plat,Platelets (x10^9/L)
-viiif,VIII factor (IU/dL)
-p_time,Prothrombin time (INR)
+code|description|loinc_code|loinc_name
+hb|Hemoglobin (g/dL)|718-7|Hemoglobin [Mass/volume] in Blood
+ret_he|Reticulocyte hemoglobin (pg)|42810-2|Hemoglobin [Entitic mass] in Reticulocytes
+ferr|ferritin (ng/mL)|2276-4|Ferritin [Mass/volume] in Serum or Plasma
+gfr|Glomerular Filtration Rate [CKD-EPI] mL/min/1.73m2|98979-8|Glomerular filtration rate [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI 2021)/1.73 sq M
+crp|C reactive protein (mg/dL) (intervalo de referencia <1)|1988-5|C reactive protein [Mass/volume] in Serum or Plasma
+crp|C reactive protein (mg/dL) (intervalo de referencia <1)|30522-7|C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method
+b12|Cobalamin (pg/mL)|2132-9|Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma
+fol|Folic acid seric (ng/mL)|2284-8|Folate [Mass/volume] in Serum or Plasma
+tsi|Transferrin Saturation Index (%)|2502-3|Iron saturation [Mass Fraction] in Serum or Plasma
+fib|Fibrinogen (g/L)|30226-5|Fibrin+Fibrinogen fragments [Mass/volume] in Platelet poor plasma (ug/mL)
+plat|Platelets (x10^9/L)|777-3|Platelets [#/volume] in Blood by Automated count
+viiif|VIII factor (Método cromogenico plasma: % [65.00-135.00])|49865-9|Coagulation factor VIII activity actual/normal in Platelet poor plasma by Chromogenic method
+p_time|Prothrombin time (INR)|6301-6|INR in Platelet poor plasma by Coagulation assay

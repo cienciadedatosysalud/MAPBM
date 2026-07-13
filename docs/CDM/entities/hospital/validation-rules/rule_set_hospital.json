@@ -1,0 +1,10 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "size_nm BETWEEN 50 AND 1500",
+      "name": "size_nm",
+      "description": "Rule for column size_nm"
+    }
+  ]
+}

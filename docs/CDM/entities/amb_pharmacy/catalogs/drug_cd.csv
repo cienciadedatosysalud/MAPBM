@@ -1,56 +1,1194 @@
-﻿encoding;code_clean;description;source;observations
-atc;B01AC06;Acetylsalicylic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AC04;Clopidogrel;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AC22;Prasugrel;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AC24;Ticagrelor;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AC05;Ticlopidine;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AA07;Acenocumarol;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AF02;Apixaban;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AE07;Dabigatran;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AF04;Edoxaban;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AF01;Rivaroxaban;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AA03;Warfarin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AB11;Bemiparin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AB04;Dalteparin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AB05;Enoxaparin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AX05;Fondaparinux;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B01AB10;Tinzaparin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA01;ferrous glycine sulfate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA02;ferrous fumarate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA03;ferrous gluconate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA04;ferrous carbonate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA05;ferrous chloride;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA06;ferrous succinate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA07;ferrous sulfate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA08;ferrous tartrate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA09;ferrous aspartate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA10;ferrous ascorbate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA11;ferrous iodine;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AA12;ferrous sodium citrate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB01;ferric sodium citrate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB02;saccharated iron oxide;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB03;sodium feredetate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB04;ferric hydroxide;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB05;ferric oxide polymaltose complexes;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB07;chondroitin sulfate-iron complex;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB08;ferric acetyl transferrin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB09;ferric proteinsuccinylate;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AB10;ferric maltol;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AD01;ferrous amino acid complex and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AD02;ferrous fumarate and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AD03;ferrous sulfate and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AD04;ferric oxide polymaltose complexes and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AD05;ferrous gluconate and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AE01;iron, vitamin B12 and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AE02;iron, multivitamins and folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AE03;iron and multivitamins;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03AE04;iron, multivitamins and minerals;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA01;cyanocobalamin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA02;cyanocobalamin tannin complex;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA03;hydroxocobalamin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA04;cobamamide;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA05;mecobalamin;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA51;cyanocobalamin, combinations;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BA53;hydroxocobalamin, combinations;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BB01;folic acid;WHO Collaborating Centre for Drug Statistics Methodology;
-atc;B03BB51;folic acid, combinations;WHO Collaborating Centre for Drug Statistics Methodology;
+encoding|code_clean|description|source|observations|alternative_code_cnf
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||010925
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||017301
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||140025
+atc|B03AE03|iron and multivitamins|WHO Collaborating Centre for Drug Statistics Methodology||174511
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||193035
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||201483
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||550333
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||560301
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||560307
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||560313
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||560315
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||560316
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||560317
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||560318
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||560321
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||560322
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||560323
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||560324
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||560327
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||570293
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||570606
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||570747
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||570777
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||570778
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||570779
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||570780
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||570819
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||570820
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||570917
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||570943
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||571125
+atc|B03BA03|hydroxocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||571380
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||571423
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596570
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596571
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596572
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596581
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596582
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596629
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596630
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596631
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||596632
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596640
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||596641
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||596642
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||596643
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||596644
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||596645
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||596646
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||596647
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||596648
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||596666
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||596667
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||596668
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||596703
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596721
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596722
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||596723
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||596748
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||596818
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||596819
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||596820
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||596902
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||597375
+atc|B03AB09|ferric proteinsuccinylate|WHO Collaborating Centre for Drug Statistics Methodology||597422
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||597447
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||597562
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||597760
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||599716
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||599717
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||599718
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||599719
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||600330
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603013
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603028
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||603082
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603304
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603305
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603321
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||603325
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603491
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603492
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603493
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603494
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603495
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603496
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603497
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603499
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603500
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603501
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603502
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||603503
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||603674
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||603681
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||603712
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605120
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||605220
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||605460
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605504
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||605592
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||605711
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||605712
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||605748
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||605873
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605913
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605921
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605933
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605990
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||605991
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606126
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606127
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||606138
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||606191
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606307
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606450
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606769
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606770
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||606771
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||606858
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||606979
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||606984
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||606985
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607006
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607007
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607026
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607027
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607029
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607075
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607076
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||607110
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607125
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607126
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607129
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607148
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607149
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607157
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607158
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607159
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607160
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607161
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607162
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607163
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607164
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607165
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607166
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607197
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||607202
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607203
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607204
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607205
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607206
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607207
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607208
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607209
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607236
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||607237
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||607374
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||607438
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||607735
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||607737
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||607763
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||607904
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||607905
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||609818
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||614537
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||615443
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||617464
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||619205
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||619320
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||619387
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||624825
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||624833
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||625079
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||625392
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||625400
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||639302
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||639310
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||639484
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||639492
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||640144
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||640219
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||640227
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||640300
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||641688
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||641696
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||642793
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||647560
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||650113
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||650168
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||650176
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||650424
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||650432
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||650591
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||650592
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||650593
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||650757
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||650766
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||650830
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||650831
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||650880
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||650941
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||651092
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||651110
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||651473
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||651729
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||651737
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||652136
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||652137
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||652180
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||652198
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||652222
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||652230
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||652370
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||652388
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||652686
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||652694
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||652702
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||652720
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||652736
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||652744
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||653137
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||653138
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||653249
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||653326
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||653327
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653635
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653643
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653660
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653668
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653676
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653684
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653692
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653710
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653718
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653721
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||653726
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||654177
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||654179
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||654542
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||654559
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||654617
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||654625
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||654732
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||654750
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654795
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654796
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654797
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654799
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654800
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654801
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||654802
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||654803
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||654804
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||655896
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||656355
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||656553
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||656582
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||656691
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||656845
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||656862
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||657205
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||658385
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||658401
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||658427
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||658443
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||658526
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||659133
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||659218
+atc|B03AD03|ferrous sulfate and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||659293
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||659323
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||659742
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||659743
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||659744
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||660229
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||660528
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||660529
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||660531
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||660532
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||660791
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||660792
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||661051
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||661608
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||661609
+atc|B03BB51|folic acid, combinations|WHO Collaborating Centre for Drug Statistics Methodology||661735
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||662555
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||662709
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||662710
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663177
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663246
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663249
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663259
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663265
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663283
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663284
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663285
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663287
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663317
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663318
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663319
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||663320
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663321
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663322
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663323
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||663324
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||663325
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||663326
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||663327
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||663329
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||663330
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663349
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663359
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663660
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663712
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663841
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663881
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||663920
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664053
+atc|B03AA03|ferrous gluconate|WHO Collaborating Centre for Drug Statistics Methodology||664092
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664236
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664237
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664241
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664242
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664265
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664283
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664304
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664305
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664322
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664324
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664412
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664413
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664432
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664472
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664473
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664475
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664476
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664477
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664478
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664479
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664480
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664481
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664483
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664484
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664485
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664582
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664583
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664586
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664658
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664682
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664686
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664772
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664930
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||664931
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665013
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665303
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||665653
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665660
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||665661
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665662
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665882
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665888
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||665929
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665969
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||665974
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||666029
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||666037
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||667022
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||669721
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||669799
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||671033
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||671327
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||671483
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||671859
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671971
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671972
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671973
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671975
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671976
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671977
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671978
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671979
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671980
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671992
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671993
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671994
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671995
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671996
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671997
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671998
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||671999
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||672013
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672073
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||672098
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||672099
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672422
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672423
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672471
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672494
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672495
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672496
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672497
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672510
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672511
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672512
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672513
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672520
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672523
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672524
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672525
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672526
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||672593
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||672685
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||672841
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||672908
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||672976
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673033
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||673050
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||673051
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||673052
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||673054
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673143
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673155
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673163
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673164
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673254
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||673260
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||674008
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||674937
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||675195
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||675294
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||675296
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||675297
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||676619
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||677497
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||677574
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||677711
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||678867
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||680273
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||680413
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||680784
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||680797
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||681258
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||681259
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||681342
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||681372
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||681386
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||681401
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||682922
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||683358
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||684605
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||684613
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||684712
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||685347
+atc|B03AB02|saccharated iron oxide|WHO Collaborating Centre for Drug Statistics Methodology||685977
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||686580
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||686886
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||686887
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||686894
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||688042
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||689840
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||690037
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||690262
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||691346
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||691704
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||691720
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||691729
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||691923
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||692202
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||692274
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||692275
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||692276
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||692309
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||692432
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||692463
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||693895
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||693903
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||693933
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||694128
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||694307
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||694315
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||694537
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||694542
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||694543
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||694840
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||695490
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||695721
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||695722
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||696007
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||696009
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||696134
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||696135
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696863
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696865
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696866
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696867
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696868
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696869
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696870
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696871
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||696873
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||697209
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||697268
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||697278
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||697441
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||697442
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||697443
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||697444
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||697445
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||697446
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||697897
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||697898
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||697899
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||697900
+atc|B03AD03|ferrous sulfate and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||698341
+atc|B03AD03|ferrous sulfate and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||698342
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||698360
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||698437
+atc|B03AD03|ferrous sulfate and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||699066
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||699407
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||699408
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||699454
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||699462
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||699470
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||699488
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||699496
+atc|B03AD02|ferrous fumarate and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||699553
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||700013
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||700340
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||700505
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||700620
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||700621
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||700666
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||700740
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||702411
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||703003
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||703041
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||703157
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||703230
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||703813
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||704005
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||704400
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||704449
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||704625
+atc|B03BA04|cobamamide|WHO Collaborating Centre for Drug Statistics Methodology||704742
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||704863
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||704864
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||704878
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||704879
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||704881
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||704883
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||704983
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||706751
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||706841
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||706842
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||710265
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||710266
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||710323
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||710324
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||710921
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||710996
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||711550
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||711552
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||712067
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||712273
+atc|B03BA05|mecobalamin|WHO Collaborating Centre for Drug Statistics Methodology||712356
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||712511
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||712512
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||712513
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||713577
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||713578
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||714433
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||714440
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||715018
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||715020
+atc|B03AB10|ferric maltol|WHO Collaborating Centre for Drug Statistics Methodology||716119
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||716604
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||716605
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719275
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719277
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719281
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719284
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719285
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719287
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719288
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719289
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719291
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719295
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719296
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719298
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719301
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719302
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719304
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719306
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719308
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719311
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719333
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719335
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719340
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719349
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719350
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719352
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719353
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719354
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719356
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719359
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719360
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719362
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719365
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719366
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719368
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719370
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719372
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||719374
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||720407
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720563
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720564
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720566
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720567
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720568
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720569
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720570
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720571
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720572
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720574
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720575
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720576
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720577
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720578
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720579
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720580
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720582
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720583
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720584
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720585
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720586
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720587
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720588
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720589
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720590
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720591
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720592
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||720593
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||720672
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||720967
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||720970
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||720971
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||721665
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||721666
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||722013
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722364
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722366
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722373
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722376
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722377
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722379
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722380
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722382
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722383
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722385
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722386
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||722388
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||722454
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||722478
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||722479
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||723674
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||723675
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||723798
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||723807
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||723808
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||723809
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||723869
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||723914
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||723915
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724240
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724473
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724474
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724475
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724476
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724477
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724478
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724479
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||724528
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724548
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||724624
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||724625
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||724626
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||724659
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||724774
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||724775
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724780
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724782
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724784
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||724785
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||725067
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||725093
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||725293
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||725294
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||725295
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||725296
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||725449
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||725453
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||725458
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||725579
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725830
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725831
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725832
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725833
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725834
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725835
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725836
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725837
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725839
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725840
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725841
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725842
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725843
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725844
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725845
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725846
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725847
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||725848
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||726210
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||726258
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||726263
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||726264
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||726277
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||726278
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||726432
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726573
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726574
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726575
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726576
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726577
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726578
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726579
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726580
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726581
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726582
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726583
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726584
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726585
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||726586
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||727357
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||727427
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||727590
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||727844
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||728412
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||728414
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||728416
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||728419
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||728421
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||728423
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||728668
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||729173
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||729329
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||729368
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729683
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729684
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729685
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729686
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729687
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729688
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729689
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729690
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729691
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729692
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729693
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729694
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729695
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729696
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729697
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729698
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729700
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||729761
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730290
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730292
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||730311
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||730312
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730494
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730495
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730496
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730497
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||730498
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||730559
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||730560
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||730889
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||731110
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||731111
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||731447
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||731459
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||731460
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||731491
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||731492
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||731595
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||731611
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||731613
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||731841
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||731842
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||732205
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||732225
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||732240
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||732246
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||732251
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||732282
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||732314
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||732506
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||732508
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||732863
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||732864
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||732865
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||732866
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||732867
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||732868
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||733026
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||733027
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||733029
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||733052
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||733053
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||733224
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||734012
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||734534
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||734540
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||734544
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||734545
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||737600
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||745190
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||745216
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||745422
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||745869
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||746107
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||746461
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||748033
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||748034
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||748036
+atc|B03AB10|ferric maltol|WHO Collaborating Centre for Drug Statistics Methodology||748169
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||748173
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||748174
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||748176
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||751727
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||751834
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||751933
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||752253
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||753624
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||753830
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||753848
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||753905
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||753913
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||753921
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||756841
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||756965
+atc|B03AA10|ferrous ascorbate|WHO Collaborating Centre for Drug Statistics Methodology||757062
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||757112
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||758178
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||758179
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||758180
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||758551
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||758552
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||758560
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||758561
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||758626
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||758627
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||758628
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||758629
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||759184
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||759289
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||759832
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||759840
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||759841
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||759842
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760418
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760419
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760420
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760423
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760424
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760492
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||760516
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||760978
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||760979
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||760980
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||760981
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||761866
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||761867
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||761869
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762085
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762086
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||762331
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||762332
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||762333
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||762334
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||762348
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||762349
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||762350
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||762352
+atc|B03BA03|hydroxocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||762446
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762524
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762525
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762528
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762643
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762647
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||762663
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||762775
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||762818
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||762862
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762863
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762864
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762866
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||762868
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||762994
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||762995
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763115
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763117
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763119
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||763177
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763218
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||763436
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||763437
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||763438
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||763439
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||763440
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||763443
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763506
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763514
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||763526
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||763657
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||763674
+atc|B03AD05|ferrous gluconate and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||763704
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||763716
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||763718
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||763720
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||763721
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||763744
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764143
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764150
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764158
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764231
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764232
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764233
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764234
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||764240
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764253
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764254
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764255
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764256
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764257
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764324
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764325
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764369
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764370
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764371
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764372
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764373
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764374
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764396
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764397
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764398
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764400
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764401
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764402
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764419
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764420
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764432
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764433
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||764471
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764625
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764626
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764627
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764713
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764779
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764780
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764781
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||764782
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764798
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764799
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764859
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764861
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764912
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||764913
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||764969
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||764992
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||765109
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||765113
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||765118
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||765399
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||765403
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||765407
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||765459
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||765478
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||765481
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||765585
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||765588
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||765592
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||765689
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||765762
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||765771
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||765772
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766017
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766018
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766035
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766103
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766104
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766106
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766107
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766108
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||766109
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||766279
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||766551
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||766801
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||766803
+atc|B01AC22|Prasugrel|WHO Collaborating Centre for Drug Statistics Methodology||766983
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||767968
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||767988
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||768049
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768125
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768132
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768134
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768137
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768466
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||768506
+atc|B01AE07|Dabigatran|WHO Collaborating Centre for Drug Statistics Methodology||768510
+atc|B01AC04|Clopidogrel|WHO Collaborating Centre for Drug Statistics Methodology||768521
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||768676
+atc|B01AC24|Ticagrelor|WHO Collaborating Centre for Drug Statistics Methodology||768677
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768852
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768854
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||768855
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||769129
+atc|B01AF01|Rivaroxaban|WHO Collaborating Centre for Drug Statistics Methodology||769336
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||770006
+atc|B01AF02|Apixaban|WHO Collaborating Centre for Drug Statistics Methodology||770305
+atc|B03AB09|ferric proteinsuccinylate|WHO Collaborating Centre for Drug Statistics Methodology||776773
+atc|B03AB09|ferric proteinsuccinylate|WHO Collaborating Centre for Drug Statistics Methodology||777896
+atc|B03AB09|ferric proteinsuccinylate|WHO Collaborating Centre for Drug Statistics Methodology||778019
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||780205
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||783704
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||783753
+atc|B03BA03|hydroxocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||784652
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||786053
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||786061
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||794222
+atc|B03BA01|cyanocobalamin|WHO Collaborating Centre for Drug Statistics Methodology||798462
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||803502
+atc|B03AB09|ferric proteinsuccinylate|WHO Collaborating Centre for Drug Statistics Methodology||810226
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||811539
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||812115
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||814863
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||814897
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||814905
+atc|B01AB10|Tinzaparin|WHO Collaborating Centre for Drug Statistics Methodology||814970
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||816082
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||823500
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||824565
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||829242
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||830158
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||832444
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||837369
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||837401
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||837591
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||837765
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||837773
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||838243
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||838276
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||838656
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||838953
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839258
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839274
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839407
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839423
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839431
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839944
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||839977
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840041
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840074
+atc|B03BA51|cyanocobalamin, combinations|WHO Collaborating Centre for Drug Statistics Methodology||840199
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840215
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840223
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840322
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840561
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||840637
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||841056
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||841288
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||841304
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||841338
+atc|B03AA03|ferrous gluconate|WHO Collaborating Centre for Drug Statistics Methodology||846428
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||858118
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||859512
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||859538
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||859546
+atc|B03BA51|cyanocobalamin, combinations|WHO Collaborating Centre for Drug Statistics Methodology||866152
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||866616
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||868778
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||868794
+atc|B03AA07|ferrous sulfate|WHO Collaborating Centre for Drug Statistics Methodology||869180
+atc|B03AA01|ferrous glycine sulfate|WHO Collaborating Centre for Drug Statistics Methodology||870261
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||870345
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||870352
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||870428
+atc|B03AA03|ferrous gluconate|WHO Collaborating Centre for Drug Statistics Methodology||873448
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||874594
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||874644
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||874933
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||874941
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875070
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875088
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875138
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875153
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875161
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875195
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875211
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||875286
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||877902
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||878272
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||878603
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||878629
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||879056
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||879072
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||879080
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||879098
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||879114
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||879205
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||882167
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||882183
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||882191
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||882670
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||882985
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||882993
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||883066
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||883074
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||883082
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||883090
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||883124
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||883140
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||884049
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||885251
+atc|B03AB09|ferric proteinsuccinylate|WHO Collaborating Centre for Drug Statistics Methodology||889931
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||893552
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||893644
+atc|B01AA03|Warfarin|WHO Collaborating Centre for Drug Statistics Methodology||893651
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||897710
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||897934
+atc|B01AX05|Fondaparinux|WHO Collaborating Centre for Drug Statistics Methodology||897983
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||912535
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||916148
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||916155
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||917419
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||917427
+atc|B03BA04|cobamamide|WHO Collaborating Centre for Drug Statistics Methodology||928796
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||928812
+atc|B03BA04|cobamamide|WHO Collaborating Centre for Drug Statistics Methodology||929612
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||936526
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||936534
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||939579
+atc|B03BB01|folic acid|WHO Collaborating Centre for Drug Statistics Methodology||941401
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||946897
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||946913
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||949438
+atc|B01AB11|Bemiparin|WHO Collaborating Centre for Drug Statistics Methodology||957902
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||961011
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||991927
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||991935
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||991950
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||992370
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||992388
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||993642
+atc|B01AB04|Dalteparin|WHO Collaborating Centre for Drug Statistics Methodology||993659
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||995860
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||995878
+atc|B01AB05|Enoxaparin|WHO Collaborating Centre for Drug Statistics Methodology||995944
+atc|B03AA10|ferrous ascorbate|WHO Collaborating Centre for Drug Statistics Methodology||996058
+atc|B01AC06|Acetylsalicylic acid|WHO Collaborating Centre for Drug Statistics Methodology||996306
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||998682
+atc|B01AA07|Acenocumarol|WHO Collaborating Centre for Drug Statistics Methodology||999565
+atc|B01AC05|Ticlopidine|WHO Collaborating Centre for Drug Statistics Methodology||999703
+atc|B01AF04|Edoxaban|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA02|ferrous fumarate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA04|ferrous carbonate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA05|ferrous chloride|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA06|ferrous succinate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA08|ferrous tartrate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA09|ferrous aspartate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA11|ferrous iodine|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AA12|ferrous sodium citrate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AB01|ferric sodium citrate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AB03|sodium feredetate|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AB04|ferric hydroxide|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AB05|ferric oxide polymaltose complexes|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AB07|chondroitin sulfate-iron complex|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AB08|ferric acetyl transferrin|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AD01|ferrous amino acid complex and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AD04|ferric oxide polymaltose complexes and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AE01|iron, vitamin B12 and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AE02|iron, multivitamins and folic acid|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03AE04|iron, multivitamins and minerals|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03BA02|cyanocobalamin tannin complex|WHO Collaborating Centre for Drug Statistics Methodology||
+atc|B03BA53|hydroxocobalamin, combinations|WHO Collaborating Centre for Drug Statistics Methodology||

@@ -1,0 +1,15 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "end_prescription_dt > start_prescription_dt",
+      "name": "end_prescription_dt",
+      "description": "Rule for column end_prescription_dt"
+    },
+    {
+      "expression": "last_dispensation_dt > start_prescription_dt",
+      "name": "last_dispensation_dt",
+      "description": "Rule for column last_dispensation_dt"
+    }
+  ]
+}
