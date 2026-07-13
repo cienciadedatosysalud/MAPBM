@@ -1,0 +1,10 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "technique_cd = 'teg' OR technique_cd = 'tem' OR technique_cd = 'srm'",
+      "name": "technique_cd",
+      "description": "Rule for column 'technique_cd'"
+    }
+  ]
+}
