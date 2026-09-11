@@ -1,6 +1,9 @@
 FROM ghcr.io/cienciadedatosysalud/aspirev2-testing:latest
 ARG pipeline_version="Non-versioned"
 ENV PIPELINE_VERSION=$pipeline_version
+
+ARG github_repo="Non-versioned"
+ENV GITHUB_REPO=$github_repo
  
 #########################################################
 # Dependency management: Installing system libraries    #
