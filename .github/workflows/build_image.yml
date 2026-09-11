@@ -42,3 +42,4 @@ jobs:
           file: ./Dockerfile
           build-args: |
             pipeline_version=${{ env.TAG_NAME }}
+            github_repo=${{ github.repository }}
