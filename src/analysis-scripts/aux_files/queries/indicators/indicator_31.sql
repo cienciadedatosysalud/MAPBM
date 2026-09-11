@@ -33,7 +33,8 @@ select cohort,
     category_cohort,
     month_year,
     round(avg(result_determination_cd::float), 3) as promedio,
-    round(median(result_determination_cd::float), 3) as mediana
+    round(median(result_determination_cd::float), 3) as mediana,
+    count(*) as n_elegibles
 from (
         select a.*,
             b.result_determination_cd

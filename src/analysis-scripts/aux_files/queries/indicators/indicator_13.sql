@@ -1,6 +1,6 @@
 --- Indicadores process preop pillar1 Nº13 indicador
---- num Pacientes tratados preoperatoriamente con hierro IV y/o EPO entre 7 y 90 días antes de la cirugía
---- den Pacientes anémicos en preoperatorio, y tratados preoperatoriamente
+--- num episodios de Pacientes tratados preoperatoriamente con hierro IV y/o EPO entre 7 y 90 días antes de la cirugía
+--- den episodios de Pacientes anémicos en preoperatorio, y tratados preoperatoriamente
 --- % de pacientes con Hb de control  ANEMIC 13
 -------------------------------------------
 with denominador as (
@@ -67,7 +67,8 @@ select cohort,category_cohort,month_year,
     round(
         coalesce(n_unique_episode_hb_control,0) * 100 / n_unique_episode,
         3
-    ) as result
+    ) as result,
+    n_unique_episode as n_elegibles
 from (
         select cohort,
             category_cohort,

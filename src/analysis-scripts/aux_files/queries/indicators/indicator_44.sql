@@ -30,13 +30,18 @@ with denominador as (
         ) b on a.patient_id = b.patient_id
         and a.episode_id = b.episode_id
         and a.start_intervention_dt = b.start_intervention_dt
-)
-select cohort,
+),
+total_pacientes as (
+select cohort, category_cohort,  month_year, count(distinct patient_id) as total_pacientes from denominador group by cohort,
+    category_cohort,
+    month_year)
+select a.*, total_pacientes , round(total_exitus*100.0/total_pacientes) as result, total_pacientes as n_elegibles from (select cohort,
     category_cohort,
     month_year,
-    count(*) as result
+    count(*) as total_exitus
 from denominador
 where discharge_type_cd = '4'
 group by cohort,
     category_cohort,
-    month_year;
+    month_year) a left join total_pacientes b 
+on a.cohort =b.cohort  and a.category_cohort =b.category_cohort  and a.month_year = b.month_year 

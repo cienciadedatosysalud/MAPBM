@@ -1,4 +1,4 @@
-FROM ghcr.io/cienciadedatosysalud/aspire:latest
+FROM ghcr.io/cienciadedatosysalud/aspirev2-testing:latest
 ARG pipeline_version="Non-versioned"
 ENV PIPELINE_VERSION=$pipeline_version
  
@@ -53,12 +53,9 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER . /home/$MAMBA_USER/projects/your_project
 # Customization: Add logo      #
 ################################
  
-COPY --chown=$MAMBA_USER:$MAMBA_USER main_logo.png /temp/main_logo.png
-RUN cp /temp/main_logo.png $(find front -name main_logo**)
-  
-ENV APP_PORT=3000
-ENV APP_HOST=0.0.0.0
-EXPOSE 3000
+COPY --chown=$MAMBA_USER:$MAMBA_USER main_logo.png /tmp/main_logo.png
+#RUN cp /tmp/main_logo.png $(find front -name main_logo**)
+RUN cp -f /tmp/main_logo.png $(find /var/www/html/ -type f -name "main_logo*" | head -n 1)  
  
 WORKDIR /home/$MAMBA_USER
  

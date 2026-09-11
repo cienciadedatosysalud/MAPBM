@@ -66,7 +66,8 @@ numerador as (
 )
 select a.*,
     n_episodios,
-    round(n_episodios_transf * 100 / n_episodios, 3) as result
+    round(n_episodios_transf * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from numerador a
     left join (
         select cohort,

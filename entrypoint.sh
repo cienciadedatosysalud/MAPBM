@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -e
+
+nginx
+
+exec python /home/$MAMBA_USER/main.py
  
-python3 /home/$MAMBA_USER/main.py

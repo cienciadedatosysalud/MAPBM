@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 Nº18 indicador Pillar3
---- % de pacientes no transfundidos con plaquetas en preoperatorio
+--- % de episodios pacientes no transfundidos con plaquetas en preoperatorio
 -------------------------------------------
 with transfusions as (
     select *
@@ -39,7 +39,8 @@ select
     100 - round(
         coalesce(n_unique_episode_transfusion,0) * 100 / n_unique_episode,
         3
-    ) as result
+    ) as result,
+    n_unique_episode as n_elegibles
 from (
         select cohort,
             category_cohort,

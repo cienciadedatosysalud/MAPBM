@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 indicador 7
---- % de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro anemic 13
+--- % de episodios anémicos en preoperatorio con estudio del metabolismo del hierro anemic 13
 -------------------------------------------
 select cohort,category_cohort,month_year,
 	coalesce(n_pacientes_ferr,0) as n_pacientes_ferr,
@@ -7,7 +7,8 @@ select cohort,category_cohort,month_year,
     n_pacientes,
     n_unique_episode,
     round(coalesce(n_pacientes_ferr,0) * 100 / n_pacientes, 3) as result_patient,
-    round(coalesce(n_unique_episode_ferr,0) * 100 / n_unique_episode, 3) as result
+    round(coalesce(n_unique_episode_ferr,0) * 100 / n_unique_episode, 3) as result,
+    n_unique_episode as n_elegibles
 from (
         select cohort,
             category_cohort,

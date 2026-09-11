@@ -48,7 +48,8 @@ denominador as (
 )
 select a.*,
     n_episodios_inter,
-    round(n_bolsas / n_episodios_inter, 3) as result
+    round(n_bolsas / n_episodios_inter, 3) as result,
+    n_episodios_inter as n_elegibles
 from (
         select transftype_st,
             cohort,

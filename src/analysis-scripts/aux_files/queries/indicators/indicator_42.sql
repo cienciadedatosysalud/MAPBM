@@ -39,7 +39,8 @@ select cohort,
     round(
         median(epoch(discharge_dt - admission_dt) / 86400.0),
         3
-    ) as mediana
+    ) as mediana,
+    count(*) as n_elegibles
 from denominador
 group by cohort,
     category_cohort,

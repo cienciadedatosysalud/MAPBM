@@ -12,7 +12,8 @@ select cohort,
     ) as promedio,
     median(
         epoch(a.start_intervention_dt - admission_dt) / 86400.0
-    ) as mediana
+    ) as mediana,
+    count(*) as n_elegibles
 from (
         select patient_id,
             episode_id,

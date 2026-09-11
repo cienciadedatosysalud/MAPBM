@@ -14,7 +14,7 @@ with transfusiones as (
                 ) as transf_dt_posterior,
                 case
                     when  epoch(transf_dt - transf_dt_anterior) / 86400.0 < 1 then true
-                    when epoch(transf_dt_posterior - transf_dt) / 86400.0  then true
+                    when epoch(transf_dt_posterior - transf_dt) / 86400.0 < 1 then true
                     when transf_dt_anterior is null then false
                     else false
                 end as transfusion_in_less24h
@@ -90,9 +90,10 @@ select cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where bolsas_periodo_1dia = 0
-    ) as n_pacientes_1_bolsa,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
-    round(n_pacientes_1_bolsa * 100 / n_pacientes, 3) as result
+    ) as n_episodios_1_bolsa,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_1_bolsa * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from denominador_transfundidos_hematies
 group by cohort,
     category_cohort,

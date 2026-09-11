@@ -11,7 +11,8 @@ select cohort,
     count(*) filter(
         where anemic_13
     ) as n_episodios_l13,
-    count(*) as n_episodios
+    count(*) as n_episodios,
+    count(*) as n_elegibles
 from cirugia_programada_cohort
 group by cohort,
     category_cohort,
@@ -25,7 +26,8 @@ select cohort,
     count(*) filter(
         where anemic_13
     ) as n_episodios_l13,
-    count(*) as n_episodios
+    count(*) as n_episodios,
+    count(*) as n_elegibles
 from cirugia_oncologica_cohort
 group by cohort,
     category_cohort,
@@ -39,7 +41,8 @@ select cohort,
     count(*) filter(
         where anemic_13
     ) as n_episodios_l13,
-    count(*) as n_episodios
+    count(*) as n_episodios,
+    count(*) as n_elegibles
 from (
         select row_number() over(
                 partition by patient_id,
@@ -79,7 +82,8 @@ select cohort,
     count(*) filter(
         where anemic_13
     ) as n_episodios_l13,
-    count(*) as n_episodios
+    count(*) as n_episodios,
+    count(*) as n_elegibles
 from (
         select row_number() over(
                 partition by patient_id,

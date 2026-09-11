@@ -1,17 +1,18 @@
 --- Indicadores process preop pillar1 Nº20 indicador Pillar3
---- % de pacientes intervenidos en <48 h desde la admisión
+--- % de episodios de  pacientes intervenidos en <48 h desde la admisión
 -------------------------------------------
 select cohort,
     category_cohort,
     month_year,
-    count(*) filter(
+    count(distinct patient_id||'_'||episode_id) filter(
         where diff < 2
-    ) as n_pacientes_intervention_l48h,
-    count(*) as n_pacientes,
+    ) as n_episodios_intervention_l48h,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
     round(
-        n_pacientes_intervention_l48h * 100 / n_pacientes,
+        n_episodios_intervention_l48h * 100 / n_episodios,
         3
-    ) as result
+    ) as result,
+    n_episodios as n_elegibles
 from (
         select *,
             epoch(a.start_intervention_dt - admission_dt) / 86400.0 as diff

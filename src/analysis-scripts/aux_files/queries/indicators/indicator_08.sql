@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 indicador 8
---- % de pacientes anémicos con determinación de concentración Hb reticulocitaria  anemic oms 
+--- % de episodios pacientes anémicos con determinación de concentración Hb reticulocitaria  anemic oms 
 -------------------------------------------
 select cohort,category_cohort,month_year,
 	coalesce(n_pacientes_ret_he,0) as n_pacientes_ret_he,
@@ -10,7 +10,8 @@ select cohort,category_cohort,month_year,
     round(
         coalesce(n_unique_episode_ret_he,0) * 100 / n_unique_episode,
         3
-    ) as result
+    ) as result,
+    n_unique_episode as n_elegibles
 from (
         select cohort,
             category_cohort,

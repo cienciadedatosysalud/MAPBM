@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 22 indicador Pillar3
----  % de pacientes intervenidos sin anemia  Hb>=13 
+---  % de episodios de pacientes intervenidos sin anemia  Hb>=13 
 -------------------------------------------
 ----
 select cohort,
@@ -7,16 +7,17 @@ select cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where not anemic_oms
-    ) as n_pacientes_not_anemic_oms,
+    ) as n_episodios_not_anemic_oms,
     count(distinct patient_id||'_'||episode_id) filter(
         where not anemic_13
-    ) as n_pacientes_not_anemic_13,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
+    ) as n_episodios_not_anemic_13,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
     round(
-        n_pacientes_not_anemic_oms * 100 / n_pacientes,
+        n_episodios_not_anemic_oms * 100 / n_episodios,
         3
-    ) as perc_pacientes_not_anemic_oms,
-    round(n_pacientes_not_anemic_13 * 100 / n_pacientes, 3) as result
+    ) as perc_episodios_not_anemic_oms,
+    round(n_episodios_not_anemic_13 * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from (
         select *,
             case
@@ -68,16 +69,17 @@ select cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where not anemic_oms
-    ) as n_pacientes_not_anemic_oms,
+    ) as n_episodios_not_anemic_oms,
     count(distinct patient_id||'_'||episode_id) filter(
         where not anemic_13
-    ) as n_pacientes_not_anemic_13,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
+    ) as n_episodios_not_anemic_13,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
     round(
-        n_pacientes_not_anemic_oms * 100 / n_pacientes,
+        n_episodios_not_anemic_oms * 100 / n_episodios,
         3
-    ) as perc_pacientes_not_anemic_oms,
-    round(n_pacientes_not_anemic_13 * 100 / n_pacientes, 3) as perc_pacientes_not_anemic_13
+    ) as perc_episodios_not_anemic_oms,
+    round(n_episodios_not_anemic_13 * 100 / n_episodios, 3) as perc_episodios_not_anemic_13,
+    n_episodios as n_elegibles
 from (
         select *,
             case
@@ -130,16 +132,17 @@ select cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where not anemic_oms
-    ) as n_pacientes_not_anemic_oms,
+    ) as n_episodios_not_anemic_oms,
     count(distinct patient_id||'_'||episode_id) filter(
         where not anemic_13
-    ) as n_pacientes_not_anemic_13,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
+    ) as n_episodios_not_anemic_13,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
     round(
-        n_pacientes_not_anemic_oms * 100 / n_pacientes,
+        n_episodios_not_anemic_oms * 100 / n_episodios,
         3
-    ) as perc_pacientes_not_anemic_oms,
-    round(n_pacientes_not_anemic_13 * 100 / n_pacientes, 3) as perc_pacientes_not_anemic_13
+    ) as perc_episodios_not_anemic_oms,
+    round(n_episodios_not_anemic_13 * 100 / n_episodios, 3) as perc_episodios_not_anemic_13,
+    n_episodios as n_elegibles
 from (
         select *,
             case
@@ -185,3 +188,4 @@ from (
 group by cohort,
     category_cohort,
     month_year;
+    

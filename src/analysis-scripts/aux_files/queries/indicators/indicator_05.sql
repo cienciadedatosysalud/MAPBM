@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 indicador 5
---- % de pacientes con evaluación de la anemia preoperatoria con tiempo suficiente
+--- % de episodios con evaluación de la anemia preoperatoria con tiempo suficiente
 -------------------------------------------
 select cohort,category_cohort,month_year,
 	coalesce(n_patients,0) as n_patients,
@@ -7,7 +7,8 @@ select cohort,category_cohort,month_year,
     n_patients_total,
     n_episode_total,
     round(coalesce(n_patients,0) * 100 / n_patients_total, 3) as result_patient,
-    round(coalesce(n_unique_episode,0)  * 100 / n_episode_total, 3) as result
+    round(coalesce(n_unique_episode,0)  * 100 / n_episode_total, 3) as result,
+    n_episode_total as n_elegibles
 from (
         select cohort,
             category_cohort,

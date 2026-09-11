@@ -1,6 +1,6 @@
 --- Indicadores process preop pillar1 Nº10 indicador
---- num Pacientes tratados preoperatoriamente con hierro IV y/o EPO entre 7 y 90 días antes de la cirugía
---- % de pacientes anémicos tratados preoperatoriamente con tiempo suficiente anemic oms
+--- num episodios de Pacientes tratados preoperatoriamente con hierro IV y/o EPO entre 7 y 90 días antes de la cirugía
+--- % de episodios de pacientes anémicos tratados preoperatoriamente con tiempo suficiente anemic oms
 -- B03AC
 -- B03XA01
 -- B03XA02
@@ -15,7 +15,8 @@ select cohort,category_cohort,month_year,
     round(
         coalesce(n_unique_episode_iv_epo,0) * 100 / n_unique_episode,
         3
-    ) as result
+    ) as result,
+    n_unique_episode as n_elegibles
 from (
         select cohort,
             category_cohort,

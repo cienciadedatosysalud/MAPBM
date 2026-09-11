@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 Nº30 indicador Pillar3
---- % de pacientes transfundidos con Hb < 8 g/dl
+--- % de episodios pacientes transfundidos con Hb < 8 g/dl
 with denominador as (
     select a.*,
         discharge_dt,
@@ -34,9 +34,10 @@ select cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where hb_l8
-    ) as n_pacientes_trans_l8,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
-    round(n_pacientes_trans_l8 * 100 / n_pacientes, 3) as result
+    ) as n_episodios_trans_l8,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_trans_l8 * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from (
         select a.*,
             hb_l8
