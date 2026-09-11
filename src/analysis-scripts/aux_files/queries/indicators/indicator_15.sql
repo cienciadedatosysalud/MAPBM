@@ -146,7 +146,8 @@ select cohort,
     ) as promedio,
     median(
         result_determination_pre_intervencion::FLOAT - result_determination_pre_tratamiento::FLOAT
-    ) as mediana
+    ) as mediana,
+    COUNT(*) as n_elegibles
 from (
         select *
         from hb_pre_tratamiento a

@@ -1,7 +1,7 @@
 --- Indicadores process preop pillar1 Nº14 indicador
---- num Pacientes tratados preoperatoriamente con hierro IV y/o EPO entre 7 y 90 días antes de la cirugía
---- den Pacientes anémicos en preoperatorio, y tratados preoperatoriamente
---- % de pacientes tratados preoperatoriamente con un incremento de Hb de +1 pto  ANEMIC 13
+--- num episodios de Pacientes tratados preoperatoriamente con hierro IV y/o EPO entre 7 y 90 días antes de la cirugía
+--- den episodios de Pacientes anémicos en preoperatorio, y tratados preoperatoriamente
+--- % de episodios de pacientes tratados preoperatoriamente con un incremento de Hb de +1 pto  ANEMIC 13
 -------------------------------------------
 with denominador as (
     select *
@@ -169,7 +169,8 @@ select cohort,
     round(
         coalesce(n_unique_episode_hb, 0) * 100 / n_unique_episode,
         3
-    ) as result
+    ) as result,
+    n_unique_episode as n_elegibles
 from numerador a
     full outer join (
         select cohort,

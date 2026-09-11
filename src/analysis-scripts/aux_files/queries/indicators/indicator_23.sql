@@ -1,11 +1,12 @@
 --- Indicadores process preop pillar1 Nº23 indicador Pillar3
----  Valor  de Hb previo a la intervención
+---  Valor de Hb previo a la intervención
 -------------------------------------------
 select cohort,
     category_cohort,
     month_year,
     round(avg(result_determination_cd::FLOAT), 3) as promedio,
-    round(median(result_determination_cd::FLOAT), 3) as mediana
+    round(median(result_determination_cd::FLOAT), 3) as mediana,
+    count(*) as n_elegibles
 from (
         select *,
             case
@@ -43,7 +44,7 @@ from (
                             month_year
                         from cirugia_programada_cohort
                     ) b on a.patient_id = b.patient_id
-                    and a.result_determination_dt between start_intervention_dt - interval 90 DAY  and start_intervention_dt
+                    and a.result_determination_dt between start_intervention_dt - interval 90 DAY and start_intervention_dt
                 where b.patient_id is not null
             )
         where rk = 1
@@ -56,7 +57,8 @@ select cohort,
     category_cohort,
     month_year,
     round(avg(result_determination_cd::FLOAT), 3) as promedio_hb,
-    round(median(result_determination_cd::FLOAT), 3) as median_hb
+    round(median(result_determination_cd::FLOAT), 3) as median_hb,
+    count(*) as n_elegibles
 from (
         select *,
             case
@@ -107,7 +109,8 @@ select cohort,
     category_cohort,
     month_year,
     round(avg(result_determination_cd::FLOAT), 3) as promedio_hb,
-    round(median(result_determination_cd::FLOAT), 3) as median_hb
+    round(median(result_determination_cd::FLOAT), 3) as median_hb,
+    count(*) as n_elegibles
 from (
         select *,
             case
@@ -152,4 +155,5 @@ from (
     )
 group by cohort,
     category_cohort,
-    month_year
+    month_year;
+    

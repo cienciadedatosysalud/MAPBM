@@ -1,13 +1,14 @@
 --- Indicadores process preop pillar1 Nº26 indicador Pillar2
---- % de pacientes tratados con antifibrinolíticos
+--- % de episodios de pacientes tratados con antifibrinolíticos
 select a.cohort,
     a.category_cohort,
     a.month_year,
     count(distinct a.patient_id||'_'||episode_id) filter(
         where b.patient_id is not null
-    ) as n_pacientes_antifrib,
-    count(distinct a.patient_id||'_'||episode_id) as n_pacientes,
-    round(n_pacientes_antifrib * 100 / n_pacientes, 2) as result
+    ) as n_episodios_antifrib,
+    count(distinct a.patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_antifrib * 100 / n_episodios, 2) as result,
+    n_episodios as n_elegibles
 from (
         select a.patient_id,
             a.episode_id,

@@ -1,4 +1,4 @@
-create or replace table cirugia_programada_cohort as
+create or replace table cirugia_programada_cohort_year as
 select patient_id || '_' || episode_id as id_paciente_episodio,
     patient_id,
     result_determination_cd,

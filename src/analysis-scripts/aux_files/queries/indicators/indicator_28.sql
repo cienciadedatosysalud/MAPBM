@@ -1,39 +1,54 @@
---- Indicadores process preop pillar1 Nº29 indicador Pillar2
---- idem para todos, con y sin valor de conc.fibrin.
+--- Indicadores process preop pillar1 Nº28 indicador Pillar2
+
 with denominador as (
-    select a.*,
-        discharge_dt,
-        admission_dt
-    from (
-            select *
-            from cirugia_programada_cohort a
-            union all
-            select *
-            from cirugia_oncologica_cohort a
-            union all
-            select *
-            from cirugia_urgente_cohort a
+	SELECT *
+FROM (
+    SELECT 
+        q.*,
+        ROW_NUMBER() OVER(PARTITION BY q.patient_id ORDER BY q.fib_result_determination_cd ASC) as rn
+    FROM (
+        SELECT a.*,
+               b.fib_result_determination_cd,
+               b.fib_result_determination_dt
+        FROM (
+            SELECT a.*,
+                   discharge_dt,
+                   admission_dt
+            FROM (
+                SELECT * FROM cirugia_programada_cohort a
+                UNION ALL
+                SELECT * FROM cirugia_oncologica_cohort a
+                UNION ALL
+                SELECT * FROM cirugia_urgente_cohort a
+            ) a
+            LEFT JOIN (
+                SELECT patient_id, episode_id, discharge_dt, start_intervention_dt, admission_dt, cohort
+                FROM episode_view
+            ) b ON a.patient_id = b.patient_id
+                AND a.episode_id = b.episode_id
+                AND a.start_intervention_dt = b.start_intervention_dt
         ) a
-        left join (
-            select patient_id,
-                episode_id,
-                discharge_dt,
-                start_intervention_dt,
-                admission_dt,
-                cohort
-            from episode_view
-        ) b on a.patient_id = b.patient_id
-        and a.episode_id = b.episode_id
-        and a.start_intervention_dt = b.start_intervention_dt
+        JOIN (
+            SELECT patient_id, 
+                   result_determination_cd as fib_result_determination_cd, 
+                   result_determination_dt as fib_result_determination_dt 
+            FROM lab 
+            WHERE determination_cd ='fib' AND result_determination_cd < 2
+        ) b ON a.patient_id = b.patient_id  
+            AND b.fib_result_determination_dt BETWEEN a.admission_dt AND a.discharge_dt
+    ) q
+) final_table
+WHERE rn = 1
 )
 select cohort,
     category_cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where fib_bl
-    ) as n_pacientes_fib,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
-    round(n_pacientes_fib * 100 / n_pacientes, 3) as result
+    ) as n_episodios_fib,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_fib * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from (
         select a.*,
             case

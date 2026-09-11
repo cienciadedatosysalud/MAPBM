@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 Nº25 indicador Pillar2
---- % de pacientes con anestesia regional
+--- % de episodios de pacientes con anestesia regional
 with denominador as (
     select a.*,
         discharge_dt,
@@ -34,9 +34,10 @@ select cohort,
     month_year,
     count(distinct patient_id||'_'||episode_id) filter(
         where anesth_cd = '2'
-    ) as n_pacientes_anes_reg,
-    count(distinct patient_id||'_'||episode_id) as n_pacientes,
-    round(n_pacientes_anes_reg * 100 / n_pacientes, 3) as result
+    ) as n_episodios_anes_reg,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_anes_reg * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from denominador
 group by cohort,
     category_cohort,

@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 Nº16 indicador Pillar3
---- % de pacientes no transfundidos con hematíes en preoperatorio
+--- % de episodios de pacientes no transfundidos con hematíes en preoperatorio
 -------------------------------------------
 with transfusions as (
     select *
@@ -36,7 +36,8 @@ select cohort,category_cohort,month_year,
     100 - round(
         coalesce(n_unique_episode_transfusion,0) * 100 / n_unique_episode,
         3
-    ) as result
+    ) as result,
+    n_unique_episode as n_elegibles
 from (
         select cohort,
             category_cohort,

@@ -28,11 +28,16 @@ with denominador as (
         ) b on a.patient_id = b.patient_id
         and a.episode_id = b.episode_id
         and a.start_intervention_dt = b.start_intervention_dt
-)
-select cohort,
+),
+total_episodes as (
+select cohort, category_cohort,  month_year, count(distinct patient_id) as total_pacientes from denominador group by cohort,
+    category_cohort,
+    month_year)
+select a.*, total_pacientes, round(total_reingresos*100.0/total_pacientes,2) as result,
+    total_pacientes as n_elegibles from (select cohort,
     category_cohort,
     month_year,
-    count(*) as result
+    count(distinct patient_id) as total_reingresos
 from (
         select *,
             date_trunc('month', a.start_intervention_dt) as month_year,
@@ -56,4 +61,6 @@ from (
 where reingreso_bl
 group by cohort,
     category_cohort,
-    month_year;
+    month_year
+) a left join total_episodes b  
+on a.cohort =b.cohort  and a.category_cohort =b.category_cohort  and a.month_year = b.month_year 

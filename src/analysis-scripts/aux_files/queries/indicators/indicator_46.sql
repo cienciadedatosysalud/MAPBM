@@ -170,7 +170,7 @@ select cohort,
     ) as "Infección de origen desconocido",
     count(distinct patient_id||'_'||episode_id) filter (
         where utic_bl
-    ) as "Infección del tracto urinario",
+    ) as "Infección del tracto urinario"
     from episode_with_complicaciones
 group by cohort,
             category_cohort,

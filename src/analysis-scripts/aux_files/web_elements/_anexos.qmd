@@ -1,0 +1,366 @@
+```{r, output=FALSE}
+# =========================================================================
+# ANEXOS: Lectura e integración de todos los CSV de indicadores
+# =========================================================================
+
+# Mapeo de nombres limpios para la tabla
+cohort_names <- c(
+  "prod" = "Artroplastia Rodilla",
+  "pcad" = "Artroplastia Cadera",
+  "ncrl" = "Colorectal laparoscópica",
+  "ncra" = "Colorectal abierta",
+  "ffem" = "Fractura de fémur",
+  "hist_onco" = "Hist. oncológica",
+  "hist_no_onco" = "Hist. no oncológica",
+  "icv" = "Valvular cardiaca",
+  "cist_radical" = "Cistectomía radical",
+  "hdig" = "Hemorragia digestiva"
+)
+
+df_detalle <- data.frame()
+
+# Bucle para leer y agrupar todos los CSV exportados previamente
+for (c_code in names(cohort_names)) {
+  file_path <- paste0('../../outputs/tabla_indicadores_agregado_anual_', c_code, '.csv')
+  
+  if (file.exists(file_path)) {
+    # Leer el CSV (tenemos en cuenta que el delimitador usado era el pipe '|')
+    temp_df <- tryCatch(read.csv(file_path, sep = '|', stringsAsFactors = FALSE), error=function(e) NULL)
+    
+    if (!is.null(temp_df) && nrow(temp_df) > 0) {
+      # Añadir la columna con el nombre bonito del procedimiento
+      temp_df$Procedimiento <- cohort_names[c_code]
+      df_detalle <- rbind(df_detalle, temp_df)
+    }
+  }
+}
+
+# Limpiar las columnas del dataframe para la tabla final
+if (nrow(df_detalle) > 0) {
+  df_detalle <- df_detalle %>%
+    dplyr::select(
+      Procedimiento,
+      Año = year,
+      Indicador = descrip,
+      Resultado = result
+    )
+}
+```
+
+
+```{=html}
+<section id="tabla-detalle" class="section">
+  <div class="panel" style="padding:22px">
+    <h2>Tabla detalle indicadores</h2>
+    <div class="muted">Tabla detalle interactiva para exploración manual de todos los procedimientos.</div>
+    <div style="margin-top:16px;">
+```
+```{r}
+#| echo: false
+#| message: false
+if(nrow(df_detalle) > 0) {
+  df_detalle %>% 
+    gt() %>%
+    cols_label(
+      Procedimiento = "Procedimiento", 
+      Año = "Año",
+      Indicador = "Indicador", 
+      Resultado = "Resultado"
+    ) %>%
+    cols_align(align = "left", columns = c("Procedimiento", "Indicador")) %>%
+    cols_align(align = "center", columns = c("Año", "Resultado")) %>%
+    opt_interactive(use_filters = TRUE, use_compact_mode = TRUE, use_resizers = TRUE)
+} else {
+  cat("<p>No hay datos disponibles.</p>\n")
+}
+```
+
+
+```{=html}
+</div> 
+  </div> 
+</section> 
+<section id="actividad" class="section">
+
+```{r, echo=FALSE, results='asis'}
+
+cat(render_global_activity(cohort_names))
+```
+
+<section id="notas-tecnicas" class="section">
+  <div class="panel" style="padding:22px">
+    <h2>Notas técnicas</h2>
+    <div class="notes-list" style="margin-top:16px">
+
+        <details open>
+            <summary>Evaluación de la anemia preoperatoria con tiempo suficiente</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios con evaluación de la anemia preoperatoria con tiempo suficiente.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios con al menos una determinación de Hb en la ventana preoperatoria válida.</p>
+        </details>
+
+        <details>
+            <summary>Estudio del metabolismo del hierro</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro.<br>
+            <strong>Denominador:</strong> episodios con anemia preoperatoria.<br>
+            <strong>Numerador:</strong> episodios con ferritina u otra prueba de metabolismo del hierro en ventana válida.</p>
+        </details>
+
+        <details>
+            <summary>Estudio del metabolismo del hierro (Hb&lt;13)</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos (Hb&lt;13) en preoperatorio con estudio del metabolismo del hierro.<br>
+            <strong>Denominador:</strong> episodios con anemia (Hb&lt;13) preoperatoria.<br>
+            <strong>Numerador:</strong> episodios con ferritina u otra prueba de metabolismo del hierro en ventana válida.</p>
+        </details>
+
+        <details>
+            <summary>Determinación de Hb reticulocitaria</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos en preoperatorio con determinación de hemoglobina reticulocitaria.<br>
+            <strong>Denominador:</strong> episodios con anemia preoperatoria.<br>
+            <strong>Numerador:</strong> episodios con determinación de hemoglobina reticulocitaria en ventana válida.</p>
+        </details>
+
+        <details>
+            <summary>Determinación de Hb reticulocitaria (Hb&lt;13)</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos (Hb&lt;13) en preoperatorio con determinación de hemoglobina reticulocitaria.<br>
+            <strong>Denominador:</strong> episodios con anemia (Hb&lt;13) preoperatoria.<br>
+            <strong>Numerador:</strong> episodios con determinación de hemoglobina reticulocitaria en ventana válida.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento preoperatorio anemia</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos tratados preoperatoriamente con tiempo suficiente.<br>
+            <strong>Denominador:</strong> episodios con anemia preoperatoria.<br>
+            <strong>Numerador:</strong> episodios tratados con hierro IV y/o EPO dentro de la ventana definida.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento preoperatorio anemia (Hb&lt;13)</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos (Hb&lt;13) tratados preoperatoriamente con tiempo suficiente.<br>
+            <strong>Denominador:</strong> episodios de pacientes con anemia (Hb&lt;13) preoperatoria.<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana definida.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento preoperatorio (todos, anémicos y no anémicos)</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios pacientes (todos) tratados preoperatoriamente con tiempo suficiente.<br>
+            <strong>Denominador:</strong> todos los episodios de pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana definida.</p>
+        </details>
+
+        <details>
+            <summary>Hb de control</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes con Hb de control.<br>
+            <strong>Denominador:</strong> episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente.<br>
+            <strong>Numerador:</strong> episodios de pacientes con al menos una determinación de Hb entre el tratamiento y la cirugía.</p>
+        </details>
+
+        <details>
+            <summary>Tratados preoperatoriamente con un incremento de Hb de +1 pto</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes con Hb de control.<br>
+            <strong>Denominador:</strong> episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente.<br>
+            <strong>Numerador:</strong> episodios de pacientes con un incremento de Hb de +1 pto, hb previa al tratamiento y hb más cercana a la cirugía.</p>
+        </details>
+
+        <details>
+            <summary>Incremento de Hb post tratamiento preoperatorio</summary>
+            <p><strong>Descripción:</strong> Promedio del incremento de Hb post tratamiento preoperatorio.<br>
+            <strong>Elegibles:</strong> episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente.</p>
+        </details>
+
+
+        <details>
+            <summary>Días de estancia preoperatoria</summary>
+            <p><strong>Descripción:</strong> Promedio de la duración de estancia preoperatoria.<br>
+            <strong>Elegibles:</strong> todos los episodios elegibles del procedimiento.</p>
+        </details>
+
+        <details>
+            <summary>Episodios de pacientes intervenidos en &lt;48 h desde la admisión</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes intervenidos en &lt;48 h desde la admisión.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes intervenidos en &lt;48 h desde la admisión.</p>
+        </details>
+
+        <details>
+            <summary>Episodios de pacientes intervenidos sin anemia</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes intervenidos sin anemia.<br>
+            <strong>Denominador:</strong> episodios de pacientes con Hb previa a la intervención disponible.<br>
+            <strong>Numerador:</strong> episodios de pacientes sin anemia en el momento de la cirugía.</p>
+        </details>
+
+        <details>
+            <summary>Episodios de pacientes intervenidos sin anemia (Hb&gt;=13)</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes que llegan a la intervención con un nivel óptimo de Hb ≥ 13 g/dL.<br>
+            <strong>Denominador:</strong> episodios de pacientes con Hb previa a la intervención disponible.<br>
+            <strong>Numerador:</strong> episodios de pacientes sin anemia en el momento de la cirugía con nivel de Hb≥13.</p>
+        </details>
+
+        <details>
+            <summary>Valor de Hb previo a la intervención</summary>
+            <p><strong>Descripción:</strong> Promedio del valor Hb previo a la intervención.<br>
+            <strong>Elegibles:</strong> episodios de pacientes con Hb previa a la intervención disponible.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento postop. con hierro IV</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados postoperatoriamente con hierro intravenoso durante la estancia hospitalaria.<br>
+            <strong>Denominador:</strong> episodios de pacientes anémicos en postoperatorio.<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con hierro intravenoso durante la estancia hospitalaria.</p>
+        </details>
+
+        <details>
+            <summary>Episodios de pacientes con anestesia regional</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes con anestesia regional.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes con anestesia regional.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento con antifibrinolíticos</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con antifibrinolíticos.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con antifibrinolíticos.</p>
+        </details>
+
+        <details>
+            <summary>Episodios de pacientes con uso de recuperadores de sangre</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con uso de recuperadores de sangre.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes con uso de recuperadores de sangre.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento con fibrinógeno</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con fibrinógeno durante el ingreso.<br>
+            <strong>Denominador:</strong> Episodios de pacientes con valor de concentración de fibrinógeno &lt; 2 g/L durante el ingreso (el valor más bajo entre los disponibles).<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con fibrinógeno durante el ingreso.</p>
+        </details>
+
+        <details>
+            <summary>Tratamiento con fibrinógeno (para todos, con y sin valor de conc.fibrin.)</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con fibrinógeno (para todos, con y sin valor de conc.fibrin.) durante el ingreso.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con fibrinógeno durante el ingreso.</p>
+        </details>
+
+        <details>
+            <summary>No transfundidos con hematíes en preoperatorio</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes no transfundidos con hematíes en preoperatorio.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente.</p>
+        </details>
+
+        <details>
+            <summary>No transfundidos con plasma en preoperatorio</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes no transfundidos con plasma en preoperatorio.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente.</p>
+        </details>
+
+        <details>
+            <summary>No transfundidos con plaquetas en preoperatorio</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes no transfundidos con plaquetas en preoperatorio.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente.</p>
+        </details>
+        
+        <details>
+            <summary>Episodios de pacientes transfundidos con Hb&lt;8</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes transfundidos con Hb&lt;8.<br>
+            <strong>Denominador:</strong> episodios de pacientes transfundidos con una determinación de Hb disponible en las 24 horas previas a la transfusión.<br>
+            <strong>Numerador:</strong> episodios de pacientes transfundidos con Hb&lt;8.</p>
+        </details>
+
+        <details>
+            <summary>Valor de Hb previo a la transfusión</summary>
+            <p><strong>Descripción:</strong> Promedio del valor de Hb previo a la transfusión en pacientes transfundidos con una determinación de Hb disponible en las 24 horas previas a la transfusión.<br>
+            <strong>Elegibles:</strong> episodios de pacientes transfundidos con una determinación de Hb disponible en las 24 horas previas a la transfusión.</p>
+        </details>
+
+        <details>
+            <summary>Transfusiones de una sola unidad de hematíes</summary>
+            <p><strong>Descripción:</strong> Porcentaje de transfusiones de una sola unidad de hematíes.<br>
+            <strong>Denominador:</strong> episodios de pacientes transfundidos.<br>
+            <strong>Numerador:</strong> episodios de pacientes que todos los episodios de transfusión son de una sola unidad de concentrados de hematíes. Un episodio de transfusión se define como la administración de una o más unidades de hematíes en el periodo de 1 día.</p>
+        </details>
+
+        <details>
+            <summary>Tasa de transfusión (hematíes)</summary>
+            <p><strong>Descripción:</strong> Tasa de transfusión (hematíes).<br>
+            <strong>Denominador:</strong> todos los episodios de pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> episodios de pacientes transfundidos con hematíes.</p>
+        </details>
+
+        <details>
+            <summary>Índice de transfusión (hematíes)</summary>
+            <p><strong>Descripción:</strong> Índice de transfusión (hematíes).<br>
+            <strong>Denominador:</strong> episodios de pacientes transfundidos con hematíes.<br>
+            <strong>Numerador:</strong> número de unidades (bolsas) de hematíes transfundidas.</p>
+        </details>
+
+        <details>
+            <summary>Índice total de transfusión (hematíes)</summary>
+            <p><strong>Descripción:</strong> Índice total de transfusión (hematíes).<br>
+            <strong>Denominador:</strong> todos los episodios de pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> número de unidades (bolsas) de hematíes transfundidas.</p>
+        </details>
+
+        <details>
+            <summary>Índice total de transfusión (plaquetas)</summary>
+            <p><strong>Descripción:</strong> Índice total de transfusión (plaquetas).<br>
+            <strong>Denominador:</strong> todos los episodios de pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> número de unidades (bolsas) de plaquetas transfundidas.</p>
+        </details>
+
+        <details>
+            <summary>Índice total de transfusión (plasma)</summary>
+            <p><strong>Descripción:</strong> Índice total de transfusión (plasma).<br>
+            <strong>Denominador:</strong> todos los episodios de pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> número de unidades (bolsas) de plasma transfundidas.</p>
+        </details>
+
+        <details>
+            <summary>Hb alta no transfundidos</summary>
+            <p><strong>Descripción:</strong> Promedio del valor de hemoglobina al alta en pacientes que no han recibido transfusión de hematíes durante el episodio.<br>
+            <strong>Elegibles:</strong> episodios de pacientes que no han recibido transfusión de hematíes durante el episodio.</p>
+        </details>
+
+        <details>
+            <summary>Hb alta transfundidos</summary>
+            <p><strong>Descripción:</strong> Promedio del valor de hemoglobina al alta en pacientes transfundidos con concentrados de hematíes.<br>
+            <strong>Elegibles:</strong> episodios de pacientes que han recibido transfusión de hematíes durante el episodio.</p>
+        </details>
+
+        <details>
+            <summary>Días de estancia hospitalaria</summary>
+            <p><strong>Descripción:</strong> Promedio de la duración de la estancia hospitalaria del episodio índice.<br>
+            <strong>Elegibles:</strong> todos los pacientes elegibles del procedimiento.</p>
+        </details>
+
+        <details>
+            <summary>Reingresos 30 días</summary>
+            <p><strong>Descripción:</strong> Porcentaje de pacientes con al menos un reingreso hospitalario durante los 30 días posteriores al alta.<br>
+            <strong>Denominador:</strong> todos los pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> número de pacientes con al menos un reingreso.<br>
+            <strong>Nota:</strong> En la gráfica se muestra el numerador por mes, es decir, número de pacientes con al menos un reingreso. Se considera reingreso de un paciente si ha tenido otro episodio en menos de 30 días desde el alta y ambos episodios pertenecen al mismo proceso. Si existen varios reingresos consecutivos, sólo se considera el primero por paciente.</p>
+        </details>
+
+        <details>
+            <summary>Mortalidad intra-hospitalaria</summary>
+            <p><strong>Descripción:</strong> Porcentaje de pacientes fallecidos durante el ingreso hospitalario.<br>
+            <strong>Denominador:</strong> todos los pacientes elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> número de pacientes fallecidos durante el ingreso hospitalario.</p>
+        </details>
+
+        <details>
+            <summary>Episodios con complicaciones</summary>
+            <p><strong>Descripción:</strong> Porcentaje de episodios con al menos una complicación.<br>
+            <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
+            <strong>Numerador:</strong> número de episodios con al menos una complicación.</p>
+        </details>
+
+    </div>
+  </div>
+</section>
+```

@@ -1,0 +1,549 @@
+```{r  output=FALSE, include=FALSE}
+# =========================================================================
+# Procesamiento de datos para Artroplastia de Rodilla (prod)
+# =========================================================================
+cohort_ <- 'prod'
+
+data_piramide <- dbGetQuery(con, paste0("select cohort,count(distinct episode_id) as n_episode_id,
+grupo_edad_cd, sex_cd,año_cd
+from(
+select *,year(start_intervention_dt) as año_cd,
+CASE
+		WHEN age_nm >= 0
+		and age_nm <= 4 THEN '00-04 años'
+		WHEN age_nm >= 5
+		and age_nm <= 9 THEN '05-09 años'
+		WHEN age_nm >= 10
+		and age_nm <= 14 THEN '10-14 años'
+		WHEN age_nm >= 15
+		and age_nm <= 19 THEN '15-19 años'
+		WHEN age_nm >= 20
+		and age_nm <= 24 THEN '20-24 años'
+		WHEN age_nm >= 25
+		and age_nm <= 29 THEN '25-29 años'
+		WHEN age_nm >= 30
+		and age_nm <= 34 THEN '30-34 años'
+		WHEN age_nm >= 35
+		and age_nm <= 39 THEN '35-39 años'
+		WHEN age_nm >= 40
+		and age_nm <= 44 THEN '40-44 años'
+		WHEN age_nm >= 45
+		and age_nm <= 49 THEN '45-49 años'
+		WHEN age_nm >= 50
+		and age_nm <= 54 THEN '50-54 años'
+		WHEN age_nm >= 55
+		and age_nm <= 59 THEN '55-59 años'
+		WHEN age_nm >= 60
+		and age_nm <= 64 THEN '60-64 años'
+		WHEN age_nm >= 65
+		and age_nm <= 69 THEN '65-69 años'
+		WHEN age_nm >= 70
+		and age_nm <= 74 THEN '70-74 años'
+		WHEN age_nm >= 75
+		and age_nm <= 79 THEN '75-79 años'
+		WHEN age_nm >= 80
+		and age_nm <= 84 THEN '80-84 años'
+		WHEN age_nm >= 85 THEN '85 años o más'
+		ELSE NULL
+	END as grupo_edad_cd 
+FROM
+    main.cirugia_programada_cohort where age_nm is not null and sex_cd is not null) group by cohort, grupo_edad_cd, sex_cd,año_cd"))
+
+data_ <- data_piramide %>% filter(año_cd %in% max(data_piramide$año_cd)) %>% 
+  filter(cohort %in% cohort_)
+data_$grupo_edad_cd <- as.factor(data_$grupo_edad_cd)
+data_$sex_cd[data_$sex_cd %in% 1] <- 'Hombres'
+data_$sex_cd[data_$sex_cd %in% 2] <- 'Mujeres'
+data_$sex_cd <- factor(data_$sex_cd)
+data_ <- data_[order(data_$grupo_edad_cd),]
+data_ <- data_ %>% mutate(percent = round(100*(n_episode_id/sum(n_episode_id)),1))
+ 
+agecat <- c('00-04 años','05-09 años','10-14 años', '15-19 años', '20-24 años','25-29 años','30-34 años', '35-39 años','40-44 años','45-49 años','50-54 años','55-59 años','60-64 años','65-69 años','70-74 años','75-79 años','80-84 años','85 años o más')
+sex <- c('Hombres','Mujeres')
+df_combinaciones_pira <- expand.grid(
+  grupo_edad_cd = agecat,
+  sex_cd = sex
+)
+df_combinaciones_pira <- left_join(df_combinaciones_pira,data_)
+df_combinaciones_pira$percent[is.na(df_combinaciones_pira$percent)] <- 0
+ 
+data_ <-df_combinaciones_pira 
+data_$año_cd <- max(data_piramide$año_cd)
+
+
+nudge_fun <- function(df){
+  ifelse(df$sex_cd == "Hombres", (sd(df$percent)/3)*-1.5, sd(df$percent)/3+1.5)
+}
+
+p <- data_ %>%
+  mutate(
+    n_episode_id = ifelse(sex_cd=="Hombres", n_episode_id*(-1), n_episode_id*1), 
+    percent = ifelse(sex_cd=="Hombres", percent*(-1), percent*1), 
+    share = paste0(abs(round(percent,1)), "%"),
+    hj = ifelse(sex_cd == "Hombres", 1.1, -0.1)
+  ) %>% 
+  ggplot(aes(x = percent, y=grupo_edad_cd, label = share)) +
+  geom_col(aes(fill=sex_cd)) +
+  geom_text(aes(label = share),
+            position = position_nudge(x = nudge_fun(data_)),
+            size = 4
+  ) +
+  scale_fill_manual(name = "Sexo", values=c("#8f1014","#f1b9bc")) +
+  labs(
+     #title = paste0("Pirámide de edad y sexo de episodios con intervención (",data_$año_cd,")"),
+       x = "", y = "") +
+    scale_x_continuous(
+    "", breaks = scales::pretty_breaks(n = 6),
+    # Small function to rescale y axis
+    labels =  function(br) abs(br),
+    expand = expansion(mult = c(0.25, 0.25))
+  ) +
+      theme(title = element_text(size = 12), plot.title = element_text(hjust = 1.0) , panel.background = element_blank(),axis.line = element_blank(),axis.title = element_text(size = 12),
+        axis.text = element_text(size = 12), legend.position = "bottom", legend.justification = "center",legend.text = element_text(size = 12),
+        axis.ticks = element_blank(),plot.margin = margin(5, 10, 5, 10))
+
+tf <- tempfile(fileext = ".png")
+ggsave(tf, plot = p, width = 5.5, height = 4, dpi = 150)
+p_img_html <- sprintf('<img src="%s" style="width:100%%; max-height:500px; border-radius:4px; object-fit:contain; display:block; margin:0 auto" alt="Pirámide de edad y sexo" />', knitr::image_uri(tf))
+unlink(tf)
+
+# --- CÓDIGO R PARA COMORBILIDADES ---
+
+data_comorbidities <- dbGetQuery(con, paste0("select cohort,año_cd,count(distinct episode_id) as n_episode_id,
+sum(aids_bl::INT) as 'SIDA',
+sum(ami_bl::INT) as 'Infarto agudo miocardio',
+sum(chf_bl::INT) as 'Insuficiencia cardíaca congestiva',
+sum(ckd_bl::INT) as 'Enfermedad renal crónica',
+sum(copd_bl::INT) as 'EPOC',
+sum(ctp_bl::INT) as 'Patología del tejido conectivo',
+sum(cvd_bl::INT) as 'Enfermedad cerebrovascular',
+sum(dementia_bl::INT) as 'Demencia',
+sum(hemiplegia_bl::INT) as 'Hemiplejia',
+sum(leuk_bl::INT) as 'Leucemia',
+sum(lymph_bl::INT) as 'Linfoma',
+sum(mildliver_bl::INT) as 'Enfermedad Hepática Leve',
+sum(mtx_bl::INT) as 'Metástasis',
+sum(orgdiab_bl::INT) as 'DM con lesión orgánica',
+sum(peptic_bl::INT) as 'Enfermedad ulcerosa',
+sum(pvd_bl::INT) as 'Enfermedad vascular periférica',
+sum(severeliver_bl::INT) as 'Enfermedad hepática moderada/grave',
+sum(tumor_bl::INT) as 'Tumor sólido',
+sum(uncdiab_bl::INT) as 'DM no complicada' from (
+select a.cohort,year(a.start_intervention_dt) as año_cd ,b.* from cirugia_programada_cohort a
+left join comorbidities b
+on a.patient_id = b.patient_id and a.episode_id = b.episode_id ) group by cohort,año_cd"))
+
+data <- data_comorbidities %>% 
+  filter(año_cd %in% max(data_comorbidities$año_cd)) %>% 
+  filter(cohort %in% cohort_)
+
+data <- data %>% pivot_longer(!c(cohort,año_cd,n_episode_id), names_to = 'comor', values_to = 'count')
+data$percent <- round(100*(data$count/data$n_episode_id), 1)
+
+data <- data %>% dplyr::select(level1=comor, size=percent)
+
+# 1. Filtramos las Top 10 comorbilidades con mayor prevalencia (> 0)
+data_comor_plot <- data %>%
+  filter(!is.na(size) & size > 0) %>%
+  arrange(desc(size)) %>%
+  slice_head(n = 10) %>%
+  mutate(
+    # Ordenamos el factor para que la comorbilidad con mayor % quede arriba
+    level1 = factor(level1, levels = rev(level1)),
+    label_txt = paste0(size, "%")
+  )
+
+# 2. Construimos el gráfico de barras horizontales
+p_bar <- ggplot(data_comor_plot, aes(x = level1, y = size)) +
+  geom_col(fill = "#d71920", width = 0.65) +
+  geom_text(
+    aes(label = label_txt),
+    hjust = -0.2,
+    size = 3.3,
+    fontface = "bold",
+    color = "#111111"
+  ) +
+  coord_flip() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.25))) + # Margen dinámico a la derecha para las etiquetas
+  theme_minimal() +
+  labs(x = NULL, y = NULL) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(), # Ocultamos el eje numérico para mantener la vista limpia
+    axis.text.y = element_text(size = 9, color = "#111111", face = "bold"),
+    plot.margin = margin(5, 15, 5, 5)
+  )
+
+# 3. Guardamos en formato Base64 para inyectar en HTML
+tf_c <- tempfile(fileext = ".png")
+ggsave(tf_c, plot = p_bar, width = 6.2, height = 3.8, dpi = 150)
+fig_img_html <- sprintf(
+  '<img src="%s" style="width:100%%; max-height:450px; object-fit:contain; display:block; margin:0 auto;" alt="Top 10 Comorbilidades" />', 
+  knitr::image_uri(tf_c)
+)
+unlink(tf_c)
+
+cqi_1 <- get_comp_data(cohort_)$i_y
+cqi_2 <- get_comp_data_all_or_none(cohort_)$i_y
+
+
+# ---- PILAR I ----
+i05 <- get_ui_data_extended("indicator_05", cohort_)
+i06 <- get_ui_data_extended("indicator_06", cohort_)
+i07 <- get_ui_data_extended("indicator_07", cohort_)
+i08 <- get_ui_data_extended("indicator_08", cohort_)
+i09 <- get_ui_data_extended("indicator_09", cohort_)
+i10 <- get_ui_data_extended("indicator_10", cohort_)
+i11 <- get_ui_data_extended("indicator_11", cohort_)
+i12 <- get_ui_data_extended("indicator_12", cohort_)
+i13 <- get_ui_data_extended("indicator_13", cohort_)
+i14 <- get_ui_data_extended("indicator_14", cohort_)
+i15 <- get_ui_data_extended("indicator_15", cohort_)
+i21 <- get_ui_data_extended("indicator_21", cohort_)
+i22 <- get_ui_data_extended("indicator_22", cohort_)
+i23 <- get_ui_data_extended("indicator_23", cohort_)
+i24 <- get_ui_data_extended("indicator_24", cohort_)
+
+# ---- PILAR II ----
+i25 <- get_ui_data_extended("indicator_25", cohort_)
+i26 <- get_ui_data_extended("indicator_26", cohort_)
+i27 <- get_ui_data_extended("indicator_27", cohort_)
+i28 <- get_ui_data_extended("indicator_28", cohort_)
+i29 <- get_ui_data_extended("indicator_29", cohort_)
+
+# ---- PILAR III ----
+i16 <- get_ui_data_extended("indicator_16", cohort_)
+i17 <- get_ui_data_extended("indicator_17", cohort_)
+i18 <- get_ui_data_extended("indicator_18", cohort_)
+i30 <- get_ui_data_extended("indicator_30", cohort_)
+i31 <- get_ui_data_extended("indicator_31", cohort_)
+i32 <- get_ui_data_extended("indicator_32", cohort_)
+
+# ---- TRANSFUSIÓN ----
+i35 <- get_ui_data_extended("indicator_35", cohort_, transftype="HEM")
+i36_hem_nototal <- get_ui_data_extended("indicator_36", cohort_,var_name="indice_transf", transftype="HEM",use_n_transf = TRUE)
+i36_hem <- get_ui_data_extended("indicator_36", cohort_, transftype="HEM")
+i36_plaq <- get_ui_data_extended("indicator_36", cohort_, transftype="PLAQ")
+i36_plas <- get_ui_data_extended("indicator_36", cohort_, transftype="PLAS")
+
+# ---- OUTCOMES ----
+o40nt <- get_ui_data_extended("indicator_40", cohort_, filter_transf=F)
+o40t  <- get_ui_data_extended("indicator_40", cohort_, filter_transf=T)
+o42   <- get_ui_data_extended("indicator_42", cohort_)
+o43   <- get_ui_data_extended("indicator_43", cohort_,var_name="total_reingresos")
+o44   <- get_ui_data_extended("indicator_44", cohort_)
+o45   <- get_ui_data_extended("indicator_45", cohort_, var_name="n_episode_complicaciones")
+
+# ---- PILAR I ----
+i05_year <- get_ui_data_extended("indicator_05_year", cohort_)
+i06_year <- get_ui_data_extended("indicator_06_year", cohort_)
+i07_year <- get_ui_data_extended("indicator_07_year", cohort_)
+i08_year <- get_ui_data_extended("indicator_08_year", cohort_)
+i09_year <- get_ui_data_extended("indicator_09_year", cohort_)
+i10_year <- get_ui_data_extended("indicator_10_year", cohort_)
+i11_year <- get_ui_data_extended("indicator_11_year", cohort_)
+i12_year <- get_ui_data_extended("indicator_12_year", cohort_)
+i13_year <- get_ui_data_extended("indicator_13_year", cohort_)
+i14_year <- get_ui_data_extended("indicator_14_year", cohort_)
+i15_year <- get_ui_data_extended("indicator_15_year", cohort_)
+i21_year <- get_ui_data_extended("indicator_21_year", cohort_)
+i22_year <- get_ui_data_extended("indicator_22_year", cohort_)
+i23_year <- get_ui_data_extended("indicator_23_year", cohort_)
+i24_year <- get_ui_data_extended("indicator_24_year", cohort_)
+
+# ---- PILAR II ----
+i25_year <- get_ui_data_extended("indicator_25_year", cohort_)
+i26_year <- get_ui_data_extended("indicator_26_year", cohort_)
+i27_year <- get_ui_data_extended("indicator_27_year", cohort_)
+i28_year <- get_ui_data_extended("indicator_28_year", cohort_)
+i29_year <- get_ui_data_extended("indicator_29_year", cohort_)
+
+# ---- PILAR III ----
+i16_year <- get_ui_data_extended("indicator_16_year", cohort_)
+i17_year <- get_ui_data_extended("indicator_17_year", cohort_)
+i18_year <- get_ui_data_extended("indicator_18_year", cohort_)
+i30_year <- get_ui_data_extended("indicator_30_year", cohort_)
+i31_year <- get_ui_data_extended("indicator_31_year", cohort_)
+i32_year <- get_ui_data_extended("indicator_32_year", cohort_)
+
+# ---- TRANSFUSIÓN ----
+i35_year <- get_ui_data_extended("indicator_35_year", cohort_, transftype="HEM")
+i36_hem_nototal_year <- get_ui_data_extended("indicator_36_year", cohort_,var_name="indice_transf", transftype="HEM",use_n_transf = TRUE)
+i36_hem_year <- get_ui_data_extended("indicator_36_year", cohort_, transftype="HEM")
+i36_plaq_year <- get_ui_data_extended("indicator_36_year", cohort_, transftype="PLAQ")
+i36_plas_year <- get_ui_data_extended("indicator_36_year", cohort_, transftype="PLAS")
+
+# ---- OUTCOMES ----
+o40nt_year <- get_ui_data_extended("indicator_40_year", cohort_, filter_transf=F)
+o40t_year  <- get_ui_data_extended("indicator_40_year", cohort_, filter_transf=T)
+o42_year   <- get_ui_data_extended("indicator_42_year", cohort_)
+o43_year   <- get_ui_data_extended("indicator_43_year", cohort_)
+o44_year   <- get_ui_data_extended("indicator_44_year", cohort_)
+o45_year   <- get_ui_data_extended("indicator_45_year", cohort_, var_name="n_episode_complicaciones")
+
+#2) desglose complicaciones
+comp_html <- render_complications(cohort_)
+
+
+# 3) Datos demográficos y clínicas (Edad, Mujeres, Anemia OMS)
+tbl_cohort <- dplyr::case_when(
+  cohort_ %in% c("prod", "pcad", "icv", "hist_no_onco", "cist_radical") ~ "cirugia_programada_cohort",
+  cohort_ %in% c("ncrl", "ncra", "hist_onco") ~ "cirugia_oncologica_cohort",
+  cohort_ %in% c("ffem") ~ "cirugia_urgente_cohort",
+  cohort_ %in% c("hdig") ~ "proceso_medico_cohort",
+  TRUE ~ "cirugia_programada_cohort"
+)
+
+demo_data <- tryCatch({
+  dbGetQuery(con, paste0("
+    SELECT 
+      COUNT(DISTINCT episode_id) as n_tot, 
+      ROUND(AVG(age_nm),1) as edad_media, 
+      SUM(CASE WHEN sex_cd='2' THEN 1 ELSE 0 END) as n_mujeres,
+      SUM(CASE WHEN anemic_oms IS TRUE THEN 1 ELSE 0 END) as n_anemia_oms
+    FROM ", tbl_cohort, " 
+    WHERE cohort='", cohort_, "'
+  "))
+}, error=function(e) data.frame(n_tot=NA, edad_media=NA, n_mujeres=NA, n_anemia_oms=NA))
+
+# 4) Datos de Anemia <13 (desde Indicator_01)
+hb_data_base <- tryCatch({
+  dbGetQuery(con_result, paste0("SELECT n_episodios_l13 as n_anemia13 FROM indicator_01 WHERE cohort='", cohort_, "' ORDER BY month_year DESC LIMIT 1"))
+}, error=function(e) data.frame(n_anemia13=NA))
+
+# --- CÁLCULO DE PORCENTAJES ---
+n_tot_val <- if(!is.na(demo_data$n_tot[1]) && demo_data$n_tot[1] > 0) demo_data$n_tot[1] else 1
+
+pct_mujeres <- ifelse(is.na(demo_data$n_mujeres[1]), "-", paste0(round(100 * demo_data$n_mujeres[1] / n_tot_val, 1), "%"))
+pct_anemia_oms <- ifelse(is.na(demo_data$n_anemia_oms[1]), "-", paste0(round(100 * demo_data$n_anemia_oms[1] / n_tot_val, 1), "%"))
+pct_anemia_13 <- ifelse(is.na(hb_data_base$n_anemia13[1]), "-", paste0(round(100 * hb_data_base$n_anemia13[1] / n_tot_val, 1), "%"))
+edad_media_val <- ifelse(is.na(demo_data$edad_media[1]), "-", demo_data$edad_media[1])
+n_tot_disp <- ifelse(is.na(demo_data$n_tot[1]), "-", demo_data$n_tot[1])
+
+```
+
+
+```{=html}
+<section id="rodilla" class="section">
+  <div class="proc-title"><h2>Artroplastia Rodilla</h2>
+  <p>Periodo de análisis: n=`r n_prod_max` · Periodo de comparación: n=`r n_prod_prev` · Periodo total cargado: n=`r n_prod`</p>
+  </div>
+  <div class="summary-grid">
+    <div class="summary">
+      <div class="sl">PBM CQI1<br>Opportunity-based</div>
+      <div class="sv">`r cqi_1$current`%</div>
+      <div class="sc">`r format_diff_tag(cqi_1$diff_pct)` vs año anterior</div>
+    </div>
+    <div class="summary">
+      <div class="sl">PBM CQI2<br>All-or-none</div>
+      <div class="sv">`r cqi_2$current`%</div>
+      <div class="sc">`r format_diff_tag(cqi_2$diff_pct)` vs periodo previo</div>
+    </div>
+    <div class="summary"><div class="sl">Tasa de transfusión</div><div class="sv">`r i35_year$current`%</div>
+<div class="sc">`r format_diff_tag(i35_year$diff_pct)`% vs periodo previo</div></div>
+<div class="summary"><div class="sl">Episodios con complicaciones</div><div class="sv">`r o45_year$current`%</div>
+    <div class="sc">`r format_diff_tag(o45_year$diff_pct,lower_is_better=TRUE)`% vs periodo previo</div></div>
+  </div>
+  
+  <div class="tabs">
+    <button class="active" data-tab="pilar1-prod">Pilar I</button>
+    <button data-tab="pilar2-prod">Pilar II</button>
+    <button data-tab="pilar3-prod">Pilar III</button>
+    <button data-tab="transfusion-prod">Transfusión</button>
+    <button data-tab="outcomes-prod">Outcomes</button>
+    <button data-tab="caracteristicas-prod">Características</button>
+  </div>
+  
+  <!-- PILAR I -->
+  <section class="tab active" id="tab-pilar1-prod">
+    <div class="ind-layout">
+      <div>
+        <h3>Pilar I · Preoperatorio</h3>
+        <p style="font-size: 13px; color: #6c757d; margin-top: -10px; margin-bottom: 15px; font-weight: 500;">
+          * Los resultados corresponden al promedio del <strong>último año analizado</strong>.
+        </p>
+        <table style="font-size: 0.9em;">
+          <thead><tr><th>Indicador</th><th class="num">Elegibles (N)</th><th class="num">Resultado
+    <span class="info" data-tip="Valor consolidado correspondiente al último año completo de análisis.">i</span>
+</th>
+<th class="num">CAMBIO
+<span class="info" data-tip="Diferencia (valor anual) respecto al periodo de comparación.">i</span>
+</th></tr></thead>
+          <tbody>
+            `r render_ind_row(ind_meta$i05, i05, i05_year, "%", active = TRUE)`
+            `r render_ind_row(ind_meta$i06, i06, i06_year, "%")`
+            `r render_ind_row(ind_meta$i07, i07, i07_year, "%")`
+            `r render_ind_row(ind_meta$i08, i08, i08_year, "%")`
+            `r render_ind_row(ind_meta$i09, i09, i09_year, "%")`
+            `r render_ind_row(ind_meta$i10, i10, i10_year, "%")`
+            `r render_ind_row(ind_meta$i11, i11, i11_year, "%")`
+            `r render_ind_row(ind_meta$i12, i12, i12_year, "%")`
+            `r render_ind_row(ind_meta$i13, i13, i13_year, "%")`
+            `r render_ind_row(ind_meta$i14, i14, i14_year, "%")`
+            `r render_ind_row(ind_meta$i15, i15, i15_year, "g/dL")`
+            `r render_ind_row(ind_meta$i21, i21, i21_year, "%")`
+            `r render_ind_row(ind_meta$i22, i22, i22_year, "%")`
+            `r render_ind_row(ind_meta$i23, i23, i23_year, "g/dL")`
+            `r render_ind_row(ind_meta$i24, i24, i24_year, "%")`
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-card">
+        <div class="ct" id="chart-title-pilar1-prod">Evaluación anemia</div>
+        <div class="chart"><svg id="chart-svg-pilar1-prod" viewBox="0 0 620 270" preserveAspectRatio="none"></svg><div id="tipbox-pilar1-prod" class="tipbox"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILAR II -->
+  <section class="tab" id="tab-pilar2-prod">
+    <div class="ind-layout">
+      <div>
+        <h3>Pilar II · Intraoperatorio</h3>
+        <table>
+          <thead><tr><th>Indicador</th><th class="num">Elegibles (N)</th><th class="num">Resultado
+    <span class="info" data-tip="Valor consolidado correspondiente al último año completo de análisis.">i</span>
+</th>
+<th class="num">CAMBIO
+<span class="info" data-tip="Diferencia (valor anual) respecto al periodo de comparación.">i</span>
+</th></tr></thead>
+          <tbody>
+            `r render_ind_row(ind_meta$i25, i25, i25_year, "%", active = TRUE)`
+            `r render_ind_row(ind_meta$i26, i26, i26_year, "%")`
+            `r render_ind_row(ind_meta$i27, i27, i27_year, "%")`
+            `r render_ind_row(ind_meta$i28, i28, i28_year, "%")`
+            `r render_ind_row(ind_meta$i29, i29, i29_year, "%")`
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-card">
+        <div class="ct" id="chart-title-pilar2-prod">Anestesia regional</div>
+        <div class="chart"><svg id="chart-svg-pilar2-prod" viewBox="0 0 620 270" preserveAspectRatio="none"></svg><div id="tipbox-pilar2-prod" class="tipbox"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILAR III -->
+  <section class="tab" id="tab-pilar3-prod">
+    <div class="ind-layout">
+      <div>
+        <h3>Pilar III · Postoperatorio</h3>
+        <table>
+          <thead><tr><th>Indicador</th><th class="num">Elegibles (N)</th><th class="num">Resultado
+    <span class="info" data-tip="Valor consolidado correspondiente al último año completo de análisis.">i</span>
+</th>
+<th class="num">CAMBIO
+<span class="info" data-tip="Diferencia (valor anual) respecto al periodo de comparación.">i</span>
+</th></tr></thead>
+          <tbody>
+            `r render_ind_row(ind_meta$i16, i16, i16_year, "%", active = TRUE)`
+            `r render_ind_row(ind_meta$i17, i17, i17_year, "%")`
+            `r render_ind_row(ind_meta$i18, i18, i18_year, "%")`
+            `r render_ind_row(ind_meta$i30, i30, i30_year, "%")`
+            `r render_ind_row(ind_meta$i31, i31, i31_year, "g/dL")`
+            `r render_ind_row(ind_meta$i32, i32, i32_year, "%")`
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-card">
+        <div class="ct" id="chart-title-pilar3-prod">No transfundidos (Hematíes)</div>
+        <div class="chart"><svg id="chart-svg-pilar3-prod" viewBox="0 0 620 270" preserveAspectRatio="none"></svg><div id="tipbox-pilar3-prod" class="tipbox"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSFUSIÓN -->
+  <section class="tab" id="tab-transfusion-prod">
+    <div class="ind-layout">
+      <div>
+        <h3>Transfusión</h3>
+        <table>
+          <thead><tr><th>Indicador</th><th class="num">Elegibles (N)</th><th class="num">Resultado
+    <span class="info" data-tip="Valor consolidado correspondiente al último año completo de análisis.">i</span>
+</th>
+<th class="num">CAMBIO
+<span class="info" data-tip="Diferencia (valor anual) respecto al periodo de comparación.">i</span>
+</th></tr></thead>
+          <tbody>
+            `r render_ind_row(ind_meta$i35, i35, i35_year, "%", active = TRUE)`
+            `r render_ind_row(ind_meta$i36_hem_nototal, i36_hem_nototal, i36_hem_nototal_year, "U/pac")`
+            `r render_ind_row(ind_meta$i36_hem, i36_hem, i36_hem_year, "U/pac")`           
+            `r render_ind_row(ind_meta$i36_plaq, i36_plaq, i36_plaq_year, "U/pac")`
+            `r render_ind_row(ind_meta$i36_plas, i36_plas, i36_plas_year, "U/pac")`
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-card">
+        <div class="ct" id="chart-title-transfusion-prod">Tasa transfusión</div>
+        <div class="chart"><svg id="chart-svg-transfusion-prod" viewBox="0 0 620 270" preserveAspectRatio="none"></svg><div id="tipbox-transfusion-prod" class="tipbox"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="tab" id="tab-outcomes-prod">
+    <div class="ind-layout">
+      <div>
+        <h3>Outcomes</h3>
+        <table>
+          <thead><tr><th>Indicador</th><th class="num">Elegibles (N)</th><th class="num">Resultado
+    <span class="info" data-tip="Valor consolidado correspondiente al último año completo de análisis.">i</span>
+</th>
+<th class="num">CAMBIO
+<span class="info" data-tip="Diferencia (valor anual) respecto al periodo de comparación.">i</span>
+</th></tr></thead>
+          <tbody>
+            `r render_ind_row(ind_meta$o40nt, o40nt, o40nt_year, "g/dL", active = TRUE, is_out = TRUE)`
+            `r render_ind_row(ind_meta$o40t, o40t, o40t_year, "g/dL", is_out = TRUE)`
+            `r render_ind_row(ind_meta$o42, o42, o42_year, "días", is_out = TRUE)`
+            `r render_ind_row(ind_meta$o43, o43, o43_year, "%", is_out = TRUE)`
+            `r render_ind_row(ind_meta$o44, o44, o44_year, "%", is_out = TRUE)`
+            `r render_ind_row(ind_meta$o45, o45, o45_year, "%", is_out = TRUE)`
+          </tbody>
+        </table>
+      
+        <details class="comp-detail">
+          <summary>Ver desglose de complicaciones</summary>
+          <div style="margin-top: 10px; max-height: 450px; overflow-y: auto; padding-right: 10px;">
+            `r comp_html`
+          </div>
+        </details>
+      </div>
+      
+      <div class="chart-card">
+        <div class="ct" id="out-chart-title-prod">Hb alta no transfundidos</div>
+        <div class="chart"><svg id="out-chart-svg-prod" viewBox="0 0 620 270" preserveAspectRatio="none"></svg><div id="out-tipbox-prod" class="tipbox"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARACTERÍSTICAS -->
+  <section class="tab" id="tab-caracteristicas-prod">
+    <div class="chars" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+      <div style="display: flex; flex-direction: column;">
+        <h3 style="margin-bottom: 12px;">Pirámide de población</h3>
+        <div class="pyramid" style="width: 100%; height: 500px; overflow: hidden; display: flex; flex-direction: column; background: #fff; padding: 15px; border-radius: 6px; box-sizing: border-box; border: 1px solid var(--line);">
+          `r render_pyramid("prod")`
+        </div>
+      </div>
+      
+      <div style="display: flex; flex-direction: column;">
+      <h3 style="margin-bottom: 12px;">Prevalencia de Comorbilidades (top 10)</h3>
+      <div style="width: 100%; height: 550px; background: #fff; border-radius: 6px; padding: 15px; box-sizing: border-box; overflow-y: auto; border: 1px solid var(--line);">
+        `r render_comorbidities("prod")`
+      </div><br><br>
+
+      <!-- MINI GRID -->
+      <div class="mini-grid" style="grid-template-columns: repeat(5, 1fr); margin-top: 15px;">
+        
+        <div class="mini"><span class="muted">Edad Media</span><div class="v">`r edad_media_val`</div></div>
+        <div class="mini"><span class="muted">Mujeres</span><div class="v">`r pct_mujeres`</div></div>
+        <div class="mini"><span class="muted">Anemia OMS</span><div class="v">`r pct_anemia_oms`</div></div>
+        <div class="mini"><span class="muted">Anemia &lt;13</span><div class="v">`r pct_anemia_13`</div></div>
+      </div>
+    </div>
+    </div>
+  </section>
+</section>
+
+```

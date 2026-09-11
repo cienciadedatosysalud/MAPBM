@@ -1,5 +1,5 @@
 --- Indicadores process preop pillar1 Nº24 indicador Pillar1
---- % de pacientes tratados postoperatoriamente con hierro IV
+--- % de episodios de pacientes tratados postoperatoriamente con hierro IV
 select * from (
 with denominador as (
     select a.*,
@@ -70,11 +70,12 @@ anemic_post_intervention as (
 select cohort,
     category_cohort,
     month_year,
-    count(distinct patient_id) filter(
+    count(distinct patient_id||'_'||episode_id) filter(
         where fe_iv_bl
-    ) as n_pacientes_feiv,
-    count(distinct patient_id) as n_pacientes,
-    round(n_pacientes_feiv * 100 / n_pacientes, 3) as result
+    ) as n_episodios_feiv,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_feiv * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from (
         select a.*,
             case
@@ -169,11 +170,12 @@ anemic_post_intervention as (
 select cohort,
     category_cohort,
     month_year,
-    count(distinct patient_id) filter(
+    count(distinct patient_id||'_'||episode_id) filter(
         where fe_iv_bl
-    ) as n_pacientes_feiv,
-    count(distinct patient_id) as n_pacientes,
-    round(n_pacientes_feiv * 100 / n_pacientes, 3) as result
+    ) as n_episodios_feiv,
+    count(distinct patient_id||'_'||episode_id) as n_episodios,
+    round(n_episodios_feiv * 100 / n_episodios, 3) as result,
+    n_episodios as n_elegibles
 from (
         select a.*,
             case
