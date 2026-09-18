@@ -10,3 +10,4 @@ ASA|IVE|A patient with severe systemic disease that is a constant threat to life
 ASA|V|A moribund patient who is not expected to survive without the operation|5|
 ASA|VE|A moribund patient who is not expected to survive without the operation; emergency|5|
 ASA|VI|A declared brain-dead patient whose organs are being removed for donor purposes|6|
+ASA||Not assessed|9|
