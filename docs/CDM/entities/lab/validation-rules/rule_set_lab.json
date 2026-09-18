@@ -2,7 +2,7 @@
   "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
   "rules": [
     {
-      "expression": "determination_cd IN ('hb', 'ret_he', 'ferr', 'gfr', 'crp', 'fol', 'tsi', 'fib', 'plat', 'viiif', 'p_time')",
+      "expression": "determination_cd IN ('hb', 'ret_he', 'ferr', 'gfr', 'crp', 'fol', 'tsi', 'fib', 'plat', 'viiif', 'p_time','b12')",
       "name": "determination_cd",
       "description": "Rule for column determination_cd"
     },

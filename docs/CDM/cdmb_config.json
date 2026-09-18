@@ -9,7 +9,7 @@
     "work_package": "Piloto",
     "use_case": "MAPBM",
     "document": "Common Data Model (CDM)",
-    "version_sem": "0.0.4",
+    "version_sem": "0.0.5",
     "authors": [],
     "keywords": [
       "patient blood management",
@@ -19,7 +19,7 @@
       "benchmarking"
     ],
     "description": "Federated architecture deployment of the MAPBM project (MAPBM 2.0). \nMaturity Assessment Model in PBM. Empowering hospitals to reduce unnecessary transfusions and improve patient outcomes. \nMAPBM is a collaborative network of hospitals dedicated to advancing the implementation of evidence-based Patient Blood Management (PBM) strategies into practice to drive better patient outcomes.\nThree main working areas:\n- Measuring & Benchmarking - evaluating PBM practices across hospitals using routinely collected hospital data.\n- Community of Practice - PBM leads sharing experiences, knowledge, and solutions to promote continuous improvement.\n- Generating Real-World Evidence (RWE) - producing scientific evidence on PBM to inform practice and policy.",
-    "notes": "v.0.0.2: 1) Updated cohort inclusion and exclusion catalogues. 2) Updated all entities excluding calculated variables related to comorbidities, medication status and complications transfered to the analyses. 3) Updated comorbidities, medication and complications definition catalogues to consider in the analysis. 4) Added POAD characterising episode diagnoses. 5) Reviewed and checked datetime timestamp formats and specification. 6) Reviewed and reassessed information requirement at variable level for all entities. 7) Checked conformity of the categorical variables to comply with used standards. PENDING: a) Check information requierement on drug definition using National Catalogue ID code. b) Check funding declaration. c) Add authoring and contributors.  v.0.0.3) Added two new catalogues and added contexual information and observations to clarify description variables. v.0.0.4) Updated catalogues and corrected unit for lab entity ('observations' column of 'determination_cd' variable). Updated study period: 01/01/2025 - No date end. Remove 'pilot' word in cohort description.",
+    "notes": "v.0.0.2: 1) Updated cohort inclusion and exclusion catalogues. 2) Updated all entities excluding calculated variables related to comorbidities, medication status and complications transfered to the analyses. 3) Updated comorbidities, medication and complications definition catalogues to consider in the analysis. 4) Added POAD characterising episode diagnoses. 5) Reviewed and checked datetime timestamp formats and specification. 6) Reviewed and reassessed information requirement at variable level for all entities. 7) Checked conformity of the categorical variables to comply with used standards. PENDING: a) Check information requierement on drug definition using National Catalogue ID code. b) Check funding declaration. c) Add authoring and contributors.  v.0.0.3) Added two new catalogues and added contexual information and observations to clarify description variables. v.0.0.4) Updated catalogues and corrected unit for lab entity ('observations' column of 'determination_cd' variable). Updated study period: 01/01/2025 - No date end. Remove 'pilot' word in cohort description.  v.0.0.5) Updated asa_cd's catalogue. Updated information in observations_comments and possible_data_source for 'start_intervention_dt' and 'end_intervention_dt'. Fixed rule for determination_cd (added b12). 'unit_id' converted to string-categorical.",
     "spatial_coverage": "Spain",
     "license": "CC BY 4.0 https://creativecommons.org/licenses/by/4.0/"
   },
@@ -194,8 +194,8 @@
           "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
-          "possible_data_source": "RAE-CMBD",
-          "observations_comments": "Entry operating room or intervention start (CMBD)",
+          "possible_data_source": "RAE-CMBD or surgery form",
+          "observations_comments": "Entry operating room or intervention start (CMBD). Refered to the first or main intervention during the episode. N.B.: Patients' anaemic status must be assessed preoperatory to first intervention.",
           "examples": "2022-06-28 20:04:10",
           "catalog": null
         },
@@ -210,7 +210,7 @@
           "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
-          "possible_data_source": "RAE-CMBD",
+          "possible_data_source": "Surgery form",
           "observations_comments": "Exit operating room or intervention end (CMBD)",
           "examples": "2022-06-28 20:04:10",
           "catalog": null
@@ -1521,7 +1521,7 @@
       ],
       "rules": [
         {
-          "expression": "determination_cd IN ('hb', 'ret_he', 'ferr', 'gfr', 'crp', 'fol', 'tsi', 'fib', 'plat', 'viiif', 'p_time')",
+          "expression": "determination_cd IN ('hb', 'ret_he', 'ferr', 'gfr', 'crp', 'fol', 'tsi', 'fib', 'plat', 'viiif', 'p_time','b12')",
           "name": "determination_cd",
           "description": "Rule for column determination_cd"
         },
@@ -1629,7 +1629,7 @@
       ],
       "rules": [
         {
-          "expression": "size_nm BETWEEN 50 AND 1500",
+          "expression": "size_nm BETWEEN 25 AND 2500",
           "name": "size_nm",
           "description": "Rule for column size_nm"
         }
@@ -1775,8 +1775,8 @@
           "label": "unit_id",
           "description": "Transfusion bag/unit identification number",
           "standard_classification": "",
-          "format": "Integer",
-          "type": "Numerical",
+          "format": "String",
+          "type": "Categorical",
           "units": "",
           "requirement_level": "Required",
           "characteristic": "Observed",
