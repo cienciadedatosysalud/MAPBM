@@ -56,7 +56,7 @@ select * from cirugia_programada_cohort
 union all
 select * from cirugia_urgente_cohort
 union all
-select * from proceso_medico_cohort
+select * exclude(admission_dt) from proceso_medico_cohort
 )
 select cnh_cd,cohort, category_cohort,count(distinct patient_id || '-' || episode_id) as n_unique_episode, median(age_nm) as mediana_edad,
 (QUANTILE_CONT(age_nm, 0.75)-QUANTILE_CONT(age_nm, 0.25)) as iqr_age,
@@ -217,7 +217,7 @@ select * from cirugia_programada_cohort
 union all
 select * from cirugia_urgente_cohort
 union all
-select * from proceso_medico_cohort
+select * exclude(admission_dt) from proceso_medico_cohort
 )
 select cnh_cd,year,cohort, category_cohort,count(distinct patient_id || '-' || episode_id) as n_unique_episode, median(age_nm) as mediana_edad,
 (QUANTILE_CONT(age_nm, 0.75)-QUANTILE_CONT(age_nm, 0.25)) as iqr_age,

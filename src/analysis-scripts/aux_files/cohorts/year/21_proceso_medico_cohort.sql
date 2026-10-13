@@ -1,4 +1,4 @@
-create or replace table proceso_medico_cohort as
+create or replace table proceso_medico_cohort_year as
 select patient_id || '_' || episode_id as id_paciente_episodio,
     patient_id,
     result_determination_cd,
@@ -6,6 +6,7 @@ select patient_id || '_' || episode_id as id_paciente_episodio,
     episode_id,
     sex_cd,
     age_nm,
+    admission_dt,
     start_intervention_dt,
     cohort,
     category_cohort,
@@ -20,7 +21,7 @@ select patient_id || '_' || episode_id as id_paciente_episodio,
         and sex_cd = '2' then true
         else false
     end as anemic_oms,
-    date_trunc('month', start_intervention_dt)::DATE as month_year
+    date_trunc('year', admission_dt)::DATE as month_year
 from (
         select row_number() over(
                 partition by patient_id,
@@ -35,6 +36,7 @@ from (
                             episode_id,
                             sex_cd,
                             age_nm,
+                            admission_dt,
                             start_intervention_dt,
                             'hdig' as cohort,
                             category_cohort
@@ -47,7 +49,7 @@ from (
                                         where determination_cd = 'hb'
                                     ) = 0
                             )
-                            and start_intervention_dt is not null
+                            and admission_dt is not null
                     ) a
                     left join (
                         select patient_id,
@@ -56,8 +58,8 @@ from (
                         from lab_view
                         where determination_cd = 'hb'
                     ) b on a.patient_id = b.patient_id
-                    and result_determination_dt between start_intervention_dt - INTERVAL 5 DAY
-                    and start_intervention_dt
+                    and result_determination_dt between (admission_dt - INTERVAL 5 DAY)
+                    and (admission_dt + INTERVAL 24 HOUR)
                     where b.patient_id is not null
             )
     )

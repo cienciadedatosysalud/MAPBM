@@ -40,7 +40,7 @@ denominador as (
             select *
             from cirugia_urgente_cohort a
             union all
-            select *
+            select * exclude(admission_dt)
             from proceso_medico_cohort a
         ) a
         left join (
@@ -53,7 +53,6 @@ denominador as (
             from episode_view
         ) b on a.patient_id = b.patient_id
         and a.episode_id = b.episode_id
-        and a.start_intervention_dt = b.start_intervention_dt
 ),
 denominador_transfundidos_hematies as (
     select *

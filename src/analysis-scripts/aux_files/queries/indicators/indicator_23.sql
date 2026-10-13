@@ -44,7 +44,7 @@ from (
                             month_year
                         from cirugia_programada_cohort
                     ) b on a.patient_id = b.patient_id
-                    and a.result_determination_dt between start_intervention_dt - interval 90 DAY and start_intervention_dt
+                    and a.result_determination_dt between start_intervention_dt - interval 120 DAY and start_intervention_dt
                 where b.patient_id is not null
             )
         where rk = 1
@@ -96,7 +96,7 @@ from (
                             month_year
                         from cirugia_oncologica_cohort
                     ) b on a.patient_id = b.patient_id
-                    and a.result_determination_dt between start_intervention_dt- interval 45 DAY and start_intervention_dt 
+                    and a.result_determination_dt between start_intervention_dt- interval 90 DAY and start_intervention_dt 
                 where b.patient_id is not null
             )
         where rk = 1

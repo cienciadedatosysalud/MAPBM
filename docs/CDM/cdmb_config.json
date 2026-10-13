@@ -9,7 +9,7 @@
     "work_package": "Piloto",
     "use_case": "MAPBM",
     "document": "Common Data Model (CDM)",
-    "version_sem": "0.0.5",
+    "version_sem": "0.0.6",
     "authors": [],
     "keywords": [
       "patient blood management",
@@ -19,7 +19,7 @@
       "benchmarking"
     ],
     "description": "Federated architecture deployment of the MAPBM project (MAPBM 2.0). \nMaturity Assessment Model in PBM. Empowering hospitals to reduce unnecessary transfusions and improve patient outcomes. \nMAPBM is a collaborative network of hospitals dedicated to advancing the implementation of evidence-based Patient Blood Management (PBM) strategies into practice to drive better patient outcomes.\nThree main working areas:\n- Measuring & Benchmarking - evaluating PBM practices across hospitals using routinely collected hospital data.\n- Community of Practice - PBM leads sharing experiences, knowledge, and solutions to promote continuous improvement.\n- Generating Real-World Evidence (RWE) - producing scientific evidence on PBM to inform practice and policy.",
-    "notes": "v.0.0.2: 1) Updated cohort inclusion and exclusion catalogues. 2) Updated all entities excluding calculated variables related to comorbidities, medication status and complications transfered to the analyses. 3) Updated comorbidities, medication and complications definition catalogues to consider in the analysis. 4) Added POAD characterising episode diagnoses. 5) Reviewed and checked datetime timestamp formats and specification. 6) Reviewed and reassessed information requirement at variable level for all entities. 7) Checked conformity of the categorical variables to comply with used standards. PENDING: a) Check information requierement on drug definition using National Catalogue ID code. b) Check funding declaration. c) Add authoring and contributors.  v.0.0.3) Added two new catalogues and added contexual information and observations to clarify description variables. v.0.0.4) Updated catalogues and corrected unit for lab entity ('observations' column of 'determination_cd' variable). Updated study period: 01/01/2025 - No date end. Remove 'pilot' word in cohort description.  v.0.0.5) Updated asa_cd's catalogue. Updated information in observations_comments and possible_data_source for 'start_intervention_dt' and 'end_intervention_dt'. Fixed rule for determination_cd (added b12). 'unit_id' converted to string-categorical.",
+    "notes": "v.0.0.2: 1) Updated cohort inclusion and exclusion catalogues. 2) Updated all entities excluding calculated variables related to comorbidities, medication status and complications transfered to the analyses. 3) Updated comorbidities, medication and complications definition catalogues to consider in the analysis. 4) Added POAD characterising episode diagnoses. 5) Reviewed and checked datetime timestamp formats and specification. 6) Reviewed and reassessed information requirement at variable level for all entities. 7) Checked conformity of the categorical variables to comply with used standards. PENDING: a) Check information requierement on drug definition using National Catalogue ID code. b) Check funding declaration. c) Add authoring and contributors.  v.0.0.3) Added two new catalogues and added contexual information and observations to clarify description variables. v.0.0.4) Updated catalogues and corrected unit for lab entity ('observations' column of 'determination_cd' variable). Updated study period: 01/01/2025 - No date end. Remove 'pilot' word in cohort description.  v.0.0.5) Updated asa_cd's catalogue. Updated information in observations_comments and possible_data_source for 'start_intervention_dt' and 'end_intervention_dt'. Fixed rule for determination_cd (added b12). 'unit_id' converted to string-categorical.  v0.0.6) Radical cystectomy selection codes updated. Correction to the text in comments and observations within the ‘lab’ entity. Addition of explanatory text to the diagnostic variables in the ‘episode’ entity, specifying that they should be entered without '.' (code clean).",
     "spatial_coverage": "Spain",
     "license": "CC BY 4.0 https://creativecommons.org/licenses/by/4.0/"
   },
@@ -227,8 +227,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -243,8 +243,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -259,8 +259,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -275,8 +275,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -291,8 +291,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -307,8 +307,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -323,8 +323,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -339,8 +339,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -355,8 +355,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -371,8 +371,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -387,8 +387,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -403,8 +403,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -419,8 +419,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -435,8 +435,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -451,8 +451,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -467,8 +467,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -483,8 +483,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -499,8 +499,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -515,8 +515,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -531,8 +531,8 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "RAE-CMBD",
-          "observations_comments": "",
-          "examples": "",
+          "observations_comments": "Clean codes expected (without period '.')",
+          "examples": "C579",
           "catalog": null
         },
         {
@@ -1482,7 +1482,7 @@
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "Lab registry",
-          "observations_comments": "Attention! Laboratory samples must be collected up to 120 days before the start of the study period (September 2021)",
+          "observations_comments": "Attention! Laboratory samples must be collected up to 120 days before the start of the study period",
           "examples": "2022-06-28 20:04:10",
           "catalog": null
         },

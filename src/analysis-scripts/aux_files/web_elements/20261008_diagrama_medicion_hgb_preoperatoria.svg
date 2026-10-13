@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #1e293b; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #64748b; }
+      .cohort-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; fill: #0f172a; }
+      .cohort-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; fill: #64748b; }
+      .label-window { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #1e40af; text-anchor: middle; }
+      .label-event-red { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; fill: #dc2626; text-anchor: middle; }
+      .label-event-blue { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; fill: #2563eb; text-anchor: middle; }
+      .axis-tick { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+      .window-bar { fill: #dbeafe; stroke: #3b82f6; stroke-width: 1.5; rx: 4px; }
+      .timeline-track { stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 4 4; }
+      .timeline-solid { stroke: #475569; stroke-width: 2.5; stroke-linecap: round; }
+    </style>
+
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 0 L 5 10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 0 L 5 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1000" height="620" fill="#ffffff" rx="12"/>
+
+  <!-- Header Section -->
+  <text x="50" y="45" class="title">Ventanas de medición de Hemoglobina preoperatoria</text>
+  <text x="50" y="68" class="subtitle">Definición de ventanas retrospectivas de exposición analítica según tipología de proceso</text>
+
+  <!-- Scale References: T0 is at x = 620. 1 day = 3.33 px. T -120 = 220px -->
+  <g opacity="0.35">
+    <line x1="220" y1="90" x2="220" y2="570" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="220" y="585" class="axis-tick">-120 d</text>
+
+    <line x1="320" y1="90" x2="320" y2="570" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="320" y="585" class="axis-tick">-90 d</text>
+
+    <line x1="603" y1="90" x2="603" y2="570" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="603" y="585" class="axis-tick">-5 d</text>
+
+    <line x1="620" y1="90" x2="620" y2="570" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="620" y="585" class="axis-tick" font-weight="600" fill="#475569">T₀</text>
+
+    <line x1="630" y1="90" x2="630" y2="570" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="630" y="585" class="axis-tick">+24 h</text>
+  </g>
+
+  <!-- ==================== ROW 1: Cirugía Programada ==================== -->
+  <g transform="translate(0, 100)">
+    <rect x="40" y="0" width="920" height="100" rx="8" fill="#f8fafc" stroke="#f1f5f9"/>
+    
+    <!-- Cohort Label -->
+    <text x="730" y="45" class="cohort-title">Cirugía programada</text>
+    <text x="730" y="65" class="cohort-sub">Cohorte quirúrgica electiva</text>
+
+    <!-- Main Axis Line -->
+    <line x1="120" y1="52" x2="675" y2="52" class="timeline-solid" marker-end="url(#axis-arrow)"/>
+
+    <!-- Window Bracket / Shading (-120d to T0) -->
+    <rect x="220" y="42" width="400" height="20" class="window-bar"/>
+    <text x="420" y="32" class="label-window">-120 días</text>
+
+    <!-- Event Marker (Fecha intervención) -->
+    <line x1="620" y1="18" x2="620" y2="48" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+    <text x="620" y="12" class="label-event-red">Fecha intervención</text>
+  </g>
+
+  <!-- ==================== ROW 2: Cirugía Oncológica ==================== -->
+  <g transform="translate(0, 215)">
+    <rect x="40" y="0" width="920" height="100" rx="8" fill="#f8fafc" stroke="#f1f5f9"/>
+
+    <!-- Cohort Label -->
+    <text x="730" y="45" class="cohort-title">Cirugía oncológica</text>
+    <text x="730" y="65" class="cohort-sub">Cohorte con ventana prioritaria</text>
+
+    <!-- Main Axis Line -->
+    <line x1="120" y1="52" x2="675" y2="52" class="timeline-solid" marker-end="url(#axis-arrow)"/>
+
+    <!-- Window Bracket / Shading (-90d to T0) -->
+    <rect x="320" y="42" width="300" height="20" class="window-bar"/>
+    <text x="470" y="32" class="label-window">-90 días</text>
+
+    <!-- Event Marker (Fecha intervención) -->
+    <line x1="620" y1="18" x2="620" y2="48" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+    <text x="620" y="12" class="label-event-red">Fecha intervención</text>
+  </g>
+
+  <!-- ==================== ROW 3: Cirugía Urgente ==================== -->
+  <g transform="translate(0, 330)">
+    <rect x="40" y="0" width="920" height="100" rx="8" fill="#f8fafc" stroke="#f1f5f9"/>
+
+    <!-- Cohort Label -->
+    <text x="730" y="45" class="cohort-title">Cirugía urgente</text>
+    <text x="730" y="65" class="cohort-sub">Cohorte no diferible</text>
+
+    <!-- Main Axis Line -->
+    <line x1="120" y1="52" x2="675" y2="52" class="timeline-solid" marker-end="url(#axis-arrow)"/>
+
+    <!-- Window Bracket / Shading (-5d to T0) -->
+    <rect x="603" y="42" width="17" height="20" class="window-bar"/>
+    <text x="560" y="32" class="label-window">-05 días</text>
+    <!-- Indicator line to label due to small space -->
+    <line x1="595" y1="28" x2="610" y2="40" stroke="#3b82f6" stroke-width="1"/>
+
+    <!-- Event Marker (Fecha intervención) -->
+    <line x1="620" y1="18" x2="620" y2="48" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+    <text x="620" y="12" class="label-event-red">Fecha intervención</text>
+  </g>
+
+  <!-- ==================== ROW 4: Proceso Médico ==================== -->
+  <g transform="translate(0, 445)">
+    <rect x="40" y="0" width="920" height="100" rx="8" fill="#f8fafc" stroke="#f1f5f9"/>
+
+    <!-- Cohort Label -->
+    <text x="730" y="45" class="cohort-title">Proceso médico</text>
+    <text x="730" y="65" class="cohort-sub">Hospitalización no quirúrgica</text>
+
+    <!-- Main Axis Line -->
+    <line x1="120" y1="52" x2="675" y2="52" class="timeline-solid" marker-end="url(#axis-arrow)"/>
+
+    <!-- Window Bracket / Shading (-5d to +24h / +1d) -->
+    <rect x="603" y="42" width="27" height="20" class="window-bar" fill="#e0e7ff" stroke="#6366f1"/>
+    <text x="535" y="32" class="label-window" fill="#4338ca">-05 días (+24h)</text>
+    <line x1="585" y1="30" x2="612" y2="40" stroke="#6366f1" stroke-width="1"/>
+
+    <!-- Event Marker (Fecha admisión) -->
+    <line x1="620" y1="18" x2="620" y2="48" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+    <text x="620" y="12" class="label-event-blue">Fecha admisión</text>
+  </g>
+</svg>

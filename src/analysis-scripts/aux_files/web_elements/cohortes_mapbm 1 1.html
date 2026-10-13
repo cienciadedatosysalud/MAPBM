@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohortes MAPBM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: white !important; padding: 0 !important; }
+            .shadow-card { box-shadow: none !important; border: none !important; }
+            .tree-table { width: 100% !important; font-size: 11px !important; }
+            .page-container { border: none !important; padding: 0 !important; max-width: 100% !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 p-3 sm:p-6 min-h-screen">
+
+    <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 p-5 sm:p-8 shadow-card page-container">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-6">
+            <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Cohortes MAPBM</h1>
+            <div class="no-print">
+                <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-indigo-200 flex items-center gap-2 text-sm cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                    </svg>
+                    Imprimir / Guardar en PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="space-y-10">
+
+            <!-- 1. CIRUGÍA PROGRAMADA -->
+            <section class="border border-sky-200 rounded-2xl bg-sky-50/30 overflow-hidden">
+                <div class="bg-sky-700 text-white p-4">
+                    <h2 class="text-lg font-bold flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-sky-300"></span>
+                        1. Cirugía Programada
+                    </h2>
+                </div>
+
+                <div class="p-4 sm:p-5 space-y-5">
+                    <!-- Specific Cohorts Table -->
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <table class="w-full text-left border-collapse tree-table min-w-[700px]">
+                            <thead>
+                                <tr class="bg-slate-800 text-white text-xs uppercase tracking-wider">
+                                    <th class="p-3 w-1/12">Proc_ID</th>
+                                    <th class="p-3 w-3/12">Descripción del Procedimiento</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Inclusión</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Exclusión</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-sm">
+                                <!-- PROD -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">PROD</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Artroplastias primarias de rodilla</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con sustitución de rodilla nativa.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que además, tienen un procedimiento de retirada de prótesis de rodilla, bien sea en el mismo acto o durante los 90 días previos.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- PCAD -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">PCAD</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Artroplastias primarias de cadera</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con sustitución de cadera nativa y sin diagnóstico principal de fractura.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que además, tienen un procedimiento de retirada de prótesis de cadera, bien sea en el mismo acto o durante los 90 días previos.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- ICV -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">ICV</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Cirugía de válvula cardiaca</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con intervención valvular cardiaca con abordaje abierto.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que además tienen un procedimiento de trasplante de corazón o bypass. Se excluyen endocarditis y TAVI.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- HIST -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">HIST</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Histerectomia abdominal no oncológica</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con histerectomías abierta o laparoscópica y, además, diagnóstico principal de de miomas, cáncer del sistema reproductor femenino o endometriosis.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que tienen un diagnóstico secundario de metástasis.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- General Subgroup Exclusions (BELOW TABLE) -->
+                    <div class="bg-rose-50/90 border border-rose-200 rounded-xl p-4 text-xs text-rose-900 space-y-2">
+                        <div class="font-bold text-rose-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            Criterios Generales de Exclusión del Subgrupo
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside text-rose-950 font-medium">
+                            <li>Pacientes sin ninguna Hb</li>
+                            <li>Pacientes sin ninguna Hb preop, en 120 días previos a la fecha de intervención</li>
+                            <li>Pacientes sin fecha y hora completa de cirugía. La fecha de cirugía es CMBD y se enriquece con bbdd IQ si la anterior no es completa</li>
+                            <li>Pacientes sin fecha y hora completa de Hbs, de tratamientos (feiv, epo), de transfusiones. Sin fecha y hora completa de cirugía también. La fecha de cirugía es CMBD y se enriquece con bbdd IQ si la anterior no es completa</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. CIRUGÍA ONCOLÓGICA -->
+            <section class="border border-emerald-200 rounded-2xl bg-emerald-50/30 overflow-hidden">
+                <div class="bg-emerald-700 text-white p-4">
+                    <h2 class="text-lg font-bold flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-emerald-300"></span>
+                        2. Cirugía Oncológica
+                    </h2>
+                </div>
+
+                <div class="p-4 sm:p-5 space-y-5">
+                    <!-- Specific Cohorts Table -->
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <table class="w-full text-left border-collapse tree-table min-w-[700px]">
+                            <thead>
+                                <tr class="bg-slate-800 text-white text-xs uppercase tracking-wider">
+                                    <th class="p-3 w-1/12">Proc_ID</th>
+                                    <th class="p-3 w-3/12">Descripción del Procedimiento</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Inclusión</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Exclusión</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-sm">
+                                <!-- NCRL -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">NCRL</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Cirugía colorectal laparoscópica</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con diagnóstico principal de neoplasia de colon y recto y con procedimiento de colon y recto laparoscópico.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que además, tienen un diagnóstico secundario de metástasis.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- NCRA -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">NCRA</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Cirugía colorectal abierta</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con diagnóstico principal de neoplasia de colon y recto y con procedimiento de colon y recto abierto.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que además, tienen un diagnóstico secundario de metástasis.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- HIST -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">HIST</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Histerectomia abdominal oncológica</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios programados con histerectomías abierta o laparoscópica y, además, diagnóstico principal de de miomas, cáncer del sistema reproductor femenino o endometriosis.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-rose-50 border border-rose-200 text-rose-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-rose-700">✕ Exclusión:</span>
+                                            Se excluyen aquellos episodios que tienen un diagnóstico secundario de metástasis.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- General Subgroup Exclusions (BELOW TABLE) -->
+                    <div class="bg-rose-50/90 border border-rose-200 rounded-xl p-4 text-xs text-rose-900 space-y-2">
+                        <div class="font-bold text-rose-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            Criterios Generales de Exclusión del Subgrupo
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside text-rose-950 font-medium">
+                            <li>Pacientes sin ninguna Hb</li>
+                            <li>Pacientes sin ninguna Hb preop, en 90 días previos a la fecha de intervención</li>
+                            <li>Pacientes sin fecha y hora completa de cirugía. La fecha de cirugía es CMBD y se enriquece con bbdd IQ si la anterior no es completa</li>
+                            <li>Pacientes sin fecha y hora completa de Hbs, de tratamientos (feiv, epo), de transfusiones. Sin fecha y hora completa de cirugía también. La fecha de cirugía es CMBD y se enriquece con bbdd IQ si la anterior no es completa</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CIRUGÍA URGENTE -->
+            <section class="border border-amber-200 rounded-2xl bg-amber-50/30 overflow-hidden">
+                <div class="bg-amber-700 text-white p-4">
+                    <h2 class="text-lg font-bold flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-amber-300"></span>
+                        3. Cirugía Urgente
+                    </h2>
+                </div>
+
+                <div class="p-4 sm:p-5 space-y-5">
+                    <!-- Specific Cohorts Table -->
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <table class="w-full text-left border-collapse tree-table min-w-[700px]">
+                            <thead>
+                                <tr class="bg-slate-800 text-white text-xs uppercase tracking-wider">
+                                    <th class="p-3 w-1/12">Proc_ID</th>
+                                    <th class="p-3 w-3/12">Descripción del Procedimiento</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Inclusión</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Exclusión</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-sm">
+                                <!-- FFEM -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">FFEM</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Cirugía de fractura de fémur proximal</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios urgentes con diagnóstico principal de fractura de fémur proximal que han sido intervenidos quirúrgicamente.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-slate-50 border border-slate-200 text-slate-400 p-2.5 rounded-lg text-xs italic">
+                                            Ninguna exclusión específica registrada.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- General Subgroup Exclusions (BELOW TABLE) -->
+                    <div class="bg-rose-50/90 border border-rose-200 rounded-xl p-4 text-xs text-rose-900 space-y-2">
+                        <div class="font-bold text-rose-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            Criterios Generales de Exclusión del Subgrupo
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside text-rose-950 font-medium">
+                            <li>Pacientes sin ninguna Hb</li>
+                            <li>Pacientes sin ninguna Hb preop, en 5 días previos a la fecha de intervención</li>
+                            <li>Pacientes sin fecha y hora completa de cirugía. La fecha de cirugía es CMBD y se enriquece con bbdd IQ si la anterior no es completa</li>
+                            <li>Pacientes sin fecha y hora completa de Hbs, de tratamientos (feiv, epo), de transfusiones. Sin fecha y hora completa de cirugía también. La fecha de cirugía es CMBD y se enriquece con bbdd IQ si la anterior no es completa</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. PROCESO MÉDICO -->
+            <section class="border border-purple-200 rounded-2xl bg-purple-50/30 overflow-hidden">
+                <div class="bg-purple-700 text-white p-4">
+                    <h2 class="text-lg font-bold flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-purple-300"></span>
+                        4. Proceso médico
+                    </h2>
+                </div>
+
+                <div class="p-4 sm:p-5 space-y-5">
+                    <!-- Specific Cohorts Table -->
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <table class="w-full text-left border-collapse tree-table min-w-[700px]">
+                            <thead>
+                                <tr class="bg-slate-800 text-white text-xs uppercase tracking-wider">
+                                    <th class="p-3 w-1/12">Proc_ID</th>
+                                    <th class="p-3 w-3/12">Descripción del Procedimiento</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Inclusión</th>
+                                    <th class="p-3 w-4/12">Criterios Específicos de Exclusión</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-sm">
+                                <!-- HDIG -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold align-top"><span class="px-2 py-0.5 bg-slate-100 rounded border border-slate-300">HDIG</span></td>
+                                    <td class="p-3 font-semibold text-slate-800 align-top">Hemorragia gastrointestinal</td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-2.5 rounded-lg text-xs">
+                                            <span class="font-bold block mb-1 text-emerald-700">✓ Inclusión:</span>
+                                            Episodios urgentes que tengan como diagnóstico principal hemorragia digestiva o como diagnostico secundario si se asocia a diagnóstico Principal de enfermedad hepática.
+                                        </div>
+                                    </td>
+                                    <td class="p-3 align-top">
+                                        <div class="bg-slate-50 border border-slate-200 text-slate-400 p-2.5 rounded-lg text-xs italic">
+                                            Ninguna exclusión específica registrada.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- General Subgroup Exclusions (BELOW TABLE) -->
+                    <div class="bg-rose-50/90 border border-rose-200 rounded-xl p-4 text-xs text-rose-900 space-y-2">
+                        <div class="font-bold text-rose-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            Criterios Generales de Exclusión del Subgrupo
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside text-rose-950 font-medium">
+                            <li>Pacientes sin ninguna Hb</li>
+                            <li>Pacientes sin ninguna Hb, en 5 días previos a la fecha de admisión y 24 horas posterior a la fecha de admisión</li>
+                            <li>Pacientes sin fecha y hora completa de ingreso / alta</li>
+                            <li>Pacientes sin fecha y hora completa de Hbs, de tratamientos (feiv, epo), de transfusiones</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 pt-4 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+            <div>
+                Documento de definición de cohortes MAPBM.
+            </div>
+            <div>
+                Utiliza el botón <strong>Imprimir / Guardar en PDF</strong> arriba a la derecha.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

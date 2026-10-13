@@ -1,7 +1,5 @@
---- Pacientes sin ninguna Hb se cumple en el criterio de seleccion de la cohorte
---- Pacientes sin Hb preop en 120 dias se cumple en el criterio de la seleccion de la cohorte
---- Crear vista de las tablas originales con flag true en aquellos registros con problemas de fechas completas 
-create or replace view episode_view as
+create or replace table episode_valid_intervention as 
+select patient_id,episode_id,start_intervention_dt,end_intervention_dt from (
 select *,
     coalesce(
         (
@@ -48,4 +46,5 @@ select *,
     flag_start_intervention_dt
     or flag_end_intervention_dt as flag_intervention_complete_time
 from episode
-where flag_intervention_complete_time is false and start_intervention_dt is not null and end_intervention_dt is not null;
+where flag_intervention_complete_time is false and start_intervention_dt is not null and end_intervention_dt is not null
+);

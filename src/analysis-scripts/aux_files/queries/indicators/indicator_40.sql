@@ -17,16 +17,16 @@ denominador as (
         discharge_dt,
         admission_dt
     from (
-            select *
+            select * exclude(result_determination_dt,result_determination_cd)
             from cirugia_programada_cohort a
             union all
-            select *
+            select *  exclude(result_determination_dt,result_determination_cd)
             from cirugia_oncologica_cohort a
             union all
-            select *
+            select *  exclude(result_determination_dt,result_determination_cd)
             from cirugia_urgente_cohort a
             union all
-            select *
+            select * exclude(admission_dt,result_determination_dt,result_determination_cd)
             from proceso_medico_cohort a
         ) a
         left join (
@@ -39,7 +39,6 @@ denominador as (
             from episode_view
         ) b on a.patient_id = b.patient_id
         and a.episode_id = b.episode_id
-        and a.start_intervention_dt = b.start_intervention_dt
 ),
 denominador_transfundidos as (
     select *

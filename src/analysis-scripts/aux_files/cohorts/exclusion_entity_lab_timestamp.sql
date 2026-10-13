@@ -2,6 +2,7 @@
 --- Pacientes sin Hb preop en 120 dias se cumple en el criterio de la seleccion de la cohorte
 --- Crear vista de las tablas originales con flag true en aquellos registros con problemas de fechas completas 
 create or replace view lab_view as
+select * exclude(flag_determination_dt,flag_result_determination_dt) from (
 select *,
     determination_dt is null
     or (
@@ -41,5 +42,8 @@ select *,
             FROM result_determination_dt
         ) = 0
     ) as flag_result_determination_dt
-from lab
-where flag_result_determination_dt is false
+from lab where determination_cd = 'hb'
+and (flag_result_determination_dt is false and flag_determination_dt is FALSE)
+)
+union all
+select * from lab where determination_cd != 'hb' 

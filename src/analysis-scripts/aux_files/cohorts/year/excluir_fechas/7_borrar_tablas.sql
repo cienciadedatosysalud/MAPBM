@@ -1,0 +1,2 @@
+drop table episode_valid_admission;
+drop table episode_valid_intervention;

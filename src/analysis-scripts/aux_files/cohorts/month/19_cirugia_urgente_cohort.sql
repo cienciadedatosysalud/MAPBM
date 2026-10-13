@@ -1,4 +1,4 @@
-create or replace table proceso_medico_cohort_year as
+create or replace table cirugia_urgente_cohort as
 select patient_id || '_' || episode_id as id_paciente_episodio,
     patient_id,
     result_determination_cd,
@@ -20,7 +20,7 @@ select patient_id || '_' || episode_id as id_paciente_episodio,
         and sex_cd = '2' then true
         else false
     end as anemic_oms,
-    date_trunc('year', start_intervention_dt)::DATE as month_year
+    date_trunc('month', start_intervention_dt)::DATE as month_year
 from (
         select row_number() over(
                 partition by patient_id,
@@ -36,9 +36,9 @@ from (
                             sex_cd,
                             age_nm,
                             start_intervention_dt,
-                            'hdig' as cohort,
-                            category_cohort
-                        from hdig_cohort
+                            'ffem' as cohort,
+                            category_cohort,
+                            from ffem_cohort
                         where patient_id not in (
                                 select distinct patient_id
                                 from lab_view
@@ -56,9 +56,9 @@ from (
                         from lab_view
                         where determination_cd = 'hb'
                     ) b on a.patient_id = b.patient_id
-                    and result_determination_dt between start_intervention_dt - INTERVAL 5 DAY
+                    and result_determination_dt between (start_intervention_dt - INTERVAL 5 DAY)
                     and start_intervention_dt
-                    where b.patient_id is not null
+                where b.patient_id is not null
             )
     )
 where rk_hb = 1;

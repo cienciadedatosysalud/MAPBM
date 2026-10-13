@@ -9,7 +9,7 @@ WITH denominador AS (
         admission_dt
     FROM (
         SELECT patient_id, episode_id, start_intervention_dt FROM cirugia_programada_cohort_year
-        UNION
+        UNION 
         SELECT patient_id, episode_id, start_intervention_dt FROM cirugia_oncologica_cohort_year
         UNION
         SELECT patient_id, episode_id, start_intervention_dt FROM cirugia_urgente_cohort_year
