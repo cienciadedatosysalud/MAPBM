@@ -43,33 +43,7 @@ select cohort,
     ) as n_episodios_l13,
     count(*) as n_episodios,
     count(*) as n_elegibles
-from (
-        select row_number() over(
-                partition by patient_id,
-                cohort
-                order by result_determination_dt ASC
-            ) as rk_hb,
-            *
-        from (
-                select a.*,
-                    cohort,
-                    category_cohort,
-                    month_year,
-                    anemic_13
-                from (
-                        select patient_id,
-                            result_determination_cd,
-                            result_determination_dt
-                        from lab_view
-                        where determination_cd = 'hb'
-                    ) a
-                    left join cirugia_urgente_cohort b on a.patient_id = b.patient_id
-                    and a.result_determination_dt between start_intervention_dt - INTERVAL 5 DAY
-                    and start_intervention_dt
-                where b.patient_id is not null
-            )
-    )
-where rk_hb = 1
+from cirugia_urgente_cohort
 group by cohort,
     category_cohort,
     month_year
@@ -84,49 +58,7 @@ select cohort,
     ) as n_episodios_l13,
     count(*) as n_episodios,
     count(*) as n_elegibles
-from (
-        select row_number() over(
-                partition by patient_id,
-                cohort
-                order by result_determination_dt ASC
-            ) as rk_hb,
-            *
-        from (
-                select a.*,
-                    cohort,
-                    category_cohort,
-                    month_year,
-                    anemic_13
-                from (
-                        select patient_id,
-                            result_determination_cd,
-                            result_determination_dt
-                        from lab_view
-                        where determination_cd = 'hb'
-                    ) a
-                    left join (
-                        select a.admission_dt,
-                            b.*
-                        from(
-                                (
-                                    select episode_id,
-                                        patient_id,
-                                        start_intervention_dt,
-                                        admission_dt
-                                    from episode_view
-                                ) a
-                                left join proceso_medico_cohort b on a.patient_id = b.patient_id
-                                and a.episode_id = b.episode_id
-                                and a.start_intervention_dt = b.start_intervention_dt
-                            )
-                        where b.patient_id is not null
-                    ) b on a.patient_id = b.patient_id
-                    and a.result_determination_dt between admission_dt - INTERVAL 5 DAY
-                    and admission_dt
-                where b.patient_id is not null
-            )
-    )
-where rk_hb = 1
+from proceso_medico_cohort
 group by cohort,
     category_cohort,
-    month_year;
+    month_year

@@ -314,26 +314,24 @@ tbl_cohort <- dplyr::case_when(
 demo_data <- tryCatch({
   dbGetQuery(con, paste0("
     SELECT 
-      COUNT(DISTINCT episode_id) as n_tot, 
+      COUNT(DISTINCT id_paciente_episodio) as n_tot, 
       ROUND(AVG(age_nm),1) as edad_media, 
       SUM(CASE WHEN sex_cd='2' THEN 1 ELSE 0 END) as n_mujeres,
-      SUM(CASE WHEN anemic_oms IS TRUE THEN 1 ELSE 0 END) as n_anemia_oms
-    FROM ", tbl_cohort, " 
-    WHERE cohort='", cohort_, "'
+      SUM(CASE WHEN anemic_oms IS TRUE THEN 1 ELSE 0 END) as n_anemia_oms,
+      SUM(CASE WHEN anemic_13 IS TRUE THEN 1 ELSE 0 END) as n_anemic_13
+    FROM ", tbl_cohort, " _year 
+    WHERE cohort='", cohort_, "' and year(month_year) = year(strptime('",max_date_analisis,"', '%d/%m/%Y')::DATE) group by month_year order by month_year DESC limit 1
   "))
-}, error=function(e) data.frame(n_tot=NA, edad_media=NA, n_mujeres=NA, n_anemia_oms=NA))
+}, error=function(e) data.frame(n_tot=NA, edad_media=NA, n_mujeres=NA, n_anemia_oms=NA, n_anemic_13=NA))
 
-# 4) Datos de Anemia <13 (desde Indicator_01)
-hb_data_base <- tryCatch({
-  dbGetQuery(con_result, paste0("SELECT n_episodios_l13 as n_anemia13 FROM indicator_01 WHERE cohort='", cohort_, "' ORDER BY month_year DESC LIMIT 1"))
-}, error=function(e) data.frame(n_anemia13=NA))
+
 
 # --- CÁLCULO DE PORCENTAJES ---
 n_tot_val <- if(!is.na(demo_data$n_tot[1]) && demo_data$n_tot[1] > 0) demo_data$n_tot[1] else 1
 
 pct_mujeres <- ifelse(is.na(demo_data$n_mujeres[1]), "-", paste0(round(100 * demo_data$n_mujeres[1] / n_tot_val, 1), "%"))
 pct_anemia_oms <- ifelse(is.na(demo_data$n_anemia_oms[1]), "-", paste0(round(100 * demo_data$n_anemia_oms[1] / n_tot_val, 1), "%"))
-pct_anemia_13 <- ifelse(is.na(hb_data_base$n_anemia13[1]), "-", paste0(round(100 * hb_data_base$n_anemia13[1] / n_tot_val, 1), "%"))
+pct_anemia_13 <- ifelse(is.na(demo_data$n_anemic_13[1]), "-", paste0(round(100 * demo_data$n_anemic_13[1] / n_tot_val, 1), "%"))
 edad_media_val <- ifelse(is.na(demo_data$edad_media[1]), "-", demo_data$edad_media[1])
 n_tot_disp <- ifelse(is.na(demo_data$n_tot[1]), "-", demo_data$n_tot[1])
 ```

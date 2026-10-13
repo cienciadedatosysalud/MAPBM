@@ -87,13 +87,13 @@ from (
                 select patient_id,
                     h_amb_drug_cd as drug_cd,
                     h_amb_dispensation_dt as dispensation_dt
-                from hosp_amb_pharmacy
+                from hosp_amb_pharmacy_view
                 where h_amb_drug_cd in ('B03AC')
                 union all
                 select patient_id,
                     h_drug_cd as drug_cd,
                     h_dispensation_dt as dispensation_dt
-                from hosp_pharmacy
+                from hosp_pharmacy_view
                 where h_drug_cd in ('B03AC')
             ) b on a.patient_id = b.patient_id
             and dispensation_dt between end_intervention_dt and discharge_dt
@@ -106,7 +106,6 @@ union all
 select * from (
 with denominador as (
     select a.*,
-    	admission_dt,
         discharge_dt,
         end_intervention_dt,
         anesth_cd,
@@ -128,7 +127,7 @@ with denominador as (
             from episode_view
         ) b on a.patient_id = b.patient_id
         and a.episode_id = b.episode_id
-        and a.start_intervention_dt = b.start_intervention_dt
+        and a.admission_dt = b.admission_dt
 ),
 anemic_post_intervention as (
     select patient_id,
@@ -187,13 +186,13 @@ from (
                 select patient_id,
                     h_amb_drug_cd as drug_cd,
                     h_amb_dispensation_dt as dispensation_dt
-                from hosp_amb_pharmacy
+                from hosp_amb_pharmacy_view
                 where h_amb_drug_cd in ('B03AC')
                 union all
                 select patient_id,
                     h_drug_cd as drug_cd,
                     h_dispensation_dt as dispensation_dt
-                from hosp_pharmacy
+                from hosp_pharmacy_view
                 where h_drug_cd in ('B03AC')
             ) b on a.patient_id = b.patient_id
             and dispensation_dt between admission_dt and discharge_dt

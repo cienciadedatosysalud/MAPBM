@@ -60,13 +60,13 @@ from (
                 select patient_id,
                     h_amb_drug_cd as drug_cd,
                     h_amb_dispensation_dt as dispensation_dt
-                from hosp_amb_pharmacy
+                from hosp_amb_pharmacy_view
                 where h_amb_drug_cd LIKE ('B02B%')
                 union all
                 select patient_id,
                     h_drug_cd as drug_cd,
                     h_dispensation_dt as dispensation_dt
-                from hosp_pharmacy
+                from hosp_pharmacy_view
                 where h_drug_cd LIKE ('B02B%')
             ) b on a.patient_id = b.patient_id
             and dispensation_dt between admission_dt and discharge_dt

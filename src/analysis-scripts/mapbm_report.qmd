@@ -34,13 +34,16 @@ library(gt)
 library(duckdb)
 library(zoo)
 library(htmltools)
-
+log_formatter(formatter_glue)
 log_info("Create cohorts general")
 database_path <- '../../inputs/data.duckdb'
 database_result_path <- './result.duckdb'
 directorio_sql <- "aux_files/queries/indicators/"  
 directorio_cohorts <- "aux_files/cohorts/"
 directorio_composites <- "aux_files/composites/"
+
+
+
 options(scipen = 999)
 file_to_remove <- './result.duckdb'
 if (file.exists(file_to_remove)){
@@ -59,7 +62,7 @@ source('./aux_files/create_composites.R')
 
 # --- CALCULAR EL PERIODO ---
 query_dates <- "
-  WITH base_dates AS (
+WITH base_dates AS (
   SELECT start_intervention_dt FROM cirugia_programada_cohort
   UNION ALL SELECT start_intervention_dt FROM cirugia_oncologica_cohort
   UNION ALL SELECT start_intervention_dt FROM cirugia_urgente_cohort
@@ -73,13 +76,15 @@ ranked_years AS (
   FROM base_dates
 )
 SELECT 
-  MIN(start_intervention_dt) as min_dt, MAX(start_intervention_dt) as max_dt ,
-  MIN(CASE WHEN yr_rank = 1 THEN start_intervention_dt END) AS min_dt_max_year,
-  MAX(CASE WHEN yr_rank = 1 THEN start_intervention_dt END) AS max_dt_max_year,
-  MIN(CASE WHEN yr_rank = 2 THEN start_intervention_dt END) AS min_dt_prev_year,
-  MAX(CASE WHEN yr_rank = 2 THEN start_intervention_dt END) AS max_dt_prev_year
+  MAKE_DATE(YEAR(MIN(start_intervention_dt)), 1, 1) AS min_dt,
+  MAKE_DATE(YEAR(MAX(start_intervention_dt)), 12, 31) AS max_dt,  
+  MAKE_DATE(YEAR(MIN(CASE WHEN yr_rank = 1 THEN start_intervention_dt END)), 1, 1) AS min_dt_max_year,
+  MAKE_DATE(YEAR(MAX(CASE WHEN yr_rank = 1 THEN start_intervention_dt END)), 12, 31) AS max_dt_max_year,  
+  MAKE_DATE(YEAR(MIN(CASE WHEN yr_rank = 2 THEN start_intervention_dt END)), 1, 1) AS min_dt_prev_year,
+  MAKE_DATE(YEAR(MAX(CASE WHEN yr_rank = 2 THEN start_intervention_dt END)), 12, 31) AS max_dt_prev_year
 FROM ranked_years;
 "
+
 dates_df <- tryCatch(dbGetQuery(con, query_dates), error = function(e) data.frame(min_dt=NA, max_dt=NA))
 
 min_date <- if(!is.na(dates_df$min_dt[1])) format(as.Date(dates_df$min_dt[1]), "%d/%m/%Y") else "-"
@@ -90,7 +95,7 @@ max_date_analisis <- if(!is.na(dates_df$max_dt_max_year[1])) format(as.Date(date
 
 
 min_date_comparacion <- if(!is.na(dates_df$min_dt_prev_year[1])) format(as.Date(dates_df$min_dt_prev_year[1]), "%d/%m/%Y") else "-"
-max_date_comparacion <- if(!is.na(dates_df$max_dt_max_year[1])) format(as.Date(dates_df$max_dt_max_year[1]), "%d/%m/%Y") else "-"
+max_date_comparacion <- if(!is.na(dates_df$max_dt_prev_year[1])) format(as.Date(dates_df$max_dt_prev_year[1]), "%d/%m/%Y") else "-"
 
 # -------------------------------------------
 
@@ -125,73 +130,6 @@ format_diff_tag <- function(diff_pct, lower_is_better = FALSE) {
   }
 }
 
-get_ui_data <- function(ind_id, c_name, filter_transf = NULL, var_name = NULL, transftype = NULL) {
-  q <- sprintf("select * from %s where cohort = '%s'", ind_id, c_name)
-  if (!is.null(filter_transf)) {
-    if (filter_transf) q <- paste0(q, " and transfundido_bl is true")
-    else q <- paste0(q, " and transfundido_bl is false")
-  }
-  if (!is.null(transftype)) {
-    q <- paste0(q, " and transftype_st = '", transftype, "'")
-  }
-  q <- paste0(q, " order by month_year")
-  
-  df <- tryCatch(dbGetQuery(con_result, q), error=function(e) data.frame())
-  
-  # Si no hay registros, devolvemos la estructura vacía/por defecto
-  if(nrow(df) == 0) {
-    return(list(
-      vals = "0", 
-      ns = "0", 
-      last_n = "-", 
-      current = "-", 
-      prev_val = "-", 
-      diff_pct = "-", 
-      dates = "-"
-    ))
-  }
-  
-  df_m <- df
-  
-  # Selección de la variable numérica
-  if (!is.null(var_name) && var_name %in% names(df_m)) {
-    v <- df_m[[var_name]]
-  } else if("result" %in% names(df_m)) {
-    v <- df_m$result
-  } else if("promedio" %in% names(df_m)) {
-    v <- df_m$promedio
-  } else {
-    v <- rep(0, nrow(df_m))
-  }
-  
-  v <- round(as.numeric(v), 1)
-  n <- if("n_elegibles" %in% names(df_m)) df_m$n_elegibles else rep(0, nrow(df_m))
-  d <- if("month_year" %in% names(df_m)) as.character(df_m$month_year) else rep("-", nrow(df_m))
-  
-  # Extracción de valor actual y anterior
-  val_current  <- tail(v, 1)
-  val_previous <- if (length(v) > 1) v[length(v) - 1] else NA
-  
-  # Cálculo de la diferencia porcentual con formato (+X.X% / -X.X%)
-  diff_pct <- if (!is.na(val_previous) && val_previous != 0) {
-    pct <- ((val_current - val_previous) / val_previous) * 100
-    sprintf("%+.1f%%", pct)
-  } else if (!is.na(val_previous) && val_previous == 0 && val_current == 0) {
-    "+0.0%"
-  } else {
-    "-"
-  }
-  
-  list(
-    vals     = paste(v, collapse=","), 
-    ns       = paste(n, collapse=","),
-    last_n   = as.character(tail(n, 1)),
-    current  = as.character(val_current),
-    prev_val = if (!is.na(val_previous)) as.character(val_previous) else "-",
-    diff_pct = diff_pct,
-    dates    = paste(d, collapse=",")
-  )
-}
 
 get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name = NULL, transftype = NULL,use_n_transf = FALSE, unit_str ="") {
   q <- sprintf("select * from %s where cohort = '%s'", ind_id, c_name)
@@ -272,22 +210,7 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
     n <- rep(0, nrow(df_m))
   }
   d <- if("month_year" %in% names(df_m)) as.character(df_m$month_year) else rep("-", nrow(df_m))
-  
-  # Extracción de valor actual y anterior para la tabla
-  #val_current  <- tail(v, 1)
-  #val_previous <- if (length(v) > 1) v[length(v) - 1] else NA
-  
-  # Cálculo de la diferencia porcentual (+X.X% / -X.X%)
-  #diff_pct <- if (!is.na(val_previous) && val_previous != 0) {
-  #  pct <- ((val_current - val_previous) / val_previous) * 100
-  #  sprintf("%+.1f%%", pct)
-  #} else if (!is.na(val_previous) && val_previous == 0 && val_current == 0) {
-  #  "+0.0%"
-  #} else {
-  #  "-"
-  #}
-
-  
+    
   val_current  <- tail(v, 1)
   val_previous <- if (length(v) > 1) v[length(v) - 1] else NA
   
@@ -300,31 +223,29 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
   
   # --- Cálculo de la diferencia porcentual con validación de año continuo ---
   diff_pct <- if (!is.na(year_current) && !is.na(year_previous) && (year_current - year_previous == 1)) {
-  if (!is.na(val_previous) && !is.na(val_current) && val_previous != 0) {
-    pct <- val_current - val_previous
-    # %+.1f formatea el número con signo (+/-) y 1 decimal
-    # %s inserta la unidad (unit_str)
-    sprintf("%+.2f%s", pct, unit_str)
-  } else if (!is.na(val_previous) && !is.na(val_current) && val_previous == 0 && val_current == 0) {
-    paste0("+0.00", unit_str)
+    
+    if (!is.na(val_previous) && !is.na(val_current)) {
+      pct <- val_current - val_previous
+      sprintf("%+.2f%s", pct, unit_str)
+    } else {
+      "-"
+    }
+    
   } else {
-    "-"
-  }
-  } else {
-    "-" # Si no son años consecutivos (ej. dif != 1), forzamos "-"
+    "-" # Si no son años consecutivos o falta algún valor, forzamos "-"
   }
 
   list(
-    vals        = paste(v, collapse=","), 
-    vals_median = paste(med, collapse=","),
-    vals_avg    = paste(avg, collapse=","),
-    vals_sd     = paste(sd_val, collapse=","),
-    ns          = paste(n, collapse=","),
+    vals        = paste(v, collapse = ","), 
+    vals_median = paste(med, collapse = ","),
+    vals_avg    = paste(avg, collapse = ","),
+    vals_sd     = paste(sd_val, collapse = ","),
+    ns          = paste(n, collapse = ","),
     last_n      = as.character(tail(n, 1)),
     current     = as.character(val_current),
     prev_val    = if (!is.na(val_previous)) as.character(val_previous) else "-",
     diff_pct    = diff_pct,
-    dates       = paste(d, collapse=",")
+    dates       = paste(d, collapse = ",")
   )
 }
 
@@ -1045,53 +966,53 @@ ind_meta <- list(
   # --- BLOQUE 2: Evaluación y Tratamiento Preoperatorio ---
   i05 = list(title = "Evaluación de la anemia preoperatoria con tiempo suficiente", tip = "Porcentaje de episodios con evaluación de la anemia preoperatoria con tiempo suficiente. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios con al menos una determinación de Hb en la ventana preoperatoria válida."),
   
-  i06 = list(title = "Estudio del metabolismo del hierro", tip = "Porcentaje de episodios de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro. Denominador: episodios con anemia preoperatoria. Numerador: episodios con ferritina u otra prueba de metabolismo del hierro en ventana válida."),
+  i06 = list(title = "Estudio del metabolismo del hierro", tip = "Porcentaje de episodios de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro. Denominador: episodios con anemia (OMS) preoperatoria. Numerador: episodios con ferritina en ventana válida."),
   
-  i07 = list(title = "Estudio del metabolismo del hierro (Hb<13)", tip = "Porcentaje de episodios de pacientes anémicos (Hb<13) en preoperatorio con estudio del metabolismo del hierro. Denominador: episodios con anemia (Hb<13) preoperatoria. Numerador: episodios con ferritina u otra prueba de metabolismo del hierro en ventana válida."),
+  i07 = list(title = "Estudio del metabolismo del hierro (Hb<13)", tip = "Porcentaje de episodios de pacientes anémicos (Hb<13) en preoperatorio con estudio del metabolismo del hierro. Denominador: episodios con anemia (Hb<13) preoperatoria. Numerador: episodios con ferritina en ventana válida."),
   
-  i08 = list(title = "Determinación de Hb reticulocitaria", tip = "Porcentaje de episodios de pacientes anémicos en preoperatorio con determinación de hemoglobina reticulocitaria. Denominador: episodios con anemia preoperatoria. Numerador: episodios con determinación de hemoglobina reticulocitaria en ventana válida."),
+  i08 = list(title = "Determinación de Hb reticulocitaria", tip = "Porcentaje de episodios de pacientes anémicos en preoperatorio con determinación de hemoglobina reticulocitaria. Denominador: episodios con anemia (OMS) preoperatoria. Numerador: episodios con determinación de hemoglobina reticulocitaria en ventana válida."),
   
   i09 = list(title = "Determinación de Hb reticulocitaria (Hb<13)", tip = "Porcentaje de episodios de pacientes anémicos (Hb<13) en preoperatorio con determinación de hemoglobina reticulocitaria. Denominador: episodios con anemia (Hb<13) preoperatoria. Numerador: episodios con determinación de hemoglobina reticulocitaria en ventana válida."),
   
-  i10 = list(title = "Tratamiento preoperatorio anemia", tip = "Porcentaje de episodios de pacientes anémicos tratados preoperatoriamente con tiempo suficiente. Denominador: episodios con anemia preoperatoria. Numerador: episodios tratados con hierro IV y/o EPO dentro de la ventana definida."),
+  i10 = list(title = "Tratamiento preoperatorio anemia", tip = "Porcentaje de episodios de pacientes anémicos tratados preoperatoriamente con tiempo suficiente. Denominador: episodios con anemia (OMS) preoperatoria. Numerador: episodios tratados con hierro IV y/o EPO dentro de la ventana válida."),
   
-  i11 = list(title = "Tratamiento preoperatorio anemia (Hb<13)", tip = "Porcentaje de episodios de pacientes anémicos (Hb<13) tratados preoperatoriamente con tiempo suficiente. Denominador: episodios de pacientes con anemia (Hb<13) preoperatoria. Numerador: episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana definida."),
+  i11 = list(title = "Tratamiento preoperatorio anemia (Hb<13)", tip = "Porcentaje de episodios de pacientes anémicos (Hb<13) tratados preoperatoriamente con tiempo suficiente. Denominador: episodios de pacientes con anemia (Hb<13) preoperatoria. Numerador: episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana válida."),
   
-  i12 = list(title = "Tratamiento preoperatorio (todos, anémicos y no anémicos)", tip = "Porcentaje de episodios pacientes (todos) tratados preoperatoriamente con tiempo suficiente. Denominador: todos los episodios de pacientes elegibles del procedimiento. Numerador: episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana definida."),
+  i12 = list(title = "Tratamiento preoperatorio (todos, anémicos y no anémicos)", tip = "Porcentaje de episodios pacientes (todos) tratados preoperatoriamente con tiempo suficiente. Denominador: todos los episodios de pacientes elegibles del procedimiento. Numerador: episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana válida."),
   
-  i13 = list(title = "Hb de control", tip = "Porcentaje de episodios de pacientes con Hb de control. Denominador: episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente. Numerador: episodios de pacientes con al menos una determinación de Hb entre el tratamiento y la cirugía."),
+  i13 = list(title = "Hb de control", tip = "Porcentaje de episodios de pacientes con Hb de control. Denominador: episodios de pacientes anémicos (Hb<13) en preoperatorio, y tratados preoperatoriamente. Numerador: episodios de pacientes con al menos una determinación de Hb entre el tratamiento y la cirugía."),
   
-  i14 = list(title = "Tratados preoperatoriamente con un incremento de Hb de +1 pto", tip = "Porcentaje de episodios de pacientes con Hb de control. Denominador: episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente. Numerador: episodios de pacientes con un incremento de Hb de +1 pto, hb previa al tratamiento y hb más cercana a la cirugía"),
+  i14 = list(title = "Tratados preoperatoriamente con un incremento de Hb de +1 pto", tip = "Porcentaje de episodios de pacientes con Hb de control. Denominador: episodios de pacientes anémicos (Hb<13) en preoperatorio, y tratados preoperatoriamente. Numerador: episodios de pacientes con un incremento de Hb de +1 pto, hb previa al tratamiento y hb más cercana a la cirugía"),
   
-  i15 = list(title = "Incremento de Hb post tratamiento preoperatorio", tip = "Promedio del incremento de Hb post tratamiento preoperatorio. Elegibles: episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente"),
+  i15 = list(title = "Incremento de Hb post tratamiento preoperatorio", tip = "Promedio del incremento de Hb post tratamiento preoperatorio. Elegibles: episodios de pacientes anémicos (Hb<13) en preoperatorio, y tratados preoperatoriamente"),
   
-  i16 = list(title = "No transfundidos con hematíes en preoperatorio", tip = "Porcentaje de episodios de pacientes no transfundidos con hematíes en preoperatorio. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes no transfundidos preoperatoriamente."),
+  i16 = list(title = "No transfundidos con hematíes en preoperatorio", tip = "Porcentaje de episodios de pacientes no transfundidos con hematíes en preoperatorio. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes no transfundidos preoperatoriamente en la ventana válida."),
 
-  i17 = list(title = "No transfundidos con plasma en preoperatorio", tip = "Porcentaje de episodios de pacientes no transfundidos con plasma en preoperatorio. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes no transfundidos preoperatoriamente."),
+  i17 = list(title = "No transfundidos con plasma en preoperatorio", tip = "Porcentaje de episodios de pacientes no transfundidos con plasma en preoperatorio. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes no transfundidos preoperatoriamente en la ventana válida en la ventana válida."),
 
-  i18 = list(title = "No transfundidos con plaquetas en preoperatorio", tip = "Porcentaje de episodios de pacientes no transfundidos con plaquetas en preoperatorio. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes no transfundidos preoperatoriamente."),
+  i18 = list(title = "No transfundidos con plaquetas en preoperatorio", tip = "Porcentaje de episodios de pacientes no transfundidos con plaquetas en preoperatorio. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes no transfundidos preoperatoriamente en la ventana válida."),
 
   i19 = list(title = "Días de estancia preoperatoria", tip = "Promedio de la duración de estancia preoperatoria. Elegibles: todos los episodios elegibles del procedimiento."),
   
   i20 = list(title = "Episodios de pacientes intervenidos en <48 h desde la admisión", tip = "Porcentaje de episodios de pacientes intervenidos en <48 h desde la admisión. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes intervenidos en <48 h desde la admisión."),
   
-  i21 = list(title = "Episodios de pacientes intervenidos sin anemia", tip = "Porcentaje de episodios de pacientes intervenidos sin anemia. Denominador: episodios de pacientes con Hb previa a la intervención disponible. Numerador: episodios de pacientes sin anemia en el momento de la cirugía."),
+  i21 = list(title = "Episodios de pacientes intervenidos sin anemia", tip = "Porcentaje de episodios de pacientes intervenidos sin anemia. Denominador: episodios de pacientes con Hb previa a la intervención disponible. Numerador: episodios de pacientes sin anemia (OMS) en el momento de la cirugía."),
   
   i22 = list(title = "Episodios de pacientes intervenidos sin anemia  (Hb>=13)", tip = "Porcentaje de episodios de pacientes que llegan a la intervención con un nivel óptimo de Hb ≥ 13 g/dL. Denominador: episodios de pacientes con Hb previa a la intervención disponible. Numerador: episodios de pacientes sin anemia en el momento de la cirugía con nivel de Hb≥13."),
   
   i23 = list(title = "Valor de Hb previo a la intervención", tip = "Promedio del valor Hb previo a la intervención."),
   
-  i24 = list(title = "Tratamiento postop. con hierro IV", tip = "Porcentaje de episodios de pacientes tratados postoperatoriamente con hierro intravenoso durante la estancia hospitalaria. Denominador: episodios de pacientes anémicos en postoperatorio. Numerador: episodios de pacientes tratados con hierro intravenoso durante la estancia hospitalaria."),
+  i24 = list(title = "Tratamiento postop. con hierro IV", tip = "Porcentaje de episodios de pacientes tratados postoperatoriamente con hierro intravenoso durante la estancia hospitalaria. Denominador: episodios de pacientes anémicos (Hb<13) en postoperatorio. Numerador: episodios de pacientes tratados con hierro intravenoso durante la estancia hospitalaria."),
   
   i25 = list(title = "Episodios de pacientes con anestesia regional", tip = "Porcentaje de episodios de pacientes con anestesia regional. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes con anestesia regional."),
   
-  i26 = list(title = "Tratamiento con antifibrinolíticos", tip = "Porcentaje de episodios de pacientes tratados con antifibrinolíticos. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes tratados con antifibrinolíticos."),
+  i26 = list(title = "Tratamiento con antifibrinolíticos", tip = "Porcentaje de episodios de pacientes tratados con antifibrinolíticos. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes tratados con antifibrinolíticos durante la estancia hospitalaria."),
 
   i27 = list(title = "Episodios de pacientes con uso de recuperadores de sangre", tip = "Porcentaje de episodios de pacientes tratados con uso de recuperadores de sangre. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes con uso de recuperadores de sangre."),
 
-  i28 = list(title = "Tratamiento con fibrinógeno", tip = "Porcentaje de episodios de pacientes tratados con fibrinógeno durante el ingreso. Denominador: Episodios de pacientes con valor de concentración de fibrinógeno < 2 g/L durante el ingreso (el valor más bajo entre los disponibles). Numerador: episodios de pacientes tratados con fibrinógeno durante el ingreso."),
+  i28 = list(title = "Tratamiento con fibrinógeno", tip = "Porcentaje de episodios de pacientes tratados con fibrinógeno durante la estancia hospitalaria. Denominador: Episodios de pacientes con valor de concentración de fibrinógeno < 2 g/L durante la estancia hospitalaria (el valor más bajo entre los disponibles). Numerador: episodios de pacientes tratados con fibrinógeno durante la estancia hospitalaria."),
 
-  i29 = list(title = "Tratamiento con fibrinógeno (para todos, con y sin valor de conc.fibrin.)", tip = "Porcentaje de episodios de pacientes tratados con fibrinógeno (para todos, con y sin valor de conc.fibrin.) durante el ingreso. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes tratados con fibrinógeno durante el ingreso."),
+  i29 = list(title = "Tratamiento con fibrinógeno (para todos, con y sin valor de conc.fibrin.)", tip = "Porcentaje de episodios de pacientes tratados con fibrinógeno (para todos, con y sin valor de conc.fibrin.) durante la estancia hospitalaria. Denominador: todos los episodios elegibles del procedimiento. Numerador: episodios de pacientes tratados con fibrinógeno durante la estancia hospitalaria."),
   
   i30 = list(title = "Episodios de pacientes transfundidos con Hb<8", tip = "Porcentaje de episodios de pacientes transfundidos con Hb<8. Denominador: episodios de pacientes transfundidos con una determinación de Hb disponible en las 24 horas previas a la transfusión. Numerador: episodios de pacientes transfundidos con Hb<8."),
   
@@ -1304,7 +1225,9 @@ body{margin:0}
     <div class="nav-title">Anexo</div>
     <a href="#tabla-detalle">Tabla detalle indicadores</a>
     <a href="#actividad"> Actividad cargada</a>
-    <a href="#notas-tecnicas">Notas técnicas</a>
+    <a href="#criterios-seleccion">Criterios de selección de las cohortes</a>
+    <a href="#ventana-seleccion-svg">Ventanas de medición de Hemoglobina preoperatoria</a>
+    <a href="#notas-tecnicas">Notas técnicas</a>   
   </nav>
 </aside>
 <main class="main">

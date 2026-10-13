@@ -3,6 +3,29 @@
 # ANEXOS: Lectura e integración de todos los CSV de indicadores
 # =========================================================================
 
+ruta_svg <- "./aux_files/web_elements/20261008_diagrama_medicion_hgb_preoperatoria.svg"
+ruta_absoluta_svg <- normalizePath(ruta_svg, mustWork = FALSE)
+
+
+ruta_html <- "./aux_files/web_elements/cohortes_mapbm 1 1.html"
+
+# Resolver la ruta absoluta completa para evitar errores por espacios
+ruta_absoluta <- normalizePath(ruta_html, mustWork = FALSE)
+
+if (file.exists(ruta_absoluta) && file.info(ruta_absoluta)$size > 0) {
+  
+  tamano <- file.info(ruta_absoluta)$size
+  
+  # Lectura en binario para evitar fallos de encoding o caracteres especiales
+  con_ <- file(ruta_absoluta, "rb")
+  bin_data <- readBin(con_, what = "raw", n = tamano)
+  close(con_)
+  
+  base64_content <- jsonlite::base64_enc(bin_data)
+  data_url <- paste0("data:text/html;base64,", base64_content)
+}
+
+
 # Mapeo de nombres limpios para la tabla
 cohort_names <- c(
   "prod" = "Artroplastia Rodilla",
@@ -87,7 +110,49 @@ if(nrow(df_detalle) > 0) {
 cat(render_global_activity(cohort_names))
 ```
 
+</section>
+
+
+
+
+<section id="criterios-seleccion" class="section">
+  
+  <div class="panel" style="padding:22px">
+  <h2>Criterios de selección de las cohortes</h2>
+  <details>
+    <summary>Ver</summary>
+    ```{r, echo=FALSE, results='asis'}
+    cat(sprintf(
+    '<iframe src="%s" width="100%%" height="650px" style="border:none; border-radius:8px;"></iframe>',
+    data_url
+  ))
+    ```
+    </details>
+   </div>
+</section>
+
+<section id="ventana-seleccion-svg" class="section">
+  
+  <div class="panel" style="padding:22px">
+    <h2>Ventanas de medición de Hemoglobina preoperatoria</h2>
+    <details>
+      <summary>Ver</summary>
+      <div style="margin-top:16px; text-align:center; width:100%;">
+        ```{r, echo=FALSE, results='asis'}
+        if (file.exists(ruta_absoluta_svg) && file.info(ruta_absoluta_svg)$size > 0) {
+          svg_code <- readChar(ruta_absoluta_svg, file.info(ruta_absoluta_svg)$size)
+          cat(svg_code)
+        } else {
+          cat(sprintf("<p style='color:red;'>No se encontró el archivo SVG en: <code>%s</code></p>", ruta_absoluta_svg))
+        }
+        ```
+      </div>
+    </details>
+  </div>
+</section>
 <section id="notas-tecnicas" class="section">
+    
+
   <div class="panel" style="padding:22px">
     <h2>Notas técnicas</h2>
     <div class="notes-list" style="margin-top:16px">
@@ -96,88 +161,88 @@ cat(render_global_activity(cohort_names))
             <summary>Evaluación de la anemia preoperatoria con tiempo suficiente</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios con evaluación de la anemia preoperatoria con tiempo suficiente.<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios con al menos una determinación de Hb en la ventana preoperatoria válida.</p>
+            <strong>Numerador:</strong> episodios con al menos una determinación de Hb en la ventana preoperatoria válida (cirugía programada: entre 21 y 90 días antes de la cirugía; cirugía oncológica: entre 15 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Estudio del metabolismo del hierro</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos en preoperatorio con estudio del metabolismo del hierro.<br>
-            <strong>Denominador:</strong> episodios con anemia preoperatoria.<br>
-            <strong>Numerador:</strong> episodios con ferritina u otra prueba de metabolismo del hierro en ventana válida.</p>
+            <strong>Denominador:</strong> episodios con anemia (OMS) preoperatoria.<br>
+            <strong>Numerador:</strong> episodios con ferritina en ventana válida (cirugía programada: entre 21 y 90 días antes de la cirugía; cirugía oncológica: entre 15 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Estudio del metabolismo del hierro (Hb&lt;13)</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos (Hb&lt;13) en preoperatorio con estudio del metabolismo del hierro.<br>
             <strong>Denominador:</strong> episodios con anemia (Hb&lt;13) preoperatoria.<br>
-            <strong>Numerador:</strong> episodios con ferritina u otra prueba de metabolismo del hierro en ventana válida.</p>
+            <strong>Numerador:</strong> episodios con ferritina en ventana válida (cirugía programada: entre 21 y 90 días antes de la cirugía; cirugía oncológica: entre 15 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Determinación de Hb reticulocitaria</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos en preoperatorio con determinación de hemoglobina reticulocitaria.<br>
-            <strong>Denominador:</strong> episodios con anemia preoperatoria.<br>
-            <strong>Numerador:</strong> episodios con determinación de hemoglobina reticulocitaria en ventana válida.</p>
+            <strong>Denominador:</strong> episodios con anemia (OMS) preoperatoria.<br>
+            <strong>Numerador:</strong> episodios con determinación de hemoglobina reticulocitaria en ventana válida (cirugía programada: entre 21 y 90 días antes de la cirugía; cirugía oncológica: entre 15 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Determinación de Hb reticulocitaria (Hb&lt;13)</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos (Hb&lt;13) en preoperatorio con determinación de hemoglobina reticulocitaria.<br>
             <strong>Denominador:</strong> episodios con anemia (Hb&lt;13) preoperatoria.<br>
-            <strong>Numerador:</strong> episodios con determinación de hemoglobina reticulocitaria en ventana válida.</p>
+            <strong>Numerador:</strong> episodios con determinación de hemoglobina reticulocitaria en ventana válida (cirugía programada: entre 21 y 90 días antes de la cirugía; cirugía oncológica: entre 15 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Tratamiento preoperatorio anemia</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos tratados preoperatoriamente con tiempo suficiente.<br>
-            <strong>Denominador:</strong> episodios con anemia preoperatoria.<br>
-            <strong>Numerador:</strong> episodios tratados con hierro IV y/o EPO dentro de la ventana definida.</p>
+            <strong>Denominador:</strong> episodios con anemia (OMS) preoperatoria.<br>
+            <strong>Numerador:</strong> episodios tratados con hierro IV y/o EPO dentro de la ventana válida (cirugía programada: entre 7 y 90 días antes de la cirugía; cirugía oncológica: entre 7 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Tratamiento preoperatorio anemia (Hb&lt;13)</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes anémicos (Hb&lt;13) tratados preoperatoriamente con tiempo suficiente.<br>
             <strong>Denominador:</strong> episodios de pacientes con anemia (Hb&lt;13) preoperatoria.<br>
-            <strong>Numerador:</strong> episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana definida.</p>
+            <strong>Numerador:</strong> episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana válida (cirugía programada: entre 7 y 90 días antes de la cirugía; cirugía oncológica: entre 7 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Tratamiento preoperatorio (todos, anémicos y no anémicos)</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios pacientes (todos) tratados preoperatoriamente con tiempo suficiente.<br>
             <strong>Denominador:</strong> todos los episodios de pacientes elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana definida.</p>
+            <strong>Numerador:</strong> episodios de pacientes tratados con hierro IV y/o EPO dentro de la ventana válida (cirugía programada: entre 7 y 90 días antes de la cirugía; cirugía oncológica: entre 7 y 45 días antes de la cirugía; cirugía urgente: entre 0 y 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>Hb de control</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes con Hb de control.<br>
-            <strong>Denominador:</strong> episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente.<br>
+            <strong>Denominador:</strong> episodios de pacientes anémicos (Hb&lt;13) en preoperatorio, y tratados preoperatoriamente.<br>
             <strong>Numerador:</strong> episodios de pacientes con al menos una determinación de Hb entre el tratamiento y la cirugía.</p>
         </details>
 
         <details>
             <summary>Tratados preoperatoriamente con un incremento de Hb de +1 pto</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes con Hb de control.<br>
-            <strong>Denominador:</strong> episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente.<br>
+            <strong>Denominador:</strong> episodios de pacientes anémicos (Hb&lt;13) en preoperatorio, y tratados preoperatoriamente.<br>
             <strong>Numerador:</strong> episodios de pacientes con un incremento de Hb de +1 pto, hb previa al tratamiento y hb más cercana a la cirugía.</p>
         </details>
 
         <details>
             <summary>Incremento de Hb post tratamiento preoperatorio</summary>
             <p><strong>Descripción:</strong> Promedio del incremento de Hb post tratamiento preoperatorio.<br>
-            <strong>Elegibles:</strong> episodios de pacientes anémicos en preoperatorio, y tratados preoperatoriamente.</p>
+            <strong>Elegibles:</strong> episodios de pacientes anémicos (Hb&lt;13) en preoperatorio, y tratados preoperatoriamente.</p>
         </details>
 
 
         <details>
             <summary>Días de estancia preoperatoria</summary>
-            <p><strong>Descripción:</strong> Promedio de la duración de estancia preoperatoria.<br>
+            <p><strong>Descripción:</strong> Promedio de la duración de estancia preoperatoria (aplica únicamente a la cohorte de cirugía urgente).<br>
             <strong>Elegibles:</strong> todos los episodios elegibles del procedimiento.</p>
         </details>
 
         <details>
             <summary>Episodios de pacientes intervenidos en &lt;48 h desde la admisión</summary>
-            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes intervenidos en &lt;48 h desde la admisión.<br>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes intervenidos en &lt;48 h desde la admisión (aplica únicamente a la cohorte de cirugía urgente).<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
             <strong>Numerador:</strong> episodios de pacientes intervenidos en &lt;48 h desde la admisión.</p>
         </details>
@@ -186,7 +251,7 @@ cat(render_global_activity(cohort_names))
             <summary>Episodios de pacientes intervenidos sin anemia</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes intervenidos sin anemia.<br>
             <strong>Denominador:</strong> episodios de pacientes con Hb previa a la intervención disponible.<br>
-            <strong>Numerador:</strong> episodios de pacientes sin anemia en el momento de la cirugía.</p>
+            <strong>Numerador:</strong> episodios de pacientes sin anemia (OMS) en el momento de la cirugía.</p>
         </details>
 
         <details>
@@ -205,7 +270,7 @@ cat(render_global_activity(cohort_names))
         <details>
             <summary>Tratamiento postop. con hierro IV</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados postoperatoriamente con hierro intravenoso durante la estancia hospitalaria.<br>
-            <strong>Denominador:</strong> episodios de pacientes anémicos en postoperatorio.<br>
+            <strong>Denominador:</strong> episodios de pacientes anémicos (Hb&lt;13) en postoperatorio (para proceso médico es durante la estancia hospitalaria).<br>
             <strong>Numerador:</strong> episodios de pacientes tratados con hierro intravenoso durante la estancia hospitalaria.</p>
         </details>
 
@@ -220,7 +285,7 @@ cat(render_global_activity(cohort_names))
             <summary>Tratamiento con antifibrinolíticos</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con antifibrinolíticos.<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios de pacientes tratados con antifibrinolíticos.</p>
+            <strong>Numerador:</strong> episodios de pacientes tratados con antifibrinolíticos durante la estancia hospitalaria.</p>
         </details>
 
         <details>
@@ -232,37 +297,37 @@ cat(render_global_activity(cohort_names))
 
         <details>
             <summary>Tratamiento con fibrinógeno</summary>
-            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con fibrinógeno durante el ingreso.<br>
-            <strong>Denominador:</strong> Episodios de pacientes con valor de concentración de fibrinógeno &lt; 2 g/L durante el ingreso (el valor más bajo entre los disponibles).<br>
-            <strong>Numerador:</strong> episodios de pacientes tratados con fibrinógeno durante el ingreso.</p>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con fibrinógeno durante la estancia hospitalaria.<br>
+            <strong>Denominador:</strong> Episodios de pacientes con valor de concentración de fibrinógeno &lt; 2 g/L durante la estancia hospitalaria (el valor más bajo entre los disponibles).<br>
+            <strong>Numerador:</strong> episodios de pacientes tratados con fibrinógeno durante la estancia hospitalaria.</p>
         </details>
 
         <details>
             <summary>Tratamiento con fibrinógeno (para todos, con y sin valor de conc.fibrin.)</summary>
-            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con fibrinógeno (para todos, con y sin valor de conc.fibrin.) durante el ingreso.<br>
+            <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes tratados con fibrinógeno (para todos, con y sin valor de conc.fibrin.) durante la estancia hospitalaria.<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios de pacientes tratados con fibrinógeno durante el ingreso.</p>
+            <strong>Numerador:</strong> episodios de pacientes tratados con fibrinógeno durante la estancia hospitalaria.</p>
         </details>
 
         <details>
             <summary>No transfundidos con hematíes en preoperatorio</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes no transfundidos con hematíes en preoperatorio.<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente.</p>
+            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente en la ventana válida (cirugía programada: hasta 7 días antes de la cirugía; cirugía oncológica: hasta 7 días antes de la cirugía; cirugía urgente: hasta 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>No transfundidos con plasma en preoperatorio</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes no transfundidos con plasma en preoperatorio.<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente.</p>
+            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente en la ventana válida (cirugía programada: hasta 7 días antes de la cirugía; cirugía oncológica: hasta 7 días antes de la cirugía; cirugía urgente: hasta 5 días antes de la cirugía).</p>
         </details>
 
         <details>
             <summary>No transfundidos con plaquetas en preoperatorio</summary>
             <p><strong>Descripción:</strong> Porcentaje de episodios de pacientes no transfundidos con plaquetas en preoperatorio.<br>
             <strong>Denominador:</strong> todos los episodios elegibles del procedimiento.<br>
-            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente.</p>
+            <strong>Numerador:</strong> episodios de pacientes no transfundidos preoperatoriamente en la ventana válida (cirugía programada: hasta 7 días antes de la cirugía; cirugía oncológica: hasta 7 días antes de la cirugía; cirugía urgente: hasta 5 días antes de la cirugía).</p>
         </details>
         
         <details>
@@ -363,4 +428,6 @@ cat(render_global_activity(cohort_names))
     </div>
   </div>
 </section>
+
+
 ```

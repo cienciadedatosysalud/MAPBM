@@ -29,14 +29,14 @@ with denominador as (
     from (
             select *
             from cirugia_programada_cohort a
-            union all
+            union all 
             select *
             from cirugia_oncologica_cohort a
-            union all
+            union all 
             select *
             from cirugia_urgente_cohort a
             union all
-            select *
+            select * exclude(admission_dt)
             from proceso_medico_cohort a
         ) a
         left join (

@@ -21,6 +21,7 @@ from (
                         episode_id,
                         sex_cd,
                         age_nm,
+                        admission_dt,
                         start_intervention_dt,
                         [d1] && b.diag_incl as hdig
                     from episode_view a,
@@ -52,6 +53,7 @@ from (
                         episode_id,
                         sex_cd,
                         age_nm,
+                        admission_dt,
                         start_intervention_dt,
                         (
                             [d2,d3,d4,d5] && b.diag_incl
