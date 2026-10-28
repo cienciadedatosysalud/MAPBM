@@ -4,10 +4,10 @@
 # =========================================================================
 cohort_ <- 'hdig'
 
-data_piramide <- dbGetQuery(con, paste0("select cohort,count(distinct episode_id) as n_episode_id,
+data_piramide <- dbGetQuery(con, paste0("select cohort,count(distinct patient_id || '_' || episode_id) as n_episode_id,
 grupo_edad_cd, sex_cd,año_cd
 from(
-select *,year(start_intervention_dt) as año_cd,
+select *,year(admission_dt) as año_cd,
 CASE
 		WHEN age_nm >= 0
 		and age_nm <= 4 THEN '00-04 años'
@@ -109,7 +109,7 @@ unlink(tf)
 
 # --- CÓDIGO R PARA COMORBILIDADES ---
 
-data_comorbidities <- dbGetQuery(con, paste0("select cohort,año_cd,count(distinct episode_id) as n_episode_id,
+data_comorbidities <- dbGetQuery(con, paste0("select cohort,año_cd,count(distinct patient_id || '_' || episode_id) as n_episode_id,
 sum(aids_bl::INT) as 'SIDA',
 sum(ami_bl::INT) as 'Infarto agudo miocardio',
 sum(chf_bl::INT) as 'Insuficiencia cardíaca congestiva',
@@ -129,7 +129,7 @@ sum(pvd_bl::INT) as 'Enfermedad vascular periférica',
 sum(severeliver_bl::INT) as 'Enfermedad hepática moderada/grave',
 sum(tumor_bl::INT) as 'Tumor sólido',
 sum(uncdiab_bl::INT) as 'DM no complicada' from (
-select a.cohort,year(a.start_intervention_dt) as año_cd ,b.* from proceso_medico_cohort a
+select a.cohort,year(a.admission_dt) as año_cd ,b.* from proceso_medico_cohort a
 left join comorbidities b
 on a.patient_id = b.patient_id and a.episode_id = b.episode_id ) group by cohort,año_cd"))
 

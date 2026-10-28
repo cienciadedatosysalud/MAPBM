@@ -82,4 +82,4 @@ asa_cd,
 brs_bl,
 planification_cd,
 eras_recovery_bl
-from episode;
+from episode where age_nm >=18;

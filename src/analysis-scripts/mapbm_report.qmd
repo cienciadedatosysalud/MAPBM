@@ -93,9 +93,19 @@ max_date <- if(!is.na(dates_df$max_dt[1])) format(as.Date(dates_df$max_dt[1]), "
 min_date_analisis <- if(!is.na(dates_df$min_dt_max_year[1])) format(as.Date(dates_df$min_dt_max_year[1]), "%d/%m/%Y") else "-"
 max_date_analisis <- if(!is.na(dates_df$max_dt_max_year[1])) format(as.Date(dates_df$max_dt_max_year[1]), "%d/%m/%Y") else "-"
 
-
 min_date_comparacion <- if(!is.na(dates_df$min_dt_prev_year[1])) format(as.Date(dates_df$min_dt_prev_year[1]), "%d/%m/%Y") else "-"
 max_date_comparacion <- if(!is.na(dates_df$max_dt_prev_year[1])) format(as.Date(dates_df$max_dt_prev_year[1]), "%d/%m/%Y") else "-"
+
+# --- Validación de años consecutivos ---
+if (max_date_analisis != "-" && max_date_comparacion != "-") {
+  yr_analisis <- as.integer(substr(max_date_analisis, 7, 10))
+  yr_comp     <- as.integer(substr(max_date_comparacion, 7, 10))
+  
+  if ((yr_analisis - yr_comp) > 1) {
+    min_date_comparacion <- "-"
+    max_date_comparacion <- "-"
+  }
+}
 
 # -------------------------------------------
 
@@ -131,7 +141,17 @@ format_diff_tag <- function(diff_pct, lower_is_better = FALSE) {
 }
 
 
-get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name = NULL, transftype = NULL,use_n_transf = FALSE, unit_str ="") {
+get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name = NULL, 
+                                 transftype = NULL, use_n_transf = FALSE, unit_str = "") {
+  
+  # Rescate preventivo de variables si están en el entorno global / superior
+  if (!exists("max_date_analisis") && exists("max_date_analisis", envir = .GlobalEnv)) {
+    max_date_analisis <- get("max_date_analisis", envir = .GlobalEnv)
+  }
+  if (!exists("max_date_comparacion") && exists("max_date_comparacion", envir = .GlobalEnv)) {
+    max_date_comparacion <- get("max_date_comparacion", envir = .GlobalEnv)
+  }
+
   q <- sprintf("select * from %s where cohort = '%s'", ind_id, c_name)
   if (!is.null(filter_transf)) {
     if (filter_transf) q <- paste0(q, " and transfundido_bl is true")
@@ -141,11 +161,13 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
     q <- paste0(q, " and transftype_st = '", transftype, "'")
   }
   q <- paste0(q, " order by month_year")
-  
-  df <- tryCatch(dbGetQuery(con_result, q), error=function(e) data.frame())
+    
+  df <- tryCatch(dbGetQuery(con_result, q), error = function(e) {
+    data.frame()
+  })
   
   # Si no hay registros, devolvemos la estructura vacía
-  if(nrow(df) == 0) {
+  if (nrow(df) == 0) {
     return(list(
       vals = "0", vals_median = "0", vals_avg = "0", vals_sd = "0",
       ns = "0", last_n = "-", current = "-", prev_val = "-", diff_pct = "-", dates = "-"
@@ -157,9 +179,9 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
   # 1. Selección de la variable numérica principal (para las tablas)
   if (!is.null(var_name) && var_name %in% names(df_m)) {
     v <- df_m[[var_name]]
-  } else if("result" %in% names(df_m)) {
+  } else if ("result" %in% names(df_m)) {
     v <- df_m$result
-  } else if("promedio" %in% names(df_m)) {
+  } else if ("promedio" %in% names(df_m)) {
     v <- df_m$promedio
   } else {
     v <- rep(0, nrow(df_m))
@@ -168,24 +190,18 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
   v <- as.numeric(v)
   
   # 2. Mediana (puntos rojos en el gráfico)
-  med <- if("mediana" %in% names(df_m)) as.numeric(df_m$mediana) else v
+  med <- if ("mediana" %in% names(df_m)) as.numeric(df_m$mediana) else v
   
   # 3. Cálculo de Media Móvil (k=3) y SD Móvil (width=3)
-  n_rows <- length(v)
+  n_rows   <- length(v)
   avg_roll <- numeric(n_rows)
   sd_roll  <- numeric(n_rows)
   
   for (i in 1:n_rows) {
-    # Si estamos en el mes 1 o 2, usamos los datos disponibles (1 o 2 meses)
-    # Si es el mes 3 en adelante, usamos los últimos 3 meses (ventana móvil)
-    window_vals <- if (i < 3) v[1:i] else v[(i-2):i]
-    
-    # Calculamos la media de esa ventana
+    window_vals <- if (i < 3) v[1:i] else v[(i - 2):i]
     avg_roll[i] <- mean(window_vals, na.rm = TRUE)
     
-    # Calculamos la SD de esa ventana (requiere al menos 2 valores, sino es 0)
     if (length(window_vals) > 1) {
-      # Si hay valores idénticos, sd() puede dar NA, lo aseguramos con is.na
       sd_temp <- sd(window_vals, na.rm = TRUE)
       sd_roll[i] <- ifelse(is.na(sd_temp), 0, sd_temp)
     } else {
@@ -199,7 +215,6 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
   avg    <- round(avg_roll, 2)
   sd_val <- round(sd_roll, 2)
   
-  #n <- if("n_elegibles" %in% names(df_m)) df_m$n_elegibles else rep(0, nrow(df_m))
   if (use_n_transf && "n_episodios_transf" %in% names(df_m)) {
     n <- df_m$n_episodios_transf
   } else if ("n_elegibles" %in% names(df_m)) {
@@ -209,7 +224,8 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
   } else {
     n <- rep(0, nrow(df_m))
   }
-  d <- if("month_year" %in% names(df_m)) as.character(df_m$month_year) else rep("-", nrow(df_m))
+  
+  d <- if ("month_year" %in% names(df_m)) as.character(df_m$month_year) else rep("-", nrow(df_m))
     
   val_current  <- tail(v, 1)
   val_previous <- if (length(v) > 1) v[length(v) - 1] else NA
@@ -221,18 +237,61 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
   year_current  <- suppressWarnings(as.integer(substr(date_current, 1, 4)))
   year_previous <- suppressWarnings(as.integer(substr(date_previous, 1, 4)))
   
+  # Asignaciones iniciales de métricas resumen
+  last_n   <- as.character(tail(n, 1))
+  current  <- as.character(val_current)
+  prev_val <- if (!is.na(val_previous)) as.character(val_previous) else "-"
+  
   # --- Cálculo de la diferencia porcentual con validación de año continuo ---
-  diff_pct <- if (!is.na(year_current) && !is.na(year_previous) && (year_current - year_previous == 1)) {
-    
+  diff_pct <- if (!is.na(year_current) && !is.na(year_previous)) {
     if (!is.na(val_previous) && !is.na(val_current)) {
       pct <- val_current - val_previous
       sprintf("%+.2f%s", pct, unit_str)
     } else {
       "-"
     }
-    
   } else {
-    "-" # Si no son años consecutivos o falta algún valor, forzamos "-"
+    "-"
+  }
+  
+
+  parse_year <- function(dt_str) {
+    if (is.null(dt_str) || is.na(dt_str)) return(NA_integer_)
+    suppressWarnings({
+      if (grepl("/", dt_str)) {
+        as.integer(format(as.Date(dt_str, format = "%d/%m/%Y"), "%Y"))
+      } else {
+        as.integer(format(as.Date(dt_str), "%Y"))
+      }
+    })
+  }
+    
+  target_year_analisis    <- parse_year(if (exists("max_date_analisis")) max_date_analisis else NULL)
+  target_year_comparacion <- parse_year(if (trimws(as.character(max_date_comparacion)) == "-") max_date_analisis else max_date_comparacion )
+
+
+  ## Comprobar que los datos de year son los del periodo de analisis y comparacion.
+  is_year_table <- grepl("_year$", ind_id)
+
+
+  if (is_year_table) {
+    if (!exists("max_date_comparacion") || is.null(max_date_comparacion)) {
+      prev_val <- '-'
+      diff_pct <- '-'
+    } else {
+      cond_match_current  <- (year_current == target_year_analisis)
+      cond_match_previous <- (year_previous == target_year_comparacion)
+      
+      if (!isTRUE(cond_match_current)) {
+        last_n   <- '-'
+        current  <- '-'
+        diff_pct <- '-'
+      }
+      if (!isTRUE(cond_match_previous)) {
+        prev_val <- '-'
+        diff_pct <- '-'
+      }
+    }
   }
 
   list(
@@ -241,10 +300,10 @@ get_ui_data_extended <- function(ind_id, c_name, filter_transf = NULL, var_name 
     vals_avg    = paste(avg, collapse = ","),
     vals_sd     = paste(sd_val, collapse = ","),
     ns          = paste(n, collapse = ","),
-    last_n      = as.character(tail(n, 1)),
-    current     = as.character(val_current),
-    prev_val    = if (!is.na(val_previous)) as.character(val_previous) else "-",
-    diff_pct    = diff_pct,
+    last_n      = as.character(last_n),
+    current     = as.character(current),
+    prev_val    = as.character(prev_val),
+    diff_pct    = as.character(diff_pct),
     dates       = paste(d, collapse = ",")
   )
 }
@@ -387,7 +446,8 @@ get_n_total <- function(c_name) {
     c_name %in% c("hdig") ~ "proceso_medico_cohort",
     TRUE ~ "cirugia_programada_cohort"
   )
-  q <- sprintf("select count(distinct episode_id) as n from main.%s where cohort='%s'", tbl, c_name)
+
+  q <- sprintf("select count(distinct patient_id || '_' || episode_id) as n from main.%s where cohort='%s'", tbl, c_name)
   res <- tryCatch(dbGetQuery(con, q)$n, error=function(e) 0)
   return(res)
 }
@@ -415,24 +475,29 @@ get_n_total_years <- function(c_name) {
     c_name %in% c("hdig") ~ "proceso_medico_cohort",
     TRUE ~ "cirugia_programada_cohort"
   )
-  
-  # Concatenamos el sufijo _year a la cohorte
+
+  # Determinamos el campo de fecha según la tabla
+  dt_col <- if (tbl == "proceso_medico_cohort") "admission_dt" else "start_intervention_dt"
+
+
   cohort_year <- paste0(c_name, "_year")
-  
+
+  date_analisis_iso    <- format(as.Date(max_date_analisis, format = "%d/%m/%Y"), "%Y-%m-%d")
+  date_comparacion_iso <- if (trimws(as.character(max_date_comparacion)) == "-") format(as.Date('31/12/2999', format = "%d/%m/%Y"), "%Y-%m-%d") else format(as.Date(max_date_comparacion, format = "%d/%m/%Y"), "%Y-%m-%d")
+
+  # Inyectamos dt_col en los dos filtros WHERE
   q <- sprintf("
-    WITH ranked_years AS (
-      SELECT 
-        episode_id,
-        DENSE_RANK() OVER (ORDER BY YEAR(month_year) DESC) AS yr_rank
-      FROM main.%s 
-      WHERE cohort = '%s'
-    )
     SELECT 
-      COUNT(DISTINCT CASE WHEN yr_rank = 1 THEN episode_id END) AS n_max_year,
-      COUNT(DISTINCT CASE WHEN yr_rank = 2 THEN episode_id END) AS n_prev_year
-    FROM ranked_years
-  ", tbl, c_name)
-  print(q)
+      count(distinct patient_id || '_' || episode_id) FILTER (
+          WHERE year(%s) = year('%s'::DATE)
+      ) AS n_max_year,
+      count(distinct patient_id || '_' || episode_id) FILTER (
+          WHERE year(%s) = year('%s'::DATE) 
+      ) AS n_prev_year
+    FROM main.%s 
+    WHERE cohort = '%s'
+  ", dt_col, date_analisis_iso, dt_col, date_comparacion_iso, tbl, c_name)
+
   res <- tryCatch(
     dbGetQuery(con, q), 
     error = function(e) data.frame(n_max_year = 0, n_prev_year = 0)
@@ -533,12 +598,15 @@ render_pyramid <- function(c_code) {
     c_code %in% c("hdig") ~ "proceso_medico_cohort",
     TRUE ~ "cirugia_programada_cohort"
   )
-  
-  # 2. Consulta SQL exacta
+
+  # Columna de fecha dinámica según el tipo de tabla
+  dt_col <- if (tbl == "proceso_medico_cohort") "admission_dt" else "start_intervention_dt"
+
+  # Consulta SQL parametrizada
   q_pir <- sprintf("
-    select cohort, count(distinct episode_id) as n_episode_id, grupo_edad_cd, sex_cd, año_cd
+    select cohort, count(distinct patient_id || '_' || episode_id) as n_episode_id, grupo_edad_cd, sex_cd, año_cd
     from (
-      select *, year(start_intervention_dt) as año_cd,
+      select *, year(%s) as año_cd,
       CASE
         WHEN age_nm >= 0 and age_nm <= 4 THEN '00-04 años'
         WHEN age_nm >= 5 and age_nm <= 9 THEN '05-09 años'
@@ -562,7 +630,7 @@ render_pyramid <- function(c_code) {
       END as grupo_edad_cd 
       from main.%s 
       where age_nm is not null and sex_cd is not null and cohort = '%s'
-    ) group by cohort, grupo_edad_cd, sex_cd, año_cd", tbl, c_code)
+    ) group by cohort, grupo_edad_cd, sex_cd, año_cd", dt_col, tbl, c_code)
 
   data_piramide <- tryCatch(dbGetQuery(con, q_pir), error=function(e) data.frame())
   
@@ -770,7 +838,7 @@ render_comorbidities <- function(c_code) {
 
   # 2. Tu código SQL exacto, parametrizado para la tabla y cohorte
   q_com <- sprintf("
-    select cohort, año_cd, count(distinct episode_id) as n_episode_id,
+    select cohort, año_cd, count(distinct patient_id || '_' || episode_id) as n_episode_id,
     sum(aids_bl::INT) as 'SIDA',
     sum(ami_bl::INT) as 'Infarto agudo miocardio',
     sum(chf_bl::INT) as 'Insuficiencia cardíaca congestiva',
@@ -875,13 +943,16 @@ render_global_activity <- function(cohorts_list) {
       c_code %in% c("hdig") ~ "proceso_medico_cohort",
       TRUE ~ "cirugia_programada_cohort"
     )
-    
+
+    # Columna de fecha dinámica
+    dt_col <- if (tbl == "proceso_medico_cohort") "admission_dt" else "start_intervention_dt"
+
     # Extraer datos SQL
     q_act <- sprintf("
-      SELECT year(start_intervention_dt) as anio, count(distinct episode_id) as n_ep
+      SELECT year(%s) as anio, count(distinct patient_id || '_' || episode_id) as n_ep
       FROM main.%s
-      WHERE cohort = '%s' AND start_intervention_dt IS NOT NULL
-      GROUP BY anio ORDER BY anio", tbl, c_code)
+      WHERE cohort = '%s' AND %s IS NOT NULL
+      GROUP BY anio ORDER BY anio", dt_col, tbl, c_code, dt_col)
     
     df_act <- tryCatch(dbGetQuery(con, q_act), error=function(e) data.frame())
     

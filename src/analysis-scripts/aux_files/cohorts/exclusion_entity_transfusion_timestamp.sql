@@ -2,6 +2,7 @@
 --- Pacientes sin Hb preop en 120 dias se cumple en el criterio de la seleccion de la cohorte
 --- Crear vista de las tablas originales con flag true en aquellos registros con problemas de fechas completas 
 create or replace view transfusion_view as
+select * from (
 select *,
     transf_dt is null or     
     (
@@ -24,4 +25,5 @@ select *,
     )
      as flag_transf_dt
 from transfusion
-where flag_transf_dt is false;
+where flag_transf_dt is false
+) order by patient_id, transf_dt, unit_id   

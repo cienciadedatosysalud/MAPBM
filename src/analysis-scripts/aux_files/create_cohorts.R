@@ -75,7 +75,7 @@ for (fichero_path in ficheros_ordenados) {
   if (grepl("01_crear_episode_view\\.sql$", nombre_fichero)) {
     
     log_info("--------------------------------------------------------------------------")
-    log_info("[+] CREANDO CÓDIGOS LIMPIOS PARA LOS DIAGNÓSTICOS")
+    log_info("[+] CREANDO CÓDIGOS LIMPIOS PARA LOS DIAGNÓSTICOS Y SELECCIONANDO EPISODIOS >=18 AÑOS")
     log_info("    Fichero: {nombre_fichero}")
     log_info("--------------------------------------------------------------------------")
     

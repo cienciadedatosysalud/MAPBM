@@ -3,7 +3,6 @@
 
 agregados <- dbExecute(con, "COPY (with datos_episodio as (
 select * from (select patient_id,cnh_cd,episode_id,age_nm,sex_cd,admission_dt,round(epoch(discharge_dt - admission_dt)/86400,3) as los, discharge_type_cd,start_intervention_dt,asa_cd,brs_bl,eras_recovery_bl,
-year(start_intervention_dt) as año_cd,
 CASE
 		WHEN age_nm >= 0
 		and age_nm <= 4 THEN '00-04 años'
@@ -50,13 +49,13 @@ left join elixhauser d
 using(patient_id,cnh_cd,episode_id,admission_dt)
 ),
 datos_cohort as (
-select * from cirugia_oncologica_cohort
+select *,year(start_intervention_dt) as year from cirugia_oncologica_cohort
 union all 
-select * from cirugia_programada_cohort
+select *,year(start_intervention_dt) as year from cirugia_programada_cohort
 union all
-select * from cirugia_urgente_cohort
+select *,year(start_intervention_dt) as year from cirugia_urgente_cohort
 union all
-select * exclude(admission_dt) from proceso_medico_cohort
+select * exclude(admission_dt),year(admission_dt) as year from proceso_medico_cohort
 )
 select cnh_cd,cohort, category_cohort,count(distinct patient_id || '-' || episode_id) as n_unique_episode, median(age_nm) as mediana_edad,
 (QUANTILE_CONT(age_nm, 0.75)-QUANTILE_CONT(age_nm, 0.25)) as iqr_age,
@@ -153,7 +152,7 @@ sum(wghtloss_bl::INT) as wghtloss_bl_elix
 from (
 select * from datos_cohort a 
 left join datos_episodio b 
-using(patient_id,episode_id,start_intervention_dt)
+using(patient_id,episode_id)
 )
 group by cnh_cd,cohort, category_cohort
 ) TO '../../outputs/agregados_hospital_descriptivo.csv' (FORMAT csv, DELIMITER '|', 
@@ -164,7 +163,6 @@ HEADER)
 agregados <- dbExecute(con, "COPY (with datos_episodio as (
 select * from (select patient_id,cnh_cd,episode_id,age_nm,sex_cd,admission_dt,round(epoch(discharge_dt - admission_dt)/86400,3) as los, 
 discharge_type_cd,start_intervention_dt,asa_cd,brs_bl,eras_recovery_bl,
-year(start_intervention_dt) as year,
 CASE
 		WHEN age_nm >= 0
 		and age_nm <= 4 THEN '00-04 años'
@@ -211,13 +209,13 @@ left join elixhauser d
 using(patient_id,cnh_cd,episode_id,admission_dt)
 ),
 datos_cohort as (
-select * from cirugia_oncologica_cohort
+select *,year(start_intervention_dt) as year from cirugia_oncologica_cohort
 union all 
-select * from cirugia_programada_cohort
+select *,year(start_intervention_dt) as year from cirugia_programada_cohort
 union all
-select * from cirugia_urgente_cohort
+select *,year(start_intervention_dt) as year from cirugia_urgente_cohort
 union all
-select * exclude(admission_dt) from proceso_medico_cohort
+select * exclude(admission_dt),year(admission_dt) as year from proceso_medico_cohort
 )
 select cnh_cd,year,cohort, category_cohort,count(distinct patient_id || '-' || episode_id) as n_unique_episode, median(age_nm) as mediana_edad,
 (QUANTILE_CONT(age_nm, 0.75)-QUANTILE_CONT(age_nm, 0.25)) as iqr_age,
@@ -314,7 +312,7 @@ sum(wghtloss_bl::INT) as wghtloss_bl_elix
 from (
 select * from datos_cohort a 
 left join datos_episodio b 
-using(patient_id,episode_id,start_intervention_dt)
+using(patient_id,episode_id)
 )
 group by cnh_cd,cohort, category_cohort,year
 ) TO '../../outputs/agregados_hospital_descriptivo_anual.csv' (FORMAT csv, DELIMITER '|', 

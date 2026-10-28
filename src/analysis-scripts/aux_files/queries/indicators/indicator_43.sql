@@ -5,16 +5,16 @@ with denominador as (
         discharge_dt,
         admission_dt
     from (
-            select *
+            select *, date_trunc('month', a.start_intervention_dt) as month_year,
             from cirugia_programada_cohort a
             union all
-            select *
+            select *, date_trunc('month', a.start_intervention_dt) as month_year,
             from cirugia_oncologica_cohort a
             union all
-            select *
+            select *, date_trunc('month', a.start_intervention_dt) as month_year,
             from cirugia_urgente_cohort a
             union all
-            select * exclude(admission_dt)
+            select * exclude(admission_dt), date_trunc('month', a.admission_dt) as month_year,
             from proceso_medico_cohort a
         ) a
         left join (
@@ -39,7 +39,6 @@ select a.*, total_pacientes, round(total_reingresos*100.0/total_pacientes,2) as 
     count(distinct patient_id) as total_reingresos
 from (
         select *,
-            date_trunc('month', a.start_intervention_dt) as month_year,
             case
                 when b.patient_id is not null then true
                 else false
@@ -52,7 +51,8 @@ from (
                     start_intervention_dt,
                     discharge_dt,
                     cohort,
-                    category_cohort
+                    category_cohort,
+                    month_year
                 from denominador
             ) b on a.patient_id = b.patient_id
             and a.admission_dt between b.discharge_dt and b.discharge_dt + INTERVAL 30 DAY

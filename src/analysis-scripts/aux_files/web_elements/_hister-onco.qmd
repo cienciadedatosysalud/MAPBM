@@ -4,7 +4,7 @@
 # =========================================================================
 cohort_ <- 'hist_onco'
 
-data_piramide <- dbGetQuery(con, paste0("select cohort,count(distinct episode_id) as n_episode_id,
+data_piramide <- dbGetQuery(con, paste0("select cohort,count(distinct patient_id || '_' || episode_id) as n_episode_id,
 grupo_edad_cd, sex_cd,año_cd
 from(
 select *,year(start_intervention_dt) as año_cd,
@@ -108,7 +108,7 @@ unlink(tf)
 
 # --- CÓDIGO R PARA COMORBILIDADES ---
 
-data_comorbidities <- dbGetQuery(con, paste0("select cohort,año_cd,count(distinct episode_id) as n_episode_id,
+data_comorbidities <- dbGetQuery(con, paste0("select cohort,año_cd,count(distinct patient_id || '_' || episode_id) as n_episode_id,
 sum(aids_bl::INT) as 'SIDA',
 sum(ami_bl::INT) as 'Infarto agudo miocardio',
 sum(chf_bl::INT) as 'Insuficiencia cardíaca congestiva',
