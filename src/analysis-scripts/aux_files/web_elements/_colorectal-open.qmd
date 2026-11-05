@@ -1,6 +1,6 @@
 ```{r  output=FALSE, include=FALSE}
 # =========================================================================
-# Procesamiento de datos para Cirugía Colorectal Abierta (ncra)
+# Procesamiento de datos para Cirugía Colorrectal Abierta (ncra)
 # =========================================================================
 cohort_ <- 'ncra'
 
@@ -341,7 +341,7 @@ n_tot_disp <- ifelse(is.na(demo_data$n_tot[1]), "-", demo_data$n_tot[1])
 
 ```{=html}
 <section id="colorectal-open" class="section">
-  <div class="proc-title"><h2>Cirugía Colorectal Abierta</h2>
+  <div class="proc-title"><h2>Cirugía Colorrectal Abierta</h2>
   <p>Periodo de análisis: n=`r n_ncra_max` · Periodo de comparación: n=`r n_ncra_prev` · Periodo total cargado: n=`r n_ncra`</p>
   </div>
   <div class="summary-grid">

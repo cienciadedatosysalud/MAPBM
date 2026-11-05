@@ -30,8 +30,8 @@ if (file.exists(ruta_absoluta) && file.info(ruta_absoluta)$size > 0) {
 cohort_names <- c(
   "prod" = "Artroplastia Rodilla",
   "pcad" = "Artroplastia Cadera",
-  "ncrl" = "Colorectal laparoscópica",
-  "ncra" = "Colorectal abierta",
+  "ncrl" = "Colorrectal laparoscópica",
+  "ncra" = "Colorrectal abierta",
   "ffem" = "Fractura de fémur",
   "hist_onco" = "Hist. oncológica",
   "hist_no_onco" = "Hist. no oncológica",
