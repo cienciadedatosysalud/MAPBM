@@ -1285,8 +1285,8 @@ body{margin:0}
     <div class="nav-title">Procedimientos</div>
     <a href="#rodilla">Artroplastia Rodilla</a>
     <a href="#cadera">Artroplastia Cadera</a>
-    <a href="#colorectal-lap">Colorectal laparoscópica</a>
-    <a href="#colorectal-open">Colorectal abierta</a>
+    <a href="#colorectal-lap">Colorrectal laparoscópica</a>
+    <a href="#colorectal-open">Colorrectal abierta</a>
     <a href="#fractura-femur">Fractura de fémur</a>
     <a href="#hister-onco">Histerectomía oncológica</a>
     <a href="#hister-no-onco">Histerectomía no oncológica</a>
@@ -1317,8 +1317,8 @@ body{margin:0}
   <div class="proc-grid">
     <a class="proc-card" href="#rodilla"><span class="tag">Artroplastia Rodilla</span><div class="n">`r n_prod_max`</div><div class="epis">episodios</div></a>
     <a class="proc-card" href="#cadera"><span class="tag">Artroplastia Cadera</span><div class="n">`r n_pcad_max`</div><div class="epis">episodios</div></a>
-    <a class="proc-card" href="#colorectal-lap"><span class="tag">Colorectal lap.</span><div class="n">`r n_ncrl_max`</div><div class="epis">episodios</div></a>
-    <a class="proc-card" href="#colorectal-open"><span class="tag">Colorectal ab.</span><div class="n">`r n_ncra_max`</div><div class="epis">episodios</div></a>
+    <a class="proc-card" href="#colorectal-lap"><span class="tag">Colorrectal lap.</span><div class="n">`r n_ncrl_max`</div><div class="epis">episodios</div></a>
+    <a class="proc-card" href="#colorectal-open"><span class="tag">Colorrectal ab.</span><div class="n">`r n_ncra_max`</div><div class="epis">episodios</div></a>
     <a class="proc-card" href="#fractura-femur"><span class="tag">Fractura de fémur</span><div class="n">`r n_ffem_max`</div><div class="epis">episodios</div></a>
     <a class="proc-card" href="#hister-onco"><span class="tag">Hist. oncológica</span><div class="n">`r n_hist_onco_max`</div><div class="epis">episodios</div></a>
     <a class="proc-card" href="#hister-no-onco"><span class="tag">Hist. no oncológica</span><div class="n">`r n_hist_no_onco_max`</div><div class="epis">episodios</div></a>

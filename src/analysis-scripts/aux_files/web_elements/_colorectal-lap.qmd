@@ -1,6 +1,6 @@
 ```{r  output=FALSE, include=FALSE}
 # =========================================================================
-# Procesamiento de datos para Cirugía Colorectal Laparoscópica (ncrl)
+# Procesamiento de datos para Cirugía Colorrectal Laparoscópica (ncrl)
 # =========================================================================
 cohort_ <- 'ncrl'
 
@@ -339,7 +339,7 @@ n_tot_disp <- ifelse(is.na(demo_data$n_tot[1]), "-", demo_data$n_tot[1])
 
 ```{=html}
 <section id="colorectal-lap" class="section">
-  <div class="proc-title"><h2>Cirugía Colorectal Laparoscópica</h2>
+  <div class="proc-title"><h2>Cirugía Colorrectal Laparoscópica</h2>
   <p>Periodo de análisis: n=`r n_ncrl_max` · Periodo de comparación: n=`r n_ncrl_prev` · Periodo total cargado: n=`r n_ncrl`</p>
   </div>
   <div class="summary-grid">
