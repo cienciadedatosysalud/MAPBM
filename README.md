@@ -50,16 +50,6 @@ from an individual researcher working with a folder of data, to large data-inten
 __*Note that dependencies may vary depending on user modifications!*__
 
 
-# Authoring
-
-| Surname, name | Affiliation | ![orcid](https://orcid.org/sites/default/files/images/orcid_16x16.png) ORCID |
-|---------------|-------------|------------------------------------------------------------------------------|
-Estupiñán-Romero, Francisco|Instituto Aragonés de Ciencias de la Salud (IACS)|[0000-0002-6285-8120](https://orcid.org/0000-0002-6285-8120)
-Romero-Panadero, Blanca|Instituto Aragonés de Ciencias de la Salud (IACS)|[0009-0004-6481-2283](https://orcid.org/0009-0004-6481-2283)
-Royo-Sierra, Santiago|Instituto Aragonés de Ciencias de la Salud (IACS)|[0000-0002-0048-4370](https://orcid.org/0000-0002-0048-4370)
-Olano-Guillen, Berta|Instituto Aragonés de Ciencias de la Salud (IACS)|[0009-0004-9122-3521](https://orcid.org/0009-0004-9122-3521)
-González-Galindo, Javier|Instituto Aragonés de Ciencias de la Salud (IACS)|[0000-0002-8783-5478](https://orcid.org/0000-0002-8783-5478)
-Bernal-Delgado, Enrique|Instituto Aragonés de Ciencias de la Salud (IACS)|[0000-0002-0961-3298](https://orcid.org/0000-0002-0961-3298)
 
 # Previous version(s):
 
